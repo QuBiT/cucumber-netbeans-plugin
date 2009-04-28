@@ -1,0 +1,281 @@
+#
+# NBS Template for FEATURE
+#
+# Author: Roland Guem
+#
+# HINT: Package name is a homage to Cucumber Developers
+#
+
+# Token Definitions
+
+TOKEN:comment:('#' [^ '\n' '\r']*)
+
+TOKEN:start_text_block:(':'):<IN_TEXT_BLOCK>
+<IN_TEXT_BLOCK> {
+     TOKEN:word:( ["a"-"z" "A"-"Z"] ["a"-"z" "A"-"Z" "0"-"9" "_"]* )
+     TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+     TOKEN:newline: ('\n'):<DEFAULT>
+     TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
+     TOKEN:variable:('<'[^ '>']* '>')
+     TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
+     TOKEN:special:( ["+" "-" "*" "/" "=" "_" "," "." ":" ";" "(" ")" "[" "]" "{" "}"]*)
+     TOKEN:comment:('#' [^ '\n' '\r']*)
+     #TOKEN:text_block:([^ '\n' '\r']*):<DEFAULT>
+}
+
+TOKEN:start_row_block:("|"):<IN_ROW_BLOCK>
+<IN_ROW_BLOCK> {
+     TOKEN:word:( ["a"-"z" "A"-"Z"] ["a"-"z" "A"-"Z" "0"-"9" "_"]* )
+     TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+     TOKEN:newline: ('\n'):<DEFAULT>
+     TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
+     TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
+     TOKEN:special:(["|" "+" "-" "*" "/" "=" "_" "," "." ":" ";" "(" ")" "[" "]" "{" "}"]*)
+     TOKEN:comment:('#' [^ '\n' '\r']*)
+}
+
+TOKEN:feature:( "Feature" )
+TOKEN:basic_scenario:( "Scenario" )
+TOKEN:table_scenario:( "Scenario Outline" )
+TOKEN:business_value:( "In order to" ):<IN_TEXT_BLOCK>
+TOKEN:role:( "As a" | "As an" ):<IN_TEXT_BLOCK>
+TOKEN:some_action:( "I want to" ):<IN_TEXT_BLOCK>
+TOKEN:given:( "Given" ):<IN_TEXT_BLOCK>
+TOKEN:and:( "And" ):<IN_TEXT_BLOCK>
+TOKEN:when:( "When" ):<IN_TEXT_BLOCK>
+TOKEN:then:( "Then" ):<IN_TEXT_BLOCK>
+TOKEN:examples:( "Examples" )
+TOKEN:background:( "Background")
+TOKEN:word:( ["a"-"z" "A"-"Z"] ["a"-"z" "A"-"Z" "0"-"9" "_"]* )
+TOKEN:tag:('@' [^ '\n' '\r']*)
+
+#TOKEN:word:( ["a"-"z" "A"-"Z" "0"-"9"]* )
+
+TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+
+TOKEN:newline: ('\n')
+
+#Syntax Definition
+
+S = (Feature)*;
+
+# Comment
+#Comment = <comment>;
+
+# NewLine
+#NewLine = <newline>;
+
+# Feature
+Feature = FeatureDefinition (Scenario)*;
+FeatureDefinition = FeatureIdentifier FeatureDescription FeatureBlock;
+FeatureIdentifier = <feature>;
+FeatureDescription = <start_text_block> Text;
+# Feature Block
+FeatureBlock = BusinessValueDefinition RoleDefinition SomeActionDefinition ;
+# Business Value
+BusinessValueDefinition = <business_value> Text;
+# Role Defintion
+RoleDefinition = <role> (<newline> | Text);
+# Some Action
+SomeActionDefinition = <some_action> (<newline> | Text);
+
+# Background
+Background = BackgroundIdentifier GivenBlock;
+BackgroundIdentifier = <background>":";
+
+# Scenario
+Scenario = ((Background)* BasicScenario) | TableScenario;
+BasicScenario = ScenarioIdentifier ScenarioDescription ScenarioBlock;
+ScenarioIdentifier = <basic_scenario>;
+TableScenario = TableScenarioIdentifier ScenarioDescription ScenarioBlock TableBlock;
+TableScenarioIdentifier = <table_scenario>;
+ScenarioDescription = <start_text_block> Text;
+# Scenario Block
+ScenarioBlock = GivenBlock WhenBlock ThenBlock;
+# Given
+GivenBlock = GivenDefinition  (SmallTableBlock)* (AndDefinition)*;
+GivenDefinition = <given> Text;
+# When
+WhenBlock = WhenDefinition (AndDefinition)*;
+WhenDefinition = <when> Text;
+# Then
+ThenBlock = ThenDefinition (AndDefinition)*;
+ThenDefinition = <then> Text;
+# And
+AndDefinition = <and> Text;
+
+# TableBlock
+TableBlock = TableIdentifier TableHeader (TableRow)*;
+TableIdentifier = <examples> ":";
+TableHeader = <start_row_block> Text;
+TableRow = <start_row_block> Text;
+
+SmallTableBlock = TableHeader (TableRow)*;
+
+# Text
+Text = (Word | <string> | <variable>) (Text)*;
+Word = <word> | <number> | <special> ;
+
+SKIP:whitespace
+SKIP:comment
+SKIP:newline
+SKIP:tag
+
+COLOR:feature: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+    font_type: "bold italic";
+}
+
+COLOR:basic_scenario: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+    font_type: "bold italic";
+}
+
+COLOR:table_scenario: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+    font_type: "bold italic";
+}
+
+COLOR:TableHeader: {
+    default_coloring: "identifier";
+    foreground_color:"#336600";
+}
+
+COLOR:examples: {
+    default_coloring: "identifier";
+    foreground_color:"#336600";
+    font_type: "bold italic";
+}
+
+COLOR:background: {
+    default_coloring: "identifier";
+    foreground_color:"#336600";
+    font_type: "bold italic";
+}
+
+COLOR:tag: {
+    default_coloring: "identifier";
+    foreground_color:"#CC3333";
+    font_type: "bold";
+}
+
+COLOR:business_value: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+    font_type: "bold italic";
+}
+
+COLOR:role: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+    font_type: "bold italic";
+}
+
+COLOR:some_action: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+    font_type: "bold italic";
+}
+
+COLOR:given: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+}
+COLOR:and: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+}
+COLOR:when: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+}
+COLOR:then: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+}
+
+COLOR:FeatureDescription: {
+    font_type: "bold";
+}
+
+COLOR:BusinessValueDefinition: {
+    font_type: "bold";
+}
+
+COLOR:RoleDefinition: {
+    font_type: "bold";
+}
+
+COLOR:SomeActionDefinition: {
+    font_type: "bold";
+}
+
+COLOR:ScenarioDescription: {
+    font_type: "bold";
+}
+
+COLOR:variable: {
+    default_coloring:"string";
+    foreground_color:"#336600";
+}
+
+COLOR:number: {
+    default_coloring:"string";
+    #foreground_color:"#80CC33";
+    foreground_color:"#8FD600";
+}
+
+# brace completion
+COMPLETE "{:}"
+COMPLETE "(:)"
+COMPLETE "[:]"
+COMPLETE "\":\""
+COMPLETE "\':\'"
+
+# code completion
+COMPLETION:given, when, then, and, scenario, feature, whitespace, newline: {
+    text1:"Feature:";
+    text2:"In order to";
+    text3:"As a";
+    text4:"I want to";
+    text5:"Scenario:";
+    text6:"Given";
+    text7:"And";
+    text8:"When";
+    text9:"Then";
+    text10:"Examples:";
+    text11:"Background:";
+    text12:"Scenario Outline:";
+}
+
+# brace matching
+BRACE "{:}"
+BRACE "(:)"
+BRACE "[:]"
+BRACE "\":\""
+BRACE "\':\'"
+
+# navigator
+
+NAVIGATOR:Feature: {
+    display_name: info.cukes.feature.Feature.featureName;
+    icon: info.cukes.feature.featureIcon;
+}
+
+NAVIGATOR:Scenario: {
+    display_name: info.cukes.feature.Feature.scenarioName;
+    icon: info.cukes.feature.Feature.scenarioIcon;
+}
+
+NAVIGATOR:TableBlock: {
+    display_name: "Examples";
+    icon: info.cukes.feature.Feature.scenarioIcon;
+}
+
+NAVIGATOR:Background: {
+    display_name: "Background";
+    icon: info.cukes.feature.Feature.scenarioIcon;
+}

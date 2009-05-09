@@ -12,26 +12,25 @@ TOKEN:comment:('#' [^ '\n' '\r']*)
 
 TOKEN:start_text_block:(':'):<IN_TEXT_BLOCK>
 <IN_TEXT_BLOCK> {
-     TOKEN:word:( ["a"-"z" "A"-"Z"] ["a"-"z" "A"-"Z" "0"-"9" "_"]* )
      TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
      TOKEN:newline: ('\n'):<DEFAULT>
      TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
      TOKEN:variable:('<'[^ '>']* '>')
      TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
-     TOKEN:special:( ["+" "-" "*" "/" "=" "_" "," "." ":" ";" "(" ")" "[" "]" "{" "}"]*)
      TOKEN:comment:('#' [^ '\n' '\r']*)
+     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
      #TOKEN:text_block:([^ '\n' '\r']*):<DEFAULT>
 }
 
 TOKEN:start_row_block:("|"):<IN_ROW_BLOCK>
 <IN_ROW_BLOCK> {
-     TOKEN:word:( ["a"-"z" "A"-"Z"] ["a"-"z" "A"-"Z" "0"-"9" "_"]* )
      TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
      TOKEN:newline: ('\n'):<DEFAULT>
      TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
      TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
-     TOKEN:special:(["|" "+" "-" "*" "/" "=" "_" "," "." ":" ";" "(" ")" "[" "]" "{" "}"]*)
+     TOKEN:special:(["|"]*)
      TOKEN:comment:('#' [^ '\n' '\r']*)
+     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#' '|' ]* )
 }
 
 TOKEN:feature:( "Feature" )
@@ -46,7 +45,7 @@ TOKEN:when:( "When" ):<IN_TEXT_BLOCK>
 TOKEN:then:( "Then" ):<IN_TEXT_BLOCK>
 TOKEN:examples:( "Examples" )
 TOKEN:background:( "Background")
-TOKEN:word:( ["a"-"z" "A"-"Z"] ["a"-"z" "A"-"Z" "0"-"9" "_"]* )
+TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#' ':' '@']* )
 TOKEN:tag:('@' [^ '\n' '\r']*)
 
 #TOKEN:word:( ["a"-"z" "A"-"Z" "0"-"9"]* )
@@ -66,7 +65,7 @@ S = (Feature)*;
 #NewLine = <newline>;
 
 # Feature
-Feature = FeatureDefinition (Scenario)*;
+Feature = FeatureDefinition (Background)? (Scenario)*;
 FeatureDefinition = FeatureIdentifier FeatureDescription FeatureBlock;
 FeatureIdentifier = <feature>;
 FeatureDescription = <start_text_block> Text;
@@ -80,18 +79,18 @@ RoleDefinition = <role> (<newline> | Text);
 SomeActionDefinition = <some_action> (<newline> | Text);
 
 # Background
-Background = BackgroundIdentifier GivenBlock;
+Background = BackgroundIdentifier [GivenBlock] [WhenBlock] [ThenBlock];
 BackgroundIdentifier = <background>":";
 
 # Scenario
-Scenario = ((Background)* BasicScenario) | TableScenario;
+Scenario = (BasicScenario) | (TableScenario);
 BasicScenario = ScenarioIdentifier ScenarioDescription ScenarioBlock;
 ScenarioIdentifier = <basic_scenario>;
 TableScenario = TableScenarioIdentifier ScenarioDescription ScenarioBlock TableBlock;
 TableScenarioIdentifier = <table_scenario>;
 ScenarioDescription = <start_text_block> Text;
 # Scenario Block
-ScenarioBlock = GivenBlock WhenBlock ThenBlock;
+ScenarioBlock = [GivenBlock] [WhenBlock] [ThenBlock];
 # Given
 GivenBlock = GivenDefinition  (SmallTableBlock)* (AndDefinition)*;
 GivenDefinition = <given> Text;
@@ -279,3 +278,6 @@ NAVIGATOR:Background: {
     display_name: "Background";
     icon: info.cukes.feature.Feature.scenarioIcon;
 }
+
+# indentation
+INDENT "Feature:.*"

@@ -65,7 +65,7 @@ S = (Feature)*;
 #NewLine = <newline>;
 
 # Feature
-Feature = FeatureDefinition (Background)? (Scenario)*;
+Feature = FeatureDefinition [Background] (Scenario)*;
 FeatureDefinition = FeatureIdentifier FeatureDescription FeatureBlock;
 FeatureIdentifier = <feature>;
 FeatureDescription = <start_text_block> Text;

@@ -8,8 +8,10 @@
 
 # Token Definitions
 
+# Comments
 TOKEN:comment:('#' [^ '\n' '\r']*)
 
+# Text Block (using different tokens inside text block)
 TOKEN:start_text_block:(':'):<IN_TEXT_BLOCK>
 <IN_TEXT_BLOCK> {
      TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
@@ -22,12 +24,13 @@ TOKEN:start_text_block:(':'):<IN_TEXT_BLOCK>
      #TOKEN:text_block:([^ '\n' '\r']*):<DEFAULT>
 }
 
+# Row Block (Row of a Table)
 TOKEN:start_row_block:("|"):<IN_ROW_BLOCK>
 <IN_ROW_BLOCK> {
      TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
      TOKEN:newline: ('\n'):<DEFAULT>
      TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
-     TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
+     TOKEN:number:( '-'? ["0"-"9"]+ ("."["0"-"9"]*)? )
      TOKEN:special:(["|"]*)
      TOKEN:comment:('#' [^ '\n' '\r']*)
      TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#' '|' ]* )
@@ -48,8 +51,6 @@ TOKEN:background:( "Background")
 TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#' ':' '@']* )
 TOKEN:tag:('@' [^ '\n' '\r']*)
 
-#TOKEN:word:( ["a"-"z" "A"-"Z" "0"-"9"]* )
-
 TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
 
 TOKEN:newline: ('\n')
@@ -60,7 +61,6 @@ S = (Feature)*;
 
 # Comment
 #Comment = <comment>;
-
 # NewLine
 #NewLine = <newline>;
 
@@ -92,7 +92,7 @@ ScenarioDescription = <start_text_block> Text;
 # Scenario Block
 ScenarioBlock = [GivenBlock] [WhenBlock] [ThenBlock];
 # Given
-GivenBlock = GivenDefinition  (SmallTableBlock)* (AndDefinition)*;
+GivenBlock = GivenDefinition [SmallTableBlock] (AndDefinition)*;
 GivenDefinition = <given> Text;
 # When
 WhenBlock = WhenDefinition (AndDefinition)*;
@@ -101,7 +101,7 @@ WhenDefinition = <when> Text;
 ThenBlock = ThenDefinition (AndDefinition)*;
 ThenDefinition = <then> Text;
 # And
-AndDefinition = <and> Text;
+AndDefinition = <and> Text [SmallTableBlock];
 
 # TableBlock
 TableBlock = TableIdentifier TableHeader (TableRow)*;
@@ -261,7 +261,7 @@ BRACE "\':\'"
 
 NAVIGATOR:Feature: {
     display_name: info.cukes.feature.Feature.featureName;
-    icon: info.cukes.feature.featureIcon;
+    icon: info.cukes.feature.Feature.featureIcon;
 }
 
 NAVIGATOR:Scenario: {
@@ -271,12 +271,12 @@ NAVIGATOR:Scenario: {
 
 NAVIGATOR:TableBlock: {
     display_name: "Examples";
-    icon: info.cukes.feature.Feature.scenarioIcon;
+    icon: info.cukes.feature.Feature.examplesIcon;
 }
 
 NAVIGATOR:Background: {
-    display_name: "Background";
-    icon: info.cukes.feature.Feature.scenarioIcon;
+    display_name: info.cukes.feature.Feature.backgroundName;
+    icon: info.cukes.feature.Feature.backgroundIcon;
 }
 
 # indentation

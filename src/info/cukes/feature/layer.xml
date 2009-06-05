@@ -4,7 +4,9 @@
     <folder name="Editors">
         <folder name="text">
             <folder name="feature">
-                <file name="language.nbs" url="language.nbs"/>
+                <file name="language.nbs" url="language.nbs">
+                    <attr name="icon" stringvalue="info/cukes/feature/resources/cucumber.png"/>
+                </file>
             </folder>
         </folder>
     </folder>

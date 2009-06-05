@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 OpenIDE-Module: info.cukes.feature
-OpenIDE-Module-Implementation-Version: 7
+OpenIDE-Module-Implementation-Version: 8
 OpenIDE-Module-Layer: info/cukes/feature/layer.xml
 OpenIDE-Module-Localizing-Bundle: info/cukes/feature/Bundle.properties
 

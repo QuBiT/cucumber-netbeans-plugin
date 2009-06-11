@@ -1,0 +1,39 @@
+Visit us at:
+http://github.com/QuBiT/cucumber-netbeans-plugin/tree
+
+= Cucumber Features : Netbeans Module
+
+== Install
+	
+1. Download file info-cukes-feature.nbm from the build directory
+2. Open NetBeans and go to Tools -> Plugins
+3. In the Plugins dialog click on the "Downloaded" tab
+4. Click "Add Plugins…"
+5. Browse to where ever you downloaded the .nbm file, select it and click "Open"
+6. Last, click the “Install” button and you finished.
+
+== Usage
+
+Create a new empty file and name it <your_name>.feature and start editing.
+
+== Troubleshooting
+
+<b>I get an error which I do not understand.</b>
+
+Go to http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open and issue or write me a message on GitHub
+
+== Development
+
+This project can be found on github at the following URL.
+
+http://github.com/QuBiT/cucumber-netbeans-plugin
+
+If you wish the additional features, then please contact me.
+If you wish different colors, please stay tuned, i'll try to find a solution for changing the colors dynamically.
+If you know how to extend this plugin, feel free to fork this project and inform me when you are done, so that I can pull you changes into this project.
+
+If you want to collaborate, contact me also.
+
+== Thanks
+
+to all people who are using this plugin/module and tell other people about it.

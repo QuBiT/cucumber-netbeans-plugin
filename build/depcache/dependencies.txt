@@ -1,0 +1,3 @@
+||:info.cukes.feature.Feature
+java.lang.Object
+info.cukes.feature.Feature

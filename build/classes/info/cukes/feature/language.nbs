@@ -11,11 +11,21 @@
 # Comments
 TOKEN:comment:('#' [^ '\n' '\r']*)
 
+TOKEN:pystring:('\"\"\"'):<PYSTRING_BLOCK>
+<PYSTRING_BLOCK> {
+     TOKEN:newline: ('\n')
+     TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+     TOKEN:variable:('<'[^ '>']* '>')
+     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
+     TOKEN:end_pystring:('\"\"\"'):<DEFAULT>
+}
+
 # Text Block (using different tokens inside text block)
 TOKEN:start_text_block:(':'):<IN_TEXT_BLOCK>
 <IN_TEXT_BLOCK> {
      TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
      TOKEN:newline: ('\n'):<DEFAULT>
+     #TOKEN:pystring:('\"\"\"' [^ '\"\"\"']* '\"\"\"')
      TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
      TOKEN:variable:('<'[^ '>']* '>')
      TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
@@ -49,7 +59,7 @@ TOKEN:then:( "Then" ):<IN_TEXT_BLOCK>
 TOKEN:examples:( "Examples" )
 TOKEN:background:( "Background")
 TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#' ':' '@']* )
-TOKEN:tag:('@' [^ '\n' '\r']*)
+TOKEN:tag:('@' [^ ' ' '\t']*)
 
 TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
 
@@ -65,12 +75,12 @@ S = (Feature)*;
 #NewLine = <newline>;
 
 # Feature
-Feature = FeatureDefinition [Background] (Scenario)*;
+Feature = FeatureDefinition Background* (Scenario)*;
 FeatureDefinition = FeatureIdentifier FeatureDescription FeatureBlock;
 FeatureIdentifier = <feature>;
 FeatureDescription = <start_text_block> Text;
 # Feature Block
-FeatureBlock = BusinessValueDefinition RoleDefinition SomeActionDefinition ;
+FeatureBlock = BusinessValueDefinition RoleDefinition SomeActionDefinition;
 # Business Value
 BusinessValueDefinition = <business_value> Text;
 # Role Defintion
@@ -80,7 +90,7 @@ SomeActionDefinition = <some_action> (<newline> | Text);
 
 # Background
 Background = BackgroundIdentifier [GivenBlock] [WhenBlock] [ThenBlock];
-BackgroundIdentifier = <background>":";
+BackgroundIdentifier = <background>":" [Text];
 
 # Scenario
 Scenario = (BasicScenario) | (TableScenario);
@@ -92,7 +102,7 @@ ScenarioDescription = <start_text_block> Text;
 # Scenario Block
 ScenarioBlock = [GivenBlock] [WhenBlock] [ThenBlock];
 # Given
-GivenBlock = GivenDefinition [SmallTableBlock] (AndDefinition)*;
+GivenBlock = GivenDefinition [Extras] (AndDefinition)*;
 GivenDefinition = <given> Text;
 # When
 WhenBlock = WhenDefinition (AndDefinition)*;
@@ -101,7 +111,10 @@ WhenDefinition = <when> Text;
 ThenBlock = ThenDefinition (AndDefinition)*;
 ThenDefinition = <then> Text;
 # And
-AndDefinition = <and> Text [SmallTableBlock];
+AndDefinition = <and> Text [Extras];
+
+#Extras
+Extras = PyString | SmallTableBlock;
 
 # TableBlock
 TableBlock = TableIdentifier TableHeader (TableRow)*;
@@ -110,6 +123,8 @@ TableHeader = <start_row_block> Text;
 TableRow = <start_row_block> Text;
 
 SmallTableBlock = TableHeader (TableRow)*;
+
+PyString = <pystring> Text <end_pystring>;
 
 # Text
 Text = (Word | <string> | <variable>) (Text)*;
@@ -120,45 +135,25 @@ SKIP:comment
 SKIP:newline
 SKIP:tag
 
-COLOR:feature: {
-    default_coloring: "identifier";
-    foreground_color:"#3366CC";
-    font_type: "bold italic";
-}
+# ------------------------------------------------------------------------------
 
-COLOR:basic_scenario: {
+COLOR:comment: {
     default_coloring: "identifier";
-    foreground_color:"#3366CC";
-    font_type: "bold italic";
-}
-
-COLOR:table_scenario: {
-    default_coloring: "identifier";
-    foreground_color:"#3366CC";
-    font_type: "bold italic";
-}
-
-COLOR:TableHeader: {
-    default_coloring: "identifier";
-    foreground_color:"#336600";
-}
-
-COLOR:examples: {
-    default_coloring: "identifier";
-    foreground_color:"#336600";
-    font_type: "bold italic";
-}
-
-COLOR:background: {
-    default_coloring: "identifier";
-    foreground_color:"#336600";
-    font_type: "bold italic";
+    foreground_color:"#8F8F8F";
 }
 
 COLOR:tag: {
     default_coloring: "identifier";
     foreground_color:"#CC3333";
     font_type: "bold";
+}
+
+# COLOR FOR FEATURE ------------------------------------------------------------
+
+COLOR:feature: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+    font_type: "bold italic";
 }
 
 COLOR:business_value: {
@@ -179,23 +174,6 @@ COLOR:some_action: {
     font_type: "bold italic";
 }
 
-COLOR:given: {
-    default_coloring: "identifier";
-    foreground_color:"#3366CC";
-}
-COLOR:and: {
-    default_coloring: "identifier";
-    foreground_color:"#3366CC";
-}
-COLOR:when: {
-    default_coloring: "identifier";
-    foreground_color:"#3366CC";
-}
-COLOR:then: {
-    default_coloring: "identifier";
-    foreground_color:"#3366CC";
-}
-
 COLOR:FeatureDescription: {
     font_type: "bold";
 }
@@ -212,9 +190,72 @@ COLOR:SomeActionDefinition: {
     font_type: "bold";
 }
 
+# COLOR FOR SCENARIO -----------------------------------------------------------
+
+COLOR:basic_scenario: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+    font_type: "bold italic";
+}
+
+COLOR:table_scenario: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+    font_type: "bold italic";
+}
+
 COLOR:ScenarioDescription: {
     font_type: "bold";
 }
+
+COLOR:TableHeader: {
+    default_coloring: "identifier";
+    foreground_color:"#336600";
+}
+
+COLOR:examples: {
+    default_coloring: "identifier";
+    foreground_color:"#336600";
+    font_type: "bold italic";
+}
+
+# COLOR FOR BACKGROUND ---------------------------------------------------------
+
+COLOR:background: {
+    default_coloring: "identifier";
+    foreground_color:"#336600";
+    font_type: "bold italic";
+}
+
+# Multiline String -------------------------------------------------------------
+
+COLOR:PyString: {
+    default_coloring: "identifier";
+    foreground_color:"#663333";
+}
+
+# COLOR FOR GIVEN/WHEN/THEN & AND ----------------------------------------------
+
+COLOR:given: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+}
+
+COLOR:when: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+}
+COLOR:then: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+}
+
+COLOR:and: {
+    default_coloring: "identifier";
+    foreground_color:"#3366CC";
+}
+
+# ------------------------------------------------------------------------------
 
 COLOR:variable: {
     default_coloring:"string";
@@ -227,6 +268,7 @@ COLOR:number: {
     foreground_color:"#8FD600";
 }
 
+# COMPLETE ---------------------------------------------------------------------
 # brace completion
 COMPLETE "{:}"
 COMPLETE "(:)"
@@ -234,6 +276,7 @@ COMPLETE "[:]"
 COMPLETE "\":\""
 COMPLETE "\':\'"
 
+# COMPLETION -------------------------------------------------------------------
 # code completion
 COMPLETION:given, when, then, and, scenario, feature, whitespace, newline: {
     text1:"Feature:";
@@ -250,6 +293,7 @@ COMPLETION:given, when, then, and, scenario, feature, whitespace, newline: {
     text12:"Scenario Outline:";
 }
 
+# BRACE ------------------------------------------------------------------------
 # brace matching
 BRACE "{:}"
 BRACE "(:)"
@@ -257,6 +301,7 @@ BRACE "[:]"
 BRACE "\":\""
 BRACE "\':\'"
 
+# NAVIGATOR --------------------------------------------------------------------
 # navigator
 
 NAVIGATOR:Feature: {
@@ -279,5 +324,8 @@ NAVIGATOR:Background: {
     icon: info.cukes.feature.Feature.backgroundIcon;
 }
 
+# INDENT -----------------------------------------------------------------------
 # indentation
 INDENT "Feature:.*"
+
+# EOF --------------------------------------------------------------------------

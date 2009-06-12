@@ -49,19 +49,12 @@ As Cucumber supports multiple languages, I also want to support multiple languag
 Open an issue and write down a translation list of terms like in the example below and provide a sample .feature-File with is written is this language and includes all of the features of cucumber.
 
 <b> Example:<b>
+
 <table>
-<thead>
 <tr>
 <th>EN</th>
 <th>your requested language</th>
 </tr>
-</thead>
-<tfoot>
-<tr>
-<td>+Feature File with all elements</td>
-</tr>
-</tfoot>
-<tbody>
 <tr>
 <td>Feature</td>
 <td>...</td>
@@ -110,7 +103,9 @@ Open an issue and write down a translation list of terms like in the example bel
 <td>Background</td>
 <td>...</td>
 </tr>
-</tbody>
+<tr>
+<td>+Feature File with all elements</td>
+</tr>
 </table>
 
 <b> if there are more then ? People, where ? is not decided jet, i'll start translating it. </b>

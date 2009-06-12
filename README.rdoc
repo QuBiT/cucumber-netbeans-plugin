@@ -48,7 +48,7 @@ As Cucumber supports multiple languages, I also want to support multiple languag
 
 Open an issue and write down a translation list of terms like in the example below and provide a sample .feature-File with is written is this language and includes all of the features of cucumber.
 
-<b> Example:<b>
+<b> Example:</b>
 
 <table>
 <tr>

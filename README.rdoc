@@ -37,7 +37,83 @@ Go to http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open and issue
 * Multiline Descriptions (available in Version 1.1.9, temporally removed through structural changes)
 * Indentation (currently only available for Feature, not for Scenarios)
 * Tooltips
+* Language Support (currenty English and French[alpha-status] )
 * ... propose something ... :-)
+
+== Language Support
+
+As Cucumber supports multiple languages, I also want to support multiple languages, but as this is not so easy and needs some work, I'll only supply which are really needed and requested from other people.
+
+<b> How to request this module supporting a different language </b>
+
+Open an issue and write down a translation list of terms like in the example below and provide a sample .feature-File with is written is this language and includes all of the features of cucumber.
+
+<b> Example:<b>
+<table>
+<thead>
+<tr>
+<th>EN</th>
+<th>your requested language</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td>+Feature File with all elements</td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td>Feature</td>
+<td>...</td>
+</tr>
+<tr>
+<td>In order to</td>
+<td>...</td>
+</tr>
+<tr>
+<td>As a</td>
+<td>...</td>
+</tr>
+<tr>
+<td>I want to</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Scenario</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Scenario Outline</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Given</td>
+<td>...</td>
+</tr>
+<tr>
+<td>When</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>...</td>
+</tr>
+<tr>
+<td>And</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Examples</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Background</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+
+<b> if there are more then ? People, where ? is not decided jet, i'll start translating it. </b>
 
 == Development
 

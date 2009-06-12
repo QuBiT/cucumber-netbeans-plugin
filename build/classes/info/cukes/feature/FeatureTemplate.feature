@@ -19,8 +19,10 @@ Feature: Template
     Given more test samples
     When I want to test all of them
     Then I can use a Examples as a Table
+    And I see <action>
 
     Examples:
     | test  | result |
     | true  | true   |
     | false | false  |
+    

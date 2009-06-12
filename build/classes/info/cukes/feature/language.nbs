@@ -265,13 +265,13 @@ ThenDefinition = <then> Text;
 AndDefinition = <and> Text [Extras];
 
 #Extras
-Extras = PyString | ExamplesBlock;
+Extras = PyString | ExampleBlock;
 
 # TableBlock
-ExamplesBlock = ExamplesIdentifier ExamplesDescription ExamplesBlock;
+ExamplesBlock = ExamplesIdentifier ExamplesDescription ExampleBlock;
 ExamplesIdentifier = <examples>;
 ExamplesDescription = <start_examples_block> [Text];
-ExamplesBlock = TableHeader (TableRow)*;
+ExampleBlock = TableHeader (TableRow)*;
 TableHeader = <start_row_block> Text;
 TableRow = <start_row_block> Text;
 

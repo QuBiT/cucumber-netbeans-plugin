@@ -17,7 +17,7 @@ Create a new empty file and name it <your_name>.feature and start editing.
 
 <b>I get an error which I do not understand.</b>
 
-Go to http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open and issue or write me a message.
+Go to "Issues":http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open and issue or write me a message.
 
 <h2>History</h2>
 
@@ -37,7 +37,7 @@ Go to http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open and issue
 * Multiline Descriptions (available in Version 1.1.9, temporally removed through structural changes)
 * Indentation (currently only available for Feature, not for Scenarios)
 * Tooltips
-* Language Support (currenty English and French[alpha-status] )
+* Language Support: currenty English and French[alpha-status](-->located in the build directory)
 * ... propose something ... :-)
 
 <h2>Language Support</h2>
@@ -114,7 +114,7 @@ Open an issue and write down a translation list of terms like in the example bel
 
 This project can be found on github at the following URL.
 
-http://github.com/QuBiT/cucumber-netbeans-plugin
+"http://github.com/QuBiT/cucumber-netbeans-plugin":http://github.com/QuBiT/cucumber-netbeans-plugin
 
 If you wish the additional features, then please contact me.
 
@@ -135,7 +135,7 @@ to all people who are using this plugin/module and tell other people about it.
 
 you can also:
 
-* follow me on twitter: http://twitter.com/roland_guem
+* follow me on "Twitter":http://twitter.com/roland_guem
 
 <h2>License</h2>
 

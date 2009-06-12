@@ -37,7 +37,7 @@ Go to "Issues":http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open 
 * Multiline Descriptions (available in Version 1.1.9, temporally removed through structural changes)
 * Indentation (currently only available for Feature, not for Scenarios)
 * Tooltips
-* Language Support: currenty English and French[alpha-status](-->located in the build directory)
+* Language Support: currenty English and French(experimental--> can be found in build directory)
 * ... propose something ... :-)
 
 <h2>Language Support</h2>

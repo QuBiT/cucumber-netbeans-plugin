@@ -1,6 +1,6 @@
-= Cucumber Features : Netbeans Module
+<h1>Cucumber Features : Netbeans Module</h1>
 
-== Install
+<h2>Install</h2>
 	
 1. Download file info-cukes-feature.nbm from the build directory OR http://members.chello.at/server/modules.html OR Netbeans Plugins
 2. Open NetBeans and go to Tools -> Plugins
@@ -9,17 +9,17 @@
 5. Browse to where ever you downloaded the .nbm file, select it and click "Open"
 6. Last, click on "Install".
 
-== Usage
+<h2>Usage</h2>
 
 Create a new empty file and name it <your_name>.feature and start editing.
 
-== Troubleshooting
+<h2>Troubleshooting</h2>
 
 <b>I get an error which I do not understand.</b>
 
 Go to http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open and issue or write me a message.
 
-== History
+<h2>History</h2>
 
 <b>New in Version 1.2.0 (12th June 2009)</b>
 
@@ -32,7 +32,7 @@ Go to http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open and issue
 
 * Multiline Strings (PyString)
 
-== Next Goals
+<h2>Next Goals</h2>
 
 * Multiline Descriptions (available in Version 1.1.9, temporally removed through structural changes)
 * Indentation (currently only available for Feature, not for Scenarios)
@@ -40,7 +40,7 @@ Go to http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open and issue
 * Language Support (currenty English and French[alpha-status] )
 * ... propose something ... :-)
 
-== Language Support
+<h2>Language Support</h2>
 
 As Cucumber supports multiple languages, I also want to support multiple languages, but as this is not so easy and needs some work, I'll only supply which are really needed and requested from other people.
 
@@ -110,7 +110,7 @@ Open an issue and write down a translation list of terms like in the example bel
 
 <b> if there are more then ? People, where ? is not decided jet, i'll start translating it. </b>
 
-== Development
+<h2>Development</h2>
 
 This project can be found on github at the following URL.
 
@@ -124,11 +124,11 @@ If you know how to extend this plugin, feel free to fork this project and inform
 
 If you want to collaborate, contact me also.
 
-== Thanks
+<h2>Thanks</h2>
 
 to all people who are using this plugin/module and tell other people about it.
 
-== Contact
+<h2>Contact</h2>
 
 * write me a message
 * open an issue 
@@ -137,7 +137,7 @@ you can also:
 
 * follow me on twitter: http://twitter.com/roland_guem
 
-== License
+<h2>License</h2>
 
 Copyright (c) 2009 Roland Guem
 

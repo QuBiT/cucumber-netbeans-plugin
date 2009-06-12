@@ -57,6 +57,15 @@ If you want to collaborate, contact me also.
 
 to all people who are using this plugin/module and tell other people about it.
 
+== Contact
+
+* write me a message
+* open an issue 
+
+you can also:
+
+* follow me on twitter: http://twitter.com/roland_guem
+
 == License
 
 Copyright (c) 2009 Roland Guem

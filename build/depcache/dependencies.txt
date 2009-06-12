@@ -1,3 +1,15 @@
+||:info.cukes.feature.FeatureDataObject
+org.openide.nodes.Node
+org.openide.text.DataEditorSupport
+org.openide.loaders.MultiDataObject
+org.openide.nodes.Children
+info.cukes.feature.FeatureDataObject
+org.openide.loaders.DataObjectExistsException
+java.io.IOException
+org.openide.nodes.CookieSet
+org.openide.nodes.Node$Cookie
+org.openide.loaders.MultiDataObject$Entry
+org.openide.loaders.DataNode
 ||:info.cukes.feature.Feature
 java.lang.Object
 info.cukes.feature.Feature

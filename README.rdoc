@@ -19,6 +19,26 @@ Create a new empty file and name it <your_name>.feature and start editing.
 
 Go to http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open and issue or write me a message.
 
+== History
+
+<b>New in Version 1.2.0 (12th June 2009)</b>
+
+* Integration into NetBeans (File->New File)
+* Template File
+* Code Folding for Scenario, Background and Examples
+* Major code changes
+
+<b>New in Version 1.1.9 (11th June 2009)</b>
+
+* Multiline Strings (PyString)
+
+== Next Goals
+
+* Multiline Descriptions (available in Version 1.1.9, temporally removed through structural changes)
+* Indentation (currently only available for Feature, not for Scenarios)
+* Tooltips
+* ... propose something ... :-)
+
 == Development
 
 This project can be found on github at the following URL.
@@ -36,3 +56,28 @@ If you want to collaborate, contact me also.
 == Thanks
 
 to all people who are using this plugin/module and tell other people about it.
+
+== License
+
+Copyright (c) 2009 Roland Guem
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.

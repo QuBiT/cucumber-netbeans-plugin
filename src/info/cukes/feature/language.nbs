@@ -11,21 +11,163 @@
 # Comments
 TOKEN:comment:('#' [^ '\n' '\r']*)
 
-TOKEN:pystring:('\"\"\"'):<PYSTRING_BLOCK>
-<PYSTRING_BLOCK> {
-     TOKEN:newline: ('\n')
+TOKEN:basic_scenario:("Scenario"):<BASIC_SCENARIO>
+TOKEN:table_scenario:("Scenario Outline"):<TABLE_SCENARIO>
+TOKEN:background:("Background"):<BACKGROUND>
+
+<BACKGROUND> {
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:start_background_block:(":"):<IN_BACKGROUND_TEXT>
+    TOKEN:given:( "Given" ):<IN_BACKGROUND_TEXT>
+    TOKEN:and:( "And" ):<IN_BACKGROUND_TEXT>
+    TOKEN:start_row_block:('|'):<IN_BACKGROUND_TABLE>
+    TOKEN:pystring:('\"\"\"'):<B_PYSTRING_BLOCK>
+    TOKEN:end_background: ('\n'):<DEFAULT>
+}
+
+<IN_BACKGROUND_TEXT> {
+    TOKEN:end_text: ('\n'):<BACKGROUND>
+
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
+}
+
+<BASIC_SCENARIO> {
+    TOKEN:start_description:(':'):<IN_BSC_DESCRIPTION_BLOCK>
+    TOKEN:end_scenario: ('\n'):<DEFAULT>
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:given:( "Given" ):<IN_BASIC_SCENARIO_TEXT>
+    TOKEN:and:( "And" ):<IN_BASIC_SCENARIO_TEXT>
+    TOKEN:when:( "When" ):<IN_BASIC_SCENARIO_TEXT>
+    TOKEN:then:( "Then" ):<IN_BASIC_SCENARIO_TEXT>
+    TOKEN:start_row_block:('|'):<IN_MINI_BSC_ROW_BLOCK>
+    TOKEN:pystring:('\"\"\"'):<BSC_PYSTRING_BLOCK>
+}
+
+<IN_BSC_DESCRIPTION_BLOCK> {
+    TOKEN:end_desc: ('\n'):<BASIC_SCENARIO>
+
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
+}
+
+<IN_BASIC_SCENARIO_TEXT> {
+    TOKEN:end_text: ('\n'):<BASIC_SCENARIO>
+
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
+}
+
+
+<TABLE_SCENARIO> {
+    TOKEN:start_description:(':'):<IN_TSC_DESCRIPTION_BLOCK>
+
+    TOKEN:tsc_newline:( '\n' )
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:examples:( 'Examples' ):<EXAMPLES>
+    TOKEN:given:( 'Given' ):<IN_TABLE_SCENARIO_TEXT>
+    TOKEN:and:( 'And' ):<IN_TABLE_SCENARIO_TEXT>
+    TOKEN:when:( 'When' ):<IN_TABLE_SCENARIO_TEXT>
+    TOKEN:then:( 'Then' ):<IN_TABLE_SCENARIO_TEXT>
+    TOKEN:start_row_block:('|'):<IN_MINI_TSC_ROW_BLOCK>
+    TOKEN:pystring:('\"\"\"'):<TSC_PYSTRING_BLOCK>
+}
+
+<IN_TSC_DESCRIPTION_BLOCK> {
+    TOKEN:end_desc: ('\n'):<TABLE_SCENARIO>
+
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
+}
+
+<IN_TABLE_SCENARIO_TEXT> {
+    TOKEN:end_text: ('\n'):<TABLE_SCENARIO>
+
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
+}
+
+<EXAMPLES> {
+    #TOKEN:start_examples_block:(":")
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:start_examples_block:(":"):<IN_EXAMPLES_TEXT>
+    TOKEN:start_row_block:("|"):<IN_ROW_BLOCK>
+    TOKEN:end_scenario: ('\n'):<DEFAULT>
+}
+<IN_EXAMPLES_TEXT> {
+    TOKEN:end_text: ('\n'):<EXAMPLES>
+
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
+}
+
+<IN_MINI_BSC_ROW_BLOCK> {
+    TOKEN:end_row: ('\n'):<BASIC_SCENARIO>
+
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
+    TOKEN:number:( '-'? ["0"-"9"]+ ("."["0"-"9"]*)? )
+    TOKEN:special:(["|"]*)
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#' '|' ]* )
+}
+
+<IN_MINI_TSC_ROW_BLOCK> {
+    TOKEN:end_row: ('\n'):<TABLE_SCENARIO>
+
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
+    TOKEN:number:( '-'? ["0"-"9"]+ ("."["0"-"9"]*)? )
+    TOKEN:special:(["|"]*)
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#' '|' ]* )
+}
+
+<IN_BACKGROUND_TABLE> {
+    TOKEN:end_row: ('\n'):<BACKGROUND>
+
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
+    TOKEN:number:( '-'? ["0"-"9"]+ ("."["0"-"9"]*)? )
+    TOKEN:special:(["|"]*)
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#' '|' ]* )
+}
+
+
+<IN_ROW_BLOCK> {
      TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
-     TOKEN:variable:('<'[^ '>']* '>')
-     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
-     TOKEN:end_pystring:('\"\"\"'):<DEFAULT>
+     TOKEN:end_row: ('\n'):<EXAMPLES>
+     TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
+     TOKEN:number:( '-'? ["0"-"9"]+ ("."["0"-"9"]*)? )
+     TOKEN:special:(["|"]*)
+     TOKEN:comment:('#' [^ '\n' '\r']*)
+     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#' '|' ]* )
 }
 
 # Text Block (using different tokens inside text block)
 TOKEN:start_text_block:(':'):<IN_TEXT_BLOCK>
 <IN_TEXT_BLOCK> {
      TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
-     TOKEN:newline: ('\n'):<DEFAULT>
-     #TOKEN:pystring:('\"\"\"' [^ '\"\"\"']* '\"\"\"')
+     TOKEN:end_text: ('\n'):<DEFAULT>
      TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
      TOKEN:variable:('<'[^ '>']* '>')
      TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
@@ -34,30 +176,37 @@ TOKEN:start_text_block:(':'):<IN_TEXT_BLOCK>
      #TOKEN:text_block:([^ '\n' '\r']*):<DEFAULT>
 }
 
-# Row Block (Row of a Table)
-TOKEN:start_row_block:("|"):<IN_ROW_BLOCK>
-<IN_ROW_BLOCK> {
+<B_PYSTRING_BLOCK> {
+     TOKEN:newline: ('\n')
      TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
-     TOKEN:newline: ('\n'):<DEFAULT>
-     TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
-     TOKEN:number:( '-'? ["0"-"9"]+ ("."["0"-"9"]*)? )
-     TOKEN:special:(["|"]*)
-     TOKEN:comment:('#' [^ '\n' '\r']*)
-     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#' '|' ]* )
+     TOKEN:variable:('<'[^ '>']* '>')
+     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
+     TOKEN:end_pystring:('\"\"\"'):<BACKGROUND>
+}
+
+<BSC_PYSTRING_BLOCK> {
+     TOKEN:newline: ('\n')
+     TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+     TOKEN:variable:('<'[^ '>']* '>')
+     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
+     TOKEN:end_pystring:('\"\"\"'):<BASIC_SCENARIO>
+}
+
+<TSC_PYSTRING_BLOCK> {
+     TOKEN:newline: ('\n')
+     TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+     TOKEN:variable:('<'[^ '>']* '>')
+     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
+     TOKEN:end_pystring:('\"\"\"'):<TABLE_SCENARIO>
 }
 
 TOKEN:feature:( "Feature" )
-TOKEN:basic_scenario:( "Scenario" )
-TOKEN:table_scenario:( "Scenario Outline" )
+#TOKEN:basic_scenario:( "Scenario" )
+#TOKEN:table_scenario:( "Scenario Outline" )
 TOKEN:business_value:( "In order to" ):<IN_TEXT_BLOCK>
 TOKEN:role:( "As a" | "As an" ):<IN_TEXT_BLOCK>
 TOKEN:some_action:( "I want to" ):<IN_TEXT_BLOCK>
-TOKEN:given:( "Given" ):<IN_TEXT_BLOCK>
-TOKEN:and:( "And" ):<IN_TEXT_BLOCK>
-TOKEN:when:( "When" ):<IN_TEXT_BLOCK>
-TOKEN:then:( "Then" ):<IN_TEXT_BLOCK>
-TOKEN:examples:( "Examples" )
-TOKEN:background:( "Background")
+
 TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#' ':' '@']* )
 TOKEN:tag:('@' [^ ' ' '\t']*)
 
@@ -84,21 +233,23 @@ FeatureBlock = BusinessValueDefinition RoleDefinition SomeActionDefinition;
 # Business Value
 BusinessValueDefinition = <business_value> Text;
 # Role Defintion
-RoleDefinition = <role> (<newline> | Text);
+RoleDefinition = <role> Text;
 # Some Action
-SomeActionDefinition = <some_action> (<newline> | Text);
+SomeActionDefinition = <some_action> Text;
 
 # Background
-Background = BackgroundIdentifier [GivenBlock] [WhenBlock] [ThenBlock];
-BackgroundIdentifier = <background>":" [Text];
+Background = BackgroundIdentifier BackgroundDescription BackgroundBlock;
+BackgroundIdentifier = <background>;
+BackgroundDescription = <start_background_block> [Text];
+BackgroundBlock = [GivenBlock];
 
 # Scenario
 Scenario = (BasicScenario) | (TableScenario);
 BasicScenario = ScenarioIdentifier ScenarioDescription ScenarioBlock;
 ScenarioIdentifier = <basic_scenario>;
-TableScenario = TableScenarioIdentifier ScenarioDescription ScenarioBlock TableBlock;
+TableScenario = TableScenarioIdentifier ScenarioDescription ScenarioBlock ExamplesBlock;
 TableScenarioIdentifier = <table_scenario>;
-ScenarioDescription = <start_text_block> Text;
+ScenarioDescription = <start_description> Text;
 # Scenario Block
 ScenarioBlock = [GivenBlock] [WhenBlock] [ThenBlock];
 # Given
@@ -114,15 +265,15 @@ ThenDefinition = <then> Text;
 AndDefinition = <and> Text [Extras];
 
 #Extras
-Extras = PyString | SmallTableBlock;
+Extras = PyString | ExamplesBlock;
 
 # TableBlock
-TableBlock = TableIdentifier TableHeader (TableRow)*;
-TableIdentifier = <examples> ":";
+ExamplesBlock = ExamplesIdentifier ExamplesDescription ExamplesBlock;
+ExamplesIdentifier = <examples>;
+ExamplesDescription = <start_examples_block> [Text];
+ExamplesBlock = TableHeader (TableRow)*;
 TableHeader = <start_row_block> Text;
 TableRow = <start_row_block> Text;
-
-SmallTableBlock = TableHeader (TableRow)*;
 
 PyString = <pystring> Text <end_pystring>;
 
@@ -134,6 +285,12 @@ SKIP:whitespace
 SKIP:comment
 SKIP:newline
 SKIP:tag
+SKIP:tsc_newline
+SKIP:end_text
+SKIP:end_desc
+SKIP:end_row
+SKIP:end_background
+SKIP:end_scenario
 
 # ------------------------------------------------------------------------------
 
@@ -327,5 +484,21 @@ NAVIGATOR:Background: {
 # INDENT -----------------------------------------------------------------------
 # indentation
 INDENT "Feature:.*"
+#INDENT "Scenario:\\n\\n"
+#INDENT "Background:<end_background>"
+
+# TOOLTIP ----------------------------------------------------------------------
+#TOOLTIP:Feature:"Feature"
+#TOOLTIP:Scenario:"Scenario"
+#TOOLTIP:BusinessValueDefinition:"What is the Business Value of this Feature?"
+#TOOLTIP:RoleDefinition:"Who are you or the person running this Scenarios?"
+#TOOLTIP:SomeActionDefintion:"What do you do to reach this Goal?"
+
+# FOLD -------------------------------------------------------------------------
+
+FOLD:FeatureBlock
+FOLD:BackgroundBlock
+FOLD:ScenarioBlock
+FOLD:ExamplesBlock
 
 # EOF --------------------------------------------------------------------------

@@ -108,7 +108,7 @@ Open an issue and write down a translation list of terms like in the example bel
 </tr>
 </table>
 
-<b> if there are more then ? People, where ? is not decided jet, i'll start translating it. </b>
+<b> if there are more then ? People, where ? is not decided yet, I'll start translating it. </b>
 
 <h2>Development</h2>
 
@@ -118,7 +118,7 @@ This project can be found on github at the following URL.
 
 If you wish the additional features, then please contact me.
 
-If you wish different colors, please stay tuned, i'll try to find a solution for changing the colors dynamically.
+If you wish different colors, please stay tuned, I'll try to find a solution for changing the colors dynamically.
 
 If you know how to extend this plugin, feel free to fork this project and inform me when you are done, so that I can pull you changes into this project.
 

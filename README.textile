@@ -21,6 +21,11 @@ Go to "Issues":http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open 
 
 <h2>History</h2>
 
+<b>Changes in Version 1.2.1 (13th June 2009)</b>
+
+* just code changes to optimize and simplify grammer
+* more freedom for the user :)
+
 <b>New in Version 1.2.0 (12th June 2009)</b>
 
 * Integration into NetBeans (File->New File)

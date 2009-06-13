@@ -12,7 +12,6 @@
 # Browse to where ever you downloaded the .nbm file, select it and click "Open"
 # Last, click on "Install".
 
-* 
 
 <h2>Usage</h2>
 
@@ -36,7 +35,6 @@ Go to "Issues":http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open 
 * Integration into NetBeans (File->New File)
 * Template File
 * Code Folding for Scenario, Background and Examples
-* Major code changes
 
 <b>New in Version 1.1.9 (11th June 2009)</b>
 
@@ -44,7 +42,6 @@ Go to "Issues":http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open 
 
 <h2>Next Goals</h2>
 
-* Multiline Descriptions (available in Version 1.1.9, temporally removed through structural changes)
 * Indentation (currently only available for Feature, not for Scenarios)
 * Tooltips
 * Language Support: currenty English and French(experimental--> can be found in build directory)

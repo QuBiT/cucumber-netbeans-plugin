@@ -2,12 +2,17 @@
 
 <h2>Install</h2>
 	
-# Download file info-cukes-feature.nbm from the build directory OR http://members.chello.at/server/modules.html OR Netbeans Plugins
+# Download file info-cukes-feature.nbm:
+## from the build directory using GIT
+## OR from my "modules":http://members.chello.at/server/modules.html page on my webpage
+## OR from the "Netbeans Plugins":http://plugins.netbeans.org/PluginPortal/faces/PluginDetailPage.jsp?pluginid=17939
 # Open NetBeans and go to Tools -> Plugins
 # In the Plugins dialog click on the "Downloaded" tab
 # Click "Add Plugins..."
 # Browse to where ever you downloaded the .nbm file, select it and click "Open"
 # Last, click on "Install".
+
+* 
 
 <h2>Usage</h2>
 

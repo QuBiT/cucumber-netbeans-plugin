@@ -82,7 +82,7 @@
             </folder>
         </folder>
     </folder>
-        <folder name="Services">
+    <folder name="Services">
         <folder name="MIMEResolver">
             <file name="FeatureResolver.xml" url="FeatureResolver.xml">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>

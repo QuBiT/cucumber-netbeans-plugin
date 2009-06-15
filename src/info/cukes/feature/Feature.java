@@ -11,7 +11,7 @@ public class Feature {
     public static String featureName(SyntaxContext context) {
         return "Feature";
     }
-    
+
     public static String backgroundName(SyntaxContext context) {
         return "Background";
     }

@@ -15,15 +15,65 @@
 
 <h2>Usage</h2>
 
-Create a new empty file and name it <your_name>.feature and start editing.
+Create a new empty file with .feature ending and start editing.
+
+OR
+
+Go to File -> New File and choose 'Cucumber' and 'FeatureTemplate.feature'
+
+<h3>Changing Colors</h3>
+
+Since Version 1.2.2 it is possible to customize the colors so that you can use your own preferred ones.
+
+# Go to Tools -> Options -> Miscellaneous
+# Select "Cucumber Feature Options"
+# Select your Colors:
+## press "Choose" of the desired option
+## select your desired color
+## press "Okay"
+# Save them by pressing "Okay"
+# Restart NetBeans
+
+You have to restart netbeans, since the colors for the module are loaded only once at the start of NetBeans
+
+More customizations like bold or italic will follow soon.
 
 <h2>Troubleshooting</h2>
 
-<b>I get an error which I do not understand.</b>
+<b>I have messed up the colors and now I want to have the default colors</b>
 
-Go to "Issues":http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open and issue or write me a message.
+On Windows: Go to C:\Documents and Settings\<username>\.netbeans\<netbeans_version>\config\Preferences\info\cukes and delete the 'feature.properties' file
+
+On Linux: Go to ~/.netbeans/<netbeans_version>/config/Preferences/info/cukes and delete the 'feature.file'
+
+Restart NetBeans afterwards.
+
+<b>Feature: Installation</b>
+
+Scenario: Try to install new version
+
+Given this module was designed for <version>
+And testet with <version>
+| version |
+| 6.5.1   |
+| 6.7.RC2 |
+And I try to install it
+When there is an error
+Then I "contact":http://github.com/QuBiT/cucumber-netbeans-plugin/issues the developer and send him the error message.
+
+<b>I get an error ...</b>
+
+Go to "Issues":http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open and issue.
+
+<b>I have a question or proposal or ...</b>
+
+Write me a message or open an Issue
 
 <h2>History</h2>
+
+<b>New in Version 1.2.2 (15th June 2009)</b>
+
+* Custom Colors (see Changing Colors)
 
 <b>Changes in Version 1.2.1 (13th June 2009)</b>
 
@@ -124,8 +174,6 @@ This project can be found on github at the following URL.
 "http://github.com/QuBiT/cucumber-netbeans-plugin":http://github.com/QuBiT/cucumber-netbeans-plugin
 
 If you wish the additional features, then please contact me.
-
-If you wish different colors, please stay tuned, I'll try to find a solution for changing the colors dynamically.
 
 If you know how to extend this plugin, feel free to fork this project and inform me when you are done, so that I can pull you changes into this project.
 

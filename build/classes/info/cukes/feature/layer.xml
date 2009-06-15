@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
 <filesystem>
     <folder name="Loaders">
         <folder name="text">
@@ -82,6 +82,18 @@
             </folder>
         </folder>
     </folder>
+    <folder name="OptionsDialog">
+        <folder name="Advanced">
+            <file name="info-cukes-feature-CucumberFeatureOptionsAdvancedOption.instance">
+                <attr name="controller" newvalue="info.cukes.feature.options.CucumberFeatureOptionsOptionsPanelController"/>
+                <attr name="displayName" bundlevalue="info.cukes.feature.Bundle#AdvancedOption_DisplayName_CucumberFeatureOptions"/>
+                <attr name="instanceCreate" methodvalue="org.netbeans.spi.options.AdvancedOption.createSubCategory"/>
+                <attr name="keywords" bundlevalue="info.cukes.feature.Bundle#AdvancedOption_Keywords_CucumberFeatureOptions"/>
+                <attr name="keywordsCategory" stringvalue="Advanced/null"/>
+                <attr name="toolTip" bundlevalue="info.cukes.feature.Bundle#AdvancedOption_Tooltip_CucumberFeatureOptions"/>
+            </file>
+        </folder>
+    </folder>
     <folder name="Services">
         <folder name="MIMEResolver">
             <file name="FeatureResolver.xml" url="FeatureResolver.xml">
@@ -98,4 +110,3 @@
         </folder>
     </folder>
 </filesystem>
-

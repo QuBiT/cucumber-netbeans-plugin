@@ -151,7 +151,7 @@ COLOR:tag: {
 #
 COLOR:feature: {
     default_coloring: "identifier";
-    foreground_color:"#3366CC";
+    foreground_color: info.cukes.feature.options.ColorLibrary.getFeatureColor;
     font_type: "bold italic";
 }
 COLOR:business_value: {
@@ -186,12 +186,12 @@ COLOR:SomeActionDefinition: {
 #
 COLOR:scenario: {
     default_coloring: "identifier";
-    foreground_color:"#3366CC";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getScenarioColor;
     font_type: "bold italic";
 }
 COLOR:scenario_outline: {
     default_coloring: "identifier";
-    foreground_color:"#3366CC";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getScenarioColor;
     font_type: "bold italic";
 }
 COLOR:ScenarioDescription: {
@@ -204,7 +204,7 @@ COLOR:TableHeader: {
 }
 COLOR:examples: {
     default_coloring: "identifier";
-    foreground_color:"#336600";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getExamplesColor;
     font_type: "bold italic";
 }
 #
@@ -212,7 +212,7 @@ COLOR:examples: {
 #
 COLOR:background: {
     default_coloring: "identifier";
-    foreground_color:"#336600";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getBackgroundColor;
     font_type: "bold italic";
 }
 #
@@ -220,38 +220,43 @@ COLOR:background: {
 #
 COLOR:PyString: {
     default_coloring: "identifier";
-    foreground_color:"#663333";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getPyStringsColor;
 }
 #
 # COLOR FOR GIVEN/WHEN/THEN & AND ----------------------------------------------
 #
 COLOR:given: {
     default_coloring: "identifier";
-    foreground_color:"#3366CC";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
 }
 COLOR:when: {
     default_coloring: "identifier";
-    foreground_color:"#3366CC";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
 }
 COLOR:then: {
     default_coloring: "identifier";
-    foreground_color:"#3366CC";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
 }
 COLOR:and: {
     default_coloring: "identifier";
-    foreground_color:"#3366CC";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
 }
 #
 # ------------------------------------------------------------------------------
 #
 COLOR:variable: {
     default_coloring:"string";
-    foreground_color:"#336600";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getVariablesColor;
 }
 #
 COLOR:number: {
     default_coloring:"string";
-    foreground_color:"#336600";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getNumbersColor;
+}
+#
+COLOR:string: {
+    default_coloring:"string";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getStringsColor;
 }
 #
 # COMPLETE ---------------------------------------------------------------------

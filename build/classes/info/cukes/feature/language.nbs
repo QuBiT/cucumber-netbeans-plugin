@@ -23,7 +23,7 @@ TOKEN:scenario:("Scenario")
 # Scenario Outline
 TOKEN:scenario_outline:("Scenario Outline")
 # Examples
-TOKEN:examples:("Examples")
+TOKEN:examples:("Examples"|"Scenarios")
 #
 TOKEN:colon:(":"):<TEXT_MODE>
 #
@@ -35,6 +35,7 @@ TOKEN:given:( "Given" ):<STEPS_TEXT_MODE>
 TOKEN:and:( "And" ):<STEPS_TEXT_MODE>
 TOKEN:when:( "When" ):<STEPS_TEXT_MODE>
 TOKEN:then:( "Then" ):<STEPS_TEXT_MODE>
+TOKEN:but:( "But" ):<STEPS_TEXT_MODE>
 #
 # Text
 <TEXT_MODE> {
@@ -85,10 +86,10 @@ S = (Feature)*;
 Feature = FeatureDefinition BackgroundPart ScenarioPart;
 BackgroundPart = (Background)*;
 ScenarioPart = (Scenario)*;
-FeatureDefinition = <feature> <colon> [FeatureDescription] FeatureBlock;
+FeatureDefinition = <feature> <colon> [FeatureDescription] (FeatureBlock)*;
 FeatureDescription = Text;
 # Feature Block
-FeatureBlock = [BusinessValueDefinition] [RoleDefinition] [SomeActionDefinition];
+FeatureBlock = BusinessValueDefinition | RoleDefinition | SomeActionDefinition;
 # Business Value
 BusinessValueDefinition = <business_value> Text;
 # Role
@@ -107,13 +108,14 @@ ScenarioDescription = Text;
 # Scenario Block
 ScenarioBlock = [GivenStatement] [WhenStatement] [ThenStatement];
 # Given
-GivenStatement = <given> Statement (AndStatement)*;
+GivenStatement = <given> Statement (AndStatement|ButStatement)*;
 # When
-WhenStatement = <when> Statement (AndStatement)*;
+WhenStatement = <when> Statement (AndStatement|ButStatement)*;
 # Then
-ThenStatement = <then> Statement (AndStatement)*;
+ThenStatement = <then> Statement (AndStatement|ButStatement)*;
 # And
 AndStatement = <and> Statement;
+ButStatement = <but> Statement;
 # Statement is more or less Text followed by Extras if necessary
 Statement = Text [Extras];
 #Extras
@@ -223,7 +225,7 @@ COLOR:PyString: {
     foreground_color:info.cukes.feature.options.ColorLibrary.getPyStringsColor;
 }
 #
-# COLOR FOR GIVEN/WHEN/THEN & AND ----------------------------------------------
+# COLOR FOR GIVEN/WHEN/THEN & AND/BUT ----------------------------------------------
 #
 COLOR:given: {
     default_coloring: "identifier";
@@ -238,6 +240,10 @@ COLOR:then: {
     foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
 }
 COLOR:and: {
+    default_coloring: "identifier";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
+}
+COLOR:but: {
     default_coloring: "identifier";
     foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
 }
@@ -279,9 +285,10 @@ COMPLETION:given, when, then, and, scenario, feature, whitespace, newline: {
     text7:"And";
     text8:"When";
     text9:"Then";
-    text10:"Examples:";
-    text11:"Background:";
-    text12:"Scenario Outline:";
+    text10:"But";
+    text11:"Examples:";
+    text12:"Background:";
+    text13:"Scenario Outline:";
 }
 
 # BRACE ------------------------------------------------------------------------

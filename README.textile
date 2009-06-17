@@ -1,4 +1,4 @@
-<h1>Cucumber Features : Netbeans Module</h1>
+<h1>Cucumber Features : Netbeans Module (1.2.3)</h1>
 
 <h2>Install</h2>
 	
@@ -52,11 +52,12 @@ Restart NetBeans afterwards.
 
 Scenario: Try to install new version
 
-Given this module was designed for <version>
-And testet with <version>
+Given this module was designed for _version_
+And testet with _version_
 | version |
 | 6.5.1   |
 | 6.7.RC2 |
+| 6.7.RC3 |
 And I try to install it
 When there is an error
 Then I "contact":http://github.com/QuBiT/cucumber-netbeans-plugin/issues the developer and send him the error message.
@@ -70,6 +71,11 @@ Go to "Issues":http://github.com/QuBiT/cucumber-netbeans-plugin/issues and open 
 Write me a message or open an Issue
 
 <h2>History</h2>
+
+<b>Changes in Version 1.2.3 (17th June 2009)</b>
+* more freedom for the user (less restrictive)
+* added missing keyword
+* last release before NetBeans releases the final version of 6.7 (see Development for more Information)
 
 <b>New in Version 1.2.2 (15th June 2009)</b>
 
@@ -99,81 +105,25 @@ Write me a message or open an Issue
 
 <h2>Language Support</h2>
 
-As Cucumber supports multiple languages, I also want to support multiple languages, but as this is not so easy and needs some work, I'll only supply which are really needed and requested from other people.
+As Cucumber supports multiple languages, I also want to support multiple languages, but as this is not so easy and needs some work, I'll only support languages which are really needed and requested from other people.
 
 <b> How to request this module supporting a different language </b>
 
-Open an issue and write down a translation list of terms like in the example below and provide a sample .feature-File with is written is this language and includes all of the features of cucumber.
+Open an issue with the following topic: "Language REQUEST: EN" where EN is substituted with your requested language. If such a issue allready exists, please do not open a new one, instead write a comment to the existing issue.
 
-<b> Example:</b>
-
-<table>
-<tr>
-<th>EN</th>
-<th>your requested language</th>
-</tr>
-<tr>
-<td>Feature</td>
-<td>...</td>
-</tr>
-<tr>
-<td>In order to</td>
-<td>...</td>
-</tr>
-<tr>
-<td>As a</td>
-<td>...</td>
-</tr>
-<tr>
-<td>I want to</td>
-<td>...</td>
-</tr>
-<tr>
-<td>Scenario</td>
-<td>...</td>
-</tr>
-<tr>
-<td>Scenario Outline</td>
-<td>...</td>
-</tr>
-<tr>
-<td>Given</td>
-<td>...</td>
-</tr>
-<tr>
-<td>When</td>
-<td>...</td>
-</tr>
-<tr>
-<td>Then</td>
-<td>...</td>
-</tr>
-<tr>
-<td>And</td>
-<td>...</td>
-</tr>
-<tr>
-<td>Examples</td>
-<td>...</td>
-</tr>
-<tr>
-<td>Background</td>
-<td>...</td>
-</tr>
-<tr>
-<td>+Feature File with all elements</td>
-</tr>
-</table>
+You can also provide a list of keywords with translation, which are not listet "here":http://github.com/aslakhellesoy/cucumber/blob/master/lib/cucumber/languages.yml and should also be included. (Useful to highlight the Feature Description: As a developer, I want to ..., In order to ,...)
 
 <b> if there are more then ? People, where ? is not decided yet, I'll start translating it. </b>
 
 <h2>Development</h2>
 
-This project can be found on github at the following URL.
+<b>REMARK:</b> This project is based on the "GLF Module":http://languages.netbeans.org/ which is no longer supported by NetBeans (the package is deprecated in 6.7, but still usable). If the support for this module is completly removed, then this module will no longer work and has to be rewritten using a different technique. If this happens, please be patient, because my spare time is limited and since I only use NetBeans to write my Cucumber Features, I have very little motiviation to reinvent the module, only because NetBeans do not longer support the GLF module in their new version.
+
+This project can be found on GitHub at the following URL:
 
 "http://github.com/QuBiT/cucumber-netbeans-plugin":http://github.com/QuBiT/cucumber-netbeans-plugin
 
-If you wish the additional features, then please contact me.
+If you wish any additional features, then please contact me.
 
 If you know how to extend this plugin, feel free to fork this project and inform me when you are done, so that I can pull you changes into this project.
 

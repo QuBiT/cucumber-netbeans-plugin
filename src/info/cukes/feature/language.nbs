@@ -106,7 +106,10 @@ BasicScenario = <scenario> <colon> [ScenarioDescription] ScenarioBlock;
 TableScenario = <scenario_outline> <colon> [ScenarioDescription] ScenarioBlock ExamplesBlock;
 ScenarioDescription = Text;
 # Scenario Block
-ScenarioBlock = [GivenStatement] [WhenStatement] [ThenStatement];
+#ScenarioBlock = [GivenStatement] [WhenStatement] [ThenStatement];
+# freedom of choice
+ScenarioBlock = (Statements)*;
+Statements = GivenStatement | WhenStatement | ThenStatement ;
 # Given
 GivenStatement = <given> Statement (AndStatement|ButStatement)*;
 # When

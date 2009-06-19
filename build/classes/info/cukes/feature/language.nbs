@@ -37,46 +37,46 @@ TOKEN:when:( "When" ):<STEPS_TEXT_MODE>
 TOKEN:then:( "Then" ):<STEPS_TEXT_MODE>
 TOKEN:but:( "But" ):<STEPS_TEXT_MODE>
 #
+TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
+TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
+TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+TOKEN:newline: ('\n')
 # Text
 <TEXT_MODE> {
-TOKEN:newline:('\n'):<DEFAULT>
-TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
-TOKEN:comment:('#' [^ '\n' '\r']*)
-TOKEN:word:( [^ '\n' '\r' '#']* )
+    TOKEN:newline:('\n'):<DEFAULT>
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
 }
 # Text inside Steps
 <STEPS_TEXT_MODE> {
-TOKEN:newline:('\n'):<DEFAULT>
-TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
-TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
-TOKEN:variable:('<'[^ '>']* '>')
-TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
-TOKEN:comment:('#' [^ '\n' '\r']*)
-TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
+    TOKEN:newline:('\n'):<DEFAULT>
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
 }
 # Multiline String
 <PYSTRING_MODE> {
-     TOKEN:newline: ('\n')
-     TOKEN:whitespace:( [" " "\t"]+ )
-     TOKEN:variable:('<'[^ '>']* '>')
-     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '#']* )
-     TOKEN:end_pystring:('\"\"\"'):<DEFAULT>
+    TOKEN:end_pystring:('\"\"\"'):<DEFAULT>
+    TOKEN:newline: ('\n')
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
 }
 # Row
 <ROW_MODE> {
     TOKEN:end: ('\n'):<DEFAULT>
     TOKEN:row_delimiter:("|")
     TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:string:(('\''[^ '\'']* '\'')|('\"'[^ '\"']* '\"'))
+    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:number:( ["0"-"9"]+ ("."["0"-"9"]*)? )
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '|' '#']* )
+    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
 }
-#
-TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\'' '\"' '<' '>' '|' '#' ':' '@']* )
-TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
-TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
-TOKEN:newline: ('\n')
 #
 # GRAMMER RULES :: SYNTAX DEFINITION -------------------------------------------
 #

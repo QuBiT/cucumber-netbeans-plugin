@@ -124,7 +124,7 @@ Statement = Text [Extras];
 #Extras
 Extras = PyString | TableBlock;
 # Examples and Tables
-ExamplesBlocks = (ExamplesBlock)*;
+ExamplesBlocks = ExamplesBlock (ExamplesBlock)*;
 ExamplesBlock = <examples> <colon> [Description] TableBlock;
 Description = Text;
 TableBlock = TableHeader TableRows;

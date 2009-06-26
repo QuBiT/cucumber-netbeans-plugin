@@ -103,7 +103,7 @@ BackgroundBlock = GivenStatement;
 # Scenario
 Scenario = BasicScenario | TableScenario;
 BasicScenario = <scenario> <colon> [ScenarioDescription] ScenarioBlock;
-TableScenario = <scenario_outline> <colon> [ScenarioDescription] ScenarioBlock ExamplesBlock;
+TableScenario = <scenario_outline> <colon> [ScenarioDescription] ScenarioBlock ExamplesBlocks;
 ScenarioDescription = Text;
 # Scenario Block
 #ScenarioBlock = [GivenStatement] [WhenStatement] [ThenStatement];
@@ -124,6 +124,7 @@ Statement = Text [Extras];
 #Extras
 Extras = PyString | TableBlock;
 # Examples and Tables
+ExamplesBlocks = (ExamplesBlock)*;
 ExamplesBlock = <examples> <colon> [Description] TableBlock;
 Description = Text;
 TableBlock = TableHeader TableRows;

@@ -1,5 +1,10 @@
 ||:info.cukes.feature.Feature
 java.lang.Object
+java.lang.String
+java.lang.StringBuilder
+org.netbeans.api.languages.ASTNode
+org.netbeans.api.languages.SyntaxContext
+org.netbeans.api.languages.ASTPath
 info.cukes.feature.Feature
 ||:info.cukes.feature.options.CucumberFeatureOptionsPanel$9
 java.lang.Object

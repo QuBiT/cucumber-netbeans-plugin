@@ -26,6 +26,10 @@
                     <file name="org-openide-actions-RenameAction.instance">
                         <attr name="position" intvalue="700"/>
                     </file>
+                    <file name="org-openide-actions-SaveAsAction.shadow">
+                        <attr name="originalFile" stringvalue="/Actions/System/org-openide-actions-SaveAsAction.instance"/>
+                        <attr name="position" intvalue="850"/>
+                    </file>
                     <file name="org-openide-actions-SaveAsTemplateAction.instance">
                         <attr name="position" intvalue="900"/>
                     </file>

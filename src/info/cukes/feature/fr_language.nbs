@@ -1,7 +1,8 @@
-#
 # NBS Template for FEATURE
 #
 # Author: Roland Guem
+#
+# VERSION: FRENCH
 #
 # HINT: Package name is a homage to Cucumber Developers
 #
@@ -11,19 +12,19 @@
 TOKEN:comment:('#' [^ '\n' '\r']*)
 #
 # Feature
-TOKEN:feature:("Feature")
+TOKEN:feature:("Fonctionnalit".)
 #
-TOKEN:business_value:( "In order to" ):<TEXT_MODE>
-TOKEN:role:( "As a" | "As an" ):<TEXT_MODE>
-TOKEN:some_action:( "I want to" ):<TEXT_MODE>
+TOKEN:business_value:( "Afin de" ):<TEXT_MODE>
+TOKEN:role:( "En tant qu". ):<TEXT_MODE>
+TOKEN:some_action:( "Je désire" | "Je veux" | "Je souhaite" ):<TEXT_MODE>
 # Background
-TOKEN:background:("Background")
+TOKEN:background:("Contexte")
 # Scenario
-TOKEN:scenario:("Scenario")
+TOKEN:scenario:("Sc"."nario")
 # Scenario Outline
-TOKEN:scenario_outline:("Scenario Outline")
+TOKEN:scenario_outline:("Plan du Sc"."nario")
 # Examples
-TOKEN:examples:("Examples"|"Scenarios")
+TOKEN:examples:("Exemples")
 #
 TOKEN:colon:(":"):<TEXT_MODE>
 #
@@ -31,13 +32,13 @@ TOKEN:row_delimiter:("|"):<ROW_MODE>
 # MULTILINE STRING
 TOKEN:pystring:('\"\"\"'):<PYSTRING_MODE>
 # STEPS
-TOKEN:given:( "Given" ):<STEPS_TEXT_MODE>
-TOKEN:and:( "And" ):<STEPS_TEXT_MODE>
-TOKEN:when:( "When" ):<STEPS_TEXT_MODE>
-TOKEN:then:( "Then" ):<STEPS_TEXT_MODE>
-TOKEN:but:( "But" ):<STEPS_TEXT_MODE>
+TOKEN:given:( "Soit" ):<STEPS_TEXT_MODE>
+TOKEN:and:( "Et" ):<STEPS_TEXT_MODE>
+TOKEN:when:( "Lorsque" ):<STEPS_TEXT_MODE>
+TOKEN:then:( "Alors" ):<STEPS_TEXT_MODE>
+TOKEN:but:( "Mais" ):<STEPS_TEXT_MODE>
 #
-TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+TOKEN:string:(("\""[^ "\""]* "\""))
 TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
 TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
 TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
@@ -72,7 +73,7 @@ TOKEN:newline: ('\n')
     TOKEN:end: ('\n'):<DEFAULT>
     TOKEN:row_delimiter:("|")
     TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+    TOKEN:string:(("\""[^ "\""]* "\""))
     TOKEN:comment:('#' [^ '\n' '\r']*)
     TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
@@ -285,19 +286,19 @@ COMPLETE "\':\'"
 # COMPLETION -------------------------------------------------------------------
 # code completion
 COMPLETION:given, when, then, and, scenario, feature, whitespace, newline: {
-    text1:"Feature:";
-    text2:"In order to";
-    text3:"As a";
-    text4:"I want to";
+    text1:"Fonctionnalite:";
+    text2:"Afin de";
+    text3:"En tant que";
+    text4:"Je souhaite";
     text5:"Scenario:";
-    text6:"Given";
-    text7:"And";
-    text8:"When";
-    text9:"Then";
-    text10:"But";
-    text11:"Examples:";
-    text12:"Background:";
-    text13:"Scenario Outline:";
+    text6:"Soit";
+    text7:"Et";
+    text8:"Lorsque";
+    text9:"Alors";
+    text10:"Mais";
+    text11:"Exemples:";
+    text12:"Contexte:";
+    text13:"Plan du Scenario:";
 }
 
 # BRACE ------------------------------------------------------------------------

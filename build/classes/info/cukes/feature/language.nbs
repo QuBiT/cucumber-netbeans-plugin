@@ -86,7 +86,8 @@ S = (Feature)*;
 Feature = FeatureDefinition BackgroundPart ScenarioPart;
 BackgroundPart = (Background)*;
 ScenarioPart = (Scenario)*;
-FeatureDefinition = <feature> <colon> [FeatureDescription] (FeatureBlock)*;
+FeatureDefinition = FeatureIdentifier <colon> [FeatureDescription] (FeatureBlock)*;
+FeatureIdentifier = <feature>;
 FeatureDescription = Text;
 # Feature Block
 FeatureBlock = BusinessValueDefinition | RoleDefinition | SomeActionDefinition;
@@ -97,13 +98,16 @@ RoleDefinition = <role> Text;
 # Some Action
 SomeActionDefinition = <some_action> Text;
 # Background
-Background = <background> <colon> [Description] [BackgroundBlock];
+Background = BackgroundIdentifier <colon> [Description] [BackgroundBlock];
+BackgroundIdentifier = <background>;
 # a Background has only Given Statments
 BackgroundBlock = GivenStatement;
 # Scenario
 Scenario = BasicScenario | TableScenario;
-BasicScenario = <scenario> <colon> [ScenarioDescription] ScenarioBlock;
-TableScenario = <scenario_outline> <colon> [ScenarioDescription] ScenarioBlock ExamplesBlocks;
+BasicScenario = BasicScenarioIdentifier <colon> [ScenarioDescription] ScenarioBlock;
+BasicScenarioIdentifier = <scenario>;
+TableScenario = TableScenarioIdentifier <colon> [ScenarioDescription] ScenarioBlock ExamplesBlocks;
+TableScenarioIdentifier = <scenario_outline>;
 ScenarioDescription = Text;
 # Scenario Block
 #ScenarioBlock = [GivenStatement] [WhenStatement] [ThenStatement];
@@ -125,7 +129,8 @@ Statement = Text [Extras];
 Extras = PyString | TableBlock;
 # Examples and Tables
 ExamplesBlocks = ExamplesBlock (ExamplesBlock)*;
-ExamplesBlock = <examples> <colon> [Description] TableBlock;
+ExamplesBlock = ExamplesIdentifier <colon> [Description] TableBlock;
+ExamplesIdentifier = <examples>;
 Description = Text;
 TableBlock = TableHeader TableRows;
 TableHeader = Row;
@@ -316,9 +321,14 @@ NAVIGATOR:Scenario: {
     icon: info.cukes.feature.Feature.scenarioIcon;
 }
 
-NAVIGATOR:TableBlock: {
-    display_name: "Examples";
+NAVIGATOR:ExamplesBlock: {
+    display_name: info.cukes.feature.Feature.examplesName;
     icon: info.cukes.feature.Feature.examplesIcon;
+}
+
+NAVIGATOR:TableBlock: {
+    display_name: info.cukes.feature.Feature.tableName;
+    icon: info.cukes.feature.Feature.tableIcon;
 }
 
 NAVIGATOR:Background: {

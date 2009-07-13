@@ -7,6 +7,63 @@
 #
 # TOKEN DEFINTIONS -------------------------------------------------------------
 #
+TOKEN:language_fr:('# language: '('fr'|'FR') [^ '\n' '\r']*):<FRENCH>
+TOKEN:language_de:('# language: '('de'|'DE') [^ '\n' '\r']*):<GERMAN>
+#
+<FRENCH> {
+    TOKEN:feature:("Fonctionnalit".)
+    TOKEN:business_value:( "Afin de" ):<FR_TEXT_MODE>
+    TOKEN:role:( "En tant qu". ):<FR_TEXT_MODE>
+    TOKEN:some_action:( "Je désire" | "Je veux" | "Je souhaite" ):<FR_TEXT_MODE>
+    TOKEN:background:("Contexte")
+    TOKEN:scenario:("Sc"."nario")
+    TOKEN:scenario_outline:("Plan du Sc"."nario")
+    TOKEN:examples:("Exemples")
+    #
+    TOKEN:given:( "Soit" ):<FR_STEPS_TEXT_MODE>
+    TOKEN:and:( "Et" ):<FR_STEPS_TEXT_MODE>
+    TOKEN:when:( "Lorsque" ):<FR_STEPS_TEXT_MODE>
+    TOKEN:then:( "Alors" ):<FR_STEPS_TEXT_MODE>
+    TOKEN:but:( "Mais" ):<FR_STEPS_TEXT_MODE>
+    #
+    TOKEN:colon:(":"):<FR_TEXT_MODE>
+    TOKEN:row_delimiter:("|"):<FR_ROW_MODE>
+    TOKEN:pystring:('\"\"\"'):<FR_PYSTRING_MODE>
+    #
+    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
+    TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:newline: ('\n')
+}
+
+<GERMAN> {
+    TOKEN:feature:("Funktionalit"."t")
+    TOKEN:business_value:( "Um" ):<DE_TEXT_MODE>
+    TOKEN:role:( "m"."chte ich als"  | "m"."chte Ich als" | "Als" ):<DE_TEXT_MODE>
+    TOKEN:some_action:( "M"."chte Ich" | "M"."chte ich"  ):<DE_TEXT_MODE>
+    TOKEN:background:("Grundlage")
+    TOKEN:scenario:("Szenario")
+    TOKEN:scenario_outline:("Szenariogrundriss")
+    TOKEN:examples:("Beispiele")
+    #
+    TOKEN:given:("Gegeben sei"):<DE_STEPS_TEXT_MODE>
+    TOKEN:when:("Wenn"):<DE_STEPS_TEXT_MODE>
+    TOKEN:then:("Dann"):<DE_STEPS_TEXT_MODE>
+    TOKEN:and:("Und"):<DE_STEPS_TEXT_MODE>
+    TOKEN:but:("Aber"):<DE_STEPS_TEXT_MODE>
+    #
+    TOKEN:colon:(":"):<DE_TEXT_MODE>
+    TOKEN:row_delimiter:("|"):<DE_ROW_MODE>
+    TOKEN:pystring:('\"\"\"'):<DE_PYSTRING_MODE>
+    #
+    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
+    TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:newline: ('\n')
+}
+
 # Comments
 TOKEN:comment:('#' [^ '\n' '\r']*)
 #
@@ -42,6 +99,8 @@ TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
 TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
 TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
 TOKEN:newline: ('\n')
+
+# TEXT -------------------------------------------------------------------------
 # Text
 <TEXT_MODE> {
     TOKEN:newline:('\n'):<DEFAULT>
@@ -49,6 +108,23 @@ TOKEN:newline: ('\n')
     TOKEN:comment:('#' [^ '\n' '\r']*)
     TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
 }
+
+# French Text
+<FR_TEXT_MODE> {
+    TOKEN:newline:('\n'):<FRENCH>
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
+}
+
+# German Text
+<DE_TEXT_MODE> {
+    TOKEN:newline:('\n'):<GERMAN>
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
+}
+# STEPSTEXT --------------------------------------------------------------------
 # Text inside Steps
 <STEPS_TEXT_MODE> {
     TOKEN:newline:('\n'):<DEFAULT>
@@ -59,6 +135,29 @@ TOKEN:newline: ('\n')
     TOKEN:comment:('#' [^ '\n' '\r']*)
     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
 }
+
+# Text inside Steps
+<FR_STEPS_TEXT_MODE> {
+    TOKEN:newline:('\n'):<FRENCH>
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
+}
+
+# Text inside Steps
+<DE_STEPS_TEXT_MODE> {
+    TOKEN:newline:('\n'):<GERMAN>
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
+}
+# PYSTRING ---------------------------------------------------------------------
 # Multiline String
 <PYSTRING_MODE> {
     TOKEN:end_pystring:('\"\"\"'):<DEFAULT>
@@ -67,9 +166,44 @@ TOKEN:newline: ('\n')
     TOKEN:variable:('<'[^ '>']* '>')
     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
 }
+
+<FR_PYSTRING_MODE> {
+    TOKEN:end_pystring:('\"\"\"'):<FRENCH>
+    TOKEN:newline: ('\n')
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
+}
+
+<DE_PYSTRING_MODE> {
+    TOKEN:end_pystring:('\"\"\"'):<GERMAN>
+    TOKEN:newline: ('\n')
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
+}
+# ROW --------------------------------------------------------------------------
 # Row
 <ROW_MODE> {
     TOKEN:end: ('\n'):<DEFAULT>
+    TOKEN:row_delimiter:("|")
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
+}
+<FR_ROW_MODE> {
+    TOKEN:end: ('\n'):<FRENCH>
+    TOKEN:row_delimiter:("|")
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
+}
+<DE_ROW_MODE> {
+    TOKEN:end: ('\n'):<GERMAN>
     TOKEN:row_delimiter:("|")
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
@@ -146,6 +280,8 @@ SKIP:whitespace
 SKIP:comment
 SKIP:newline
 SKIP:tag
+SKIP:language_fr
+SKIP:language_de
 # ------------------------------------------------------------------------------
 #
 COLOR:comment: {
@@ -156,6 +292,14 @@ COLOR:tag: {
     default_coloring: "identifier";
     foreground_color:"#CC3333";
     font_type: "bold";
+}
+COLOR:language_fr: {
+    default_coloring: "identifier";
+    foreground_color:"#8F8F8F";
+}
+COLOR:language_de: {
+    default_coloring: "identifier";
+    foreground_color:"#8F8F8F";
 }
 #
 # COLOR FOR FEATURE ------------------------------------------------------------

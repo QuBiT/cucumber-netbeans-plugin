@@ -116,11 +116,19 @@
     </folder>
     <folder name="Templates">
         <folder name="Cucumber">
-            <file name="file.feature" url="file.feature">
+            <file name="file.feature" url="templates/file.feature">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
                 <attr name="template" boolvalue="true"/>
             </file>
-            <file name="FeatureTemplate.feature" url="FeatureTemplate.feature">
+            <file name="FeatureTemplate.feature" url="templates/FeatureTemplate.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+            </file>
+            <file name="german.feature" url="templates/german.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+            </file>
+            <file name="french.feature" url="templates/french.feature">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
                 <attr name="template" boolvalue="true"/>
             </file>

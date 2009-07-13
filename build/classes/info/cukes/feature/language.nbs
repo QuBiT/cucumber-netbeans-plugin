@@ -35,6 +35,7 @@ TOKEN:language_de:('# language: '('de'|'DE') [^ '\n' '\r']*):<GERMAN>
     TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
     TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
     TOKEN:newline: ('\n')
+    TOKEN:comment:('#' [^ '\n' '\r']*)
 }
 
 <GERMAN> {
@@ -62,6 +63,7 @@ TOKEN:language_de:('# language: '('de'|'DE') [^ '\n' '\r']*):<GERMAN>
     TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
     TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
     TOKEN:newline: ('\n')
+    TOKEN:comment:('#' [^ '\n' '\r']*)
 }
 
 # Comments

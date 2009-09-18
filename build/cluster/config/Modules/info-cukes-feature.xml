@@ -7,5 +7,5 @@
     <param name="enabled">true</param>
     <param name="jar">modules/info-cukes-feature.jar</param>
     <param name="reloadable">false</param>
-    <param name="specversion">1.1.8</param>
+    <param name="specversion">1.2.8</param>
 </module>

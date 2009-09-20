@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="info.cukes.feature">
-    <module_version install_time="1253292721734" last="true" origin="installer" specification_version="1.2.9">
+    <module_version install_time="1253460347250" last="true" origin="installer" specification_version="1.3.0">
         <file crc="3368177757" name="config/Modules/info-cukes-feature.xml"/>
-        <file crc="321145334" name="modules/info-cukes-feature.jar"/>
+        <file crc="2359678975" name="modules/info-cukes-feature.jar"/>
     </module_version>
 </module>

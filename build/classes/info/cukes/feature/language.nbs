@@ -10,6 +10,7 @@
 TOKEN:language_fr:('# language: '('fr'|'FR') [^ '\n' '\r']*):<FRENCH>
 TOKEN:language_de:('# language: '('de'|'DE') [^ '\n' '\r']*):<GERMAN>
 TOKEN:language_pt:('# language: '('pt'|'PT') [^ '\n' '\r']*):<PORTUGUESE>
+TOKEN:language_pt:('# language: '('es'|'ES') [^ '\n' '\r']*):<SPANISH>
 #
 <FRENCH> {
     TOKEN:feature:("Fonctionnalit".)
@@ -69,7 +70,7 @@ TOKEN:language_pt:('# language: '('pt'|'PT') [^ '\n' '\r']*):<PORTUGUESE>
 
 <PORTUGUESE> {
     TOKEN:feature:("Funcionalidade")
-    TOKEN:business_value:( "A fim de"):<PT_TEXT_MODE>
+    TOKEN:business_value:( "Para" |"A fim de"):<PT_TEXT_MODE>
     TOKEN:role:( "Como um" | "Como uma" ):<PT_TEXT_MODE>
     TOKEN:some_action:( "Eu quero" | "Eu desejo" | "Eu quero que" | "Eu desejo que"):<PT_TEXT_MODE>
     TOKEN:background:("Contexto")
@@ -80,12 +81,40 @@ TOKEN:language_pt:('# language: '('pt'|'PT') [^ '\n' '\r']*):<PORTUGUESE>
     TOKEN:given:( "Dado" ):<PT_STEPS_TEXT_MODE>
     TOKEN:and:( "E" ):<PT_STEPS_TEXT_MODE>
     TOKEN:when:( "Quando" ):<PT_STEPS_TEXT_MODE>
-    TOKEN:then:( "Então" | "Entao" ):<PT_STEPS_TEXT_MODE>
+    TOKEN:then:( "Ent"."o"):<PT_STEPS_TEXT_MODE>
     TOKEN:but:( "Mas" ):<PT_STEPS_TEXT_MODE>
     #
     TOKEN:colon:(":"):<PT_TEXT_MODE>
     TOKEN:row_delimiter:("|"):<PT_ROW_MODE>
     TOKEN:pystring:('\"\"\"'):<PT_PYSTRING_MODE>
+    #
+    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
+    TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
+    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
+    TOKEN:newline: ('\n')
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+}
+
+<SPANISH> {
+    TOKEN:feature:("Caracter"."stica")
+    TOKEN:business_value:( "Para" | "Con el objetivo de" | "A fin de"):<ES_TEXT_MODE>
+    TOKEN:role:( "Como un" | "Como una" ):<ES_TEXT_MODE>
+    TOKEN:some_action:( "Quiero" | "Deseo" | "Quiero que" | "Deseo que"):<ES_TEXT_MODE>
+    TOKEN:background:("Antecedentes" | "Contexto")
+    TOKEN:scenario:("Escenario")
+    TOKEN:scenario_outline:("Esquema del escenario")
+    TOKEN:examples:("Ejemplos")
+    #
+    TOKEN:given:( "Dado" ):<ES_STEPS_TEXT_MODE>
+    TOKEN:and:( "Y" ):<ES_STEPS_TEXT_MODE>
+    TOKEN:when:( "Cuando" ):<ES_STEPS_TEXT_MODE>
+    TOKEN:then:( "Entonces" ):<ES_STEPS_TEXT_MODE>
+    TOKEN:but:( "Pero" ):<ES_STEPS_TEXT_MODE>
+    #
+    TOKEN:colon:(":"):<ES_TEXT_MODE>
+    TOKEN:row_delimiter:("|"):<ES_ROW_MODE>
+    TOKEN:pystring:('\"\"\"'):<ES_PYSTRING_MODE>
     #
     TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
@@ -162,6 +191,13 @@ TOKEN:newline: ('\n')
     TOKEN:comment:('#' [^ '\n' '\r']*)
     TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
 }
+# Spanish Text
+<ES_TEXT_MODE> {
+    TOKEN:newline:('\n'):<SPANISH>
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
+}
 
 # STEPSTEXT --------------------------------------------------------------------
 # Text inside Steps
@@ -207,6 +243,17 @@ TOKEN:newline: ('\n')
     TOKEN:comment:('#' [^ '\n' '\r']*)
     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
 }
+
+# Text inside Steps
+<ES_STEPS_TEXT_MODE> {
+    TOKEN:newline:('\n'):<SPANISH>
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
+}
 # PYSTRING ---------------------------------------------------------------------
 # Multiline String
 <PYSTRING_MODE> {
@@ -235,6 +282,14 @@ TOKEN:newline: ('\n')
 
 <PT_PYSTRING_MODE> {
     TOKEN:end_pystring:('\"\"\"'):<PORTUGUESE>
+    TOKEN:newline: ('\n')
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:variable:('<'[^ '>']* '>')
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
+}
+
+<ES_PYSTRING_MODE> {
+    TOKEN:end_pystring:('\"\"\"'):<SPANISH>
     TOKEN:newline: ('\n')
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:variable:('<'[^ '>']* '>')
@@ -271,6 +326,15 @@ TOKEN:newline: ('\n')
 }
 <PT_ROW_MODE> {
     TOKEN:end: ('\n'):<PORTUGUESE>
+    TOKEN:row_delimiter:("|")
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
+    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
+}
+<ES_ROW_MODE> {
+    TOKEN:end: ('\n'):<SPANISH>
     TOKEN:row_delimiter:("|")
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
@@ -350,6 +414,7 @@ SKIP:tag
 SKIP:language_fr
 SKIP:language_de
 SKIP:language_pt
+SKIP:language_es
 # ------------------------------------------------------------------------------
 #
 COLOR:comment: {
@@ -370,6 +435,10 @@ COLOR:language_de: {
     foreground_color:"#8F8F8F";
 }
 COLOR:language_pt: {
+    default_coloring: "identifier";
+    foreground_color:"#8F8F8F";
+}
+COLOR:language_es: {
     default_coloring: "identifier";
     foreground_color:"#8F8F8F";
 }

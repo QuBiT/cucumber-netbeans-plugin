@@ -70,7 +70,7 @@ TOKEN:language_pt:('# language: '('es'|'ES') [^ '\n' '\r']*):<SPANISH>
 
 <PORTUGUESE> {
     TOKEN:feature:("Funcionalidade")
-    TOKEN:business_value:( "A fim de"):<PT_TEXT_MODE>
+    TOKEN:business_value:( "Para" |"A fim de"):<PT_TEXT_MODE>
     TOKEN:role:( "Como um" | "Como uma" ):<PT_TEXT_MODE>
     TOKEN:some_action:( "Eu quero" | "Eu desejo" | "Eu quero que" | "Eu desejo que"):<PT_TEXT_MODE>
     TOKEN:background:("Contexto")
@@ -81,7 +81,7 @@ TOKEN:language_pt:('# language: '('es'|'ES') [^ '\n' '\r']*):<SPANISH>
     TOKEN:given:( "Dado" ):<PT_STEPS_TEXT_MODE>
     TOKEN:and:( "E" ):<PT_STEPS_TEXT_MODE>
     TOKEN:when:( "Quando" ):<PT_STEPS_TEXT_MODE>
-    TOKEN:then:( "Então" | "Entao" ):<PT_STEPS_TEXT_MODE>
+    TOKEN:then:( "Ent"."o"):<PT_STEPS_TEXT_MODE>
     TOKEN:but:( "Mas" ):<PT_STEPS_TEXT_MODE>
     #
     TOKEN:colon:(":"):<PT_TEXT_MODE>
@@ -97,13 +97,13 @@ TOKEN:language_pt:('# language: '('es'|'ES') [^ '\n' '\r']*):<SPANISH>
 }
 
 <SPANISH> {
-    TOKEN:feature:("Característica")
+    TOKEN:feature:("Caracter"."stica")
     TOKEN:business_value:( "Para" | "Con el objetivo de" | "A fin de"):<ES_TEXT_MODE>
     TOKEN:role:( "Como un" | "Como una" ):<ES_TEXT_MODE>
     TOKEN:some_action:( "Quiero" | "Deseo" | "Quiero que" | "Deseo que"):<ES_TEXT_MODE>
     TOKEN:background:("Antecedentes" | "Contexto")
     TOKEN:scenario:("Escenario")
-    TOKEN:scenario_outline:("Esquema del escenario)
+    TOKEN:scenario_outline:("Esquema del escenario")
     TOKEN:examples:("Ejemplos")
     #
     TOKEN:given:( "Dado" ):<ES_STEPS_TEXT_MODE>

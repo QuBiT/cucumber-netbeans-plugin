@@ -136,6 +136,10 @@
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
                 <attr name="template" boolvalue="true"/>
             </file>
+            <file name="spanish.feature" url="templates/spanish.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+            </file>
         </folder>
     </folder>
 </filesystem>

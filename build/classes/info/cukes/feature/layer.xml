@@ -142,4 +142,13 @@
             </file>
         </folder>
     </folder>
+    <folder name="Editors">
+        <folder name="text">
+            <folder name="feature">
+                <folder name="CodeTemplates">
+                    <file name="snippets.xml" url="snippets.xml"/>
+                </folder>
+            </folder>
+        </folder>
+    </folder>
 </filesystem>

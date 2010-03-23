@@ -27,6 +27,7 @@ TOKEN:language_pt:('# language: '('es'|'ES') [^ '\n' '\r']*):<SPANISH>
     TOKEN:when:( "Lorsque" ):<FR_STEPS_TEXT_MODE>
     TOKEN:then:( "Alors" ):<FR_STEPS_TEXT_MODE>
     TOKEN:but:( "Mais" ):<FR_STEPS_TEXT_MODE>
+    TOKEN:infinite:("*"):<FR_STEPS_TEXT_MODE>
     #
     TOKEN:colon:(":"):<FR_TEXT_MODE>
     TOKEN:row_delimiter:("|"):<FR_ROW_MODE>
@@ -50,11 +51,12 @@ TOKEN:language_pt:('# language: '('es'|'ES') [^ '\n' '\r']*):<SPANISH>
     TOKEN:scenario_outline:("Szenariogrundriss")
     TOKEN:examples:("Beispiele")
     #
-    TOKEN:given:("Gegeben sei"):<DE_STEPS_TEXT_MODE>
+    TOKEN:given:("Gegeben sei" | "Angenommen"):<DE_STEPS_TEXT_MODE>
     TOKEN:when:("Wenn"):<DE_STEPS_TEXT_MODE>
     TOKEN:then:("Dann"):<DE_STEPS_TEXT_MODE>
     TOKEN:and:("Und"):<DE_STEPS_TEXT_MODE>
     TOKEN:but:("Aber"):<DE_STEPS_TEXT_MODE>
+    TOKEN:infinite:("*"):<DE_STEPS_TEXT_MODE>
     #
     TOKEN:colon:(":"):<DE_TEXT_MODE>
     TOKEN:row_delimiter:("|"):<DE_ROW_MODE>
@@ -83,6 +85,7 @@ TOKEN:language_pt:('# language: '('es'|'ES') [^ '\n' '\r']*):<SPANISH>
     TOKEN:when:( "Quando" ):<PT_STEPS_TEXT_MODE>
     TOKEN:then:( "Ent"."o"):<PT_STEPS_TEXT_MODE>
     TOKEN:but:( "Mas" ):<PT_STEPS_TEXT_MODE>
+    TOKEN:infinite:("*"):<PT_STEPS_TEXT_MODE>
     #
     TOKEN:colon:(":"):<PT_TEXT_MODE>
     TOKEN:row_delimiter:("|"):<PT_ROW_MODE>
@@ -111,6 +114,7 @@ TOKEN:language_pt:('# language: '('es'|'ES') [^ '\n' '\r']*):<SPANISH>
     TOKEN:when:( "Cuando" ):<ES_STEPS_TEXT_MODE>
     TOKEN:then:( "Entonces" ):<ES_STEPS_TEXT_MODE>
     TOKEN:but:( "Pero" ):<ES_STEPS_TEXT_MODE>
+    TOKEN:infinite:("*"):<ES_STEPS_TEXT_MODE>
     #
     TOKEN:colon:(":"):<ES_TEXT_MODE>
     TOKEN:row_delimiter:("|"):<ES_ROW_MODE>
@@ -153,6 +157,7 @@ TOKEN:and:( "And" ):<STEPS_TEXT_MODE>
 TOKEN:when:( "When" ):<STEPS_TEXT_MODE>
 TOKEN:then:( "Then" ):<STEPS_TEXT_MODE>
 TOKEN:but:( "But" ):<STEPS_TEXT_MODE>
+TOKEN:infinite:("*"):<STEPS_TEXT_MODE>
 #
 TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
 TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
@@ -378,16 +383,17 @@ ScenarioDescription = Text;
 #ScenarioBlock = [GivenStatement] [WhenStatement] [ThenStatement];
 # freedom of choice
 ScenarioBlock = (Statements)*;
-Statements = GivenStatement | WhenStatement | ThenStatement ;
+Statements = GivenStatement | WhenStatement | ThenStatement | InfiniteStatement;
 # Given
-GivenStatement = <given> Statement (AndStatement|ButStatement)*;
+GivenStatement = <given> Statement (AndStatement|ButStatement|InfiniteStatement)*;
 # When
-WhenStatement = <when> Statement (AndStatement|ButStatement)*;
+WhenStatement = <when> Statement (AndStatement|ButStatement|InfiniteStatement)*;
 # Then
-ThenStatement = <then> Statement (AndStatement|ButStatement)*;
+ThenStatement = <then> Statement (AndStatement|ButStatement|InfiniteStatement)*;
 # And
 AndStatement = <and> Statement;
 ButStatement = <but> Statement;
+InfiniteStatement = <infinite> Statement;
 # Statement is more or less Text followed by Extras if necessary
 Statement = Text [Extras];
 #Extras
@@ -538,6 +544,10 @@ COLOR:and: {
     foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
 }
 COLOR:but: {
+    default_coloring: "identifier";
+    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
+}
+COLOR:infinite: {
     default_coloring: "identifier";
     foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
 }

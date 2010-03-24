@@ -7,6 +7,6 @@ and open the template in the editor.
 <MIME-resolver>
     <file>
         <ext name="feature"/>
-        <resolver mime="text/feature"/>
+        <resolver mime="text/x-feature"/>
     </file>
 </MIME-resolver>

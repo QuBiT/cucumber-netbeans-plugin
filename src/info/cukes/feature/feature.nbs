@@ -453,7 +453,7 @@ COLOR:language_es: {
 #
 COLOR:feature: {
     default_coloring: "identifier";
-    foreground_color: info.cukes.feature.options.ColorLibrary.getFeatureColor;
+    foreground_color: "#3366CC";
     font_type: "bold italic";
 }
 COLOR:business_value: {
@@ -488,12 +488,12 @@ COLOR:SomeActionDefinition: {
 #
 COLOR:scenario: {
     default_coloring: "identifier";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getScenarioColor;
+    foreground_color: "#3366CC";
     font_type: "bold italic";
 }
 COLOR:scenario_outline: {
     default_coloring: "identifier";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getScenarioColor;
+    foreground_color: "#3366CC";
     font_type: "bold italic";
 }
 COLOR:ScenarioDescription: {
@@ -506,7 +506,7 @@ COLOR:TableHeader: {
 }
 COLOR:examples: {
     default_coloring: "identifier";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getExamplesColor;
+    foreground_color: "#336600";
     font_type: "bold italic";
 }
 #
@@ -514,7 +514,7 @@ COLOR:examples: {
 #
 COLOR:background: {
     default_coloring: "identifier";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getBackgroundColor;
+    foreground_color: "#336600";
     font_type: "bold italic";
 }
 #
@@ -522,51 +522,51 @@ COLOR:background: {
 #
 COLOR:PyString: {
     default_coloring: "identifier";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getPyStringsColor;
+    foreground_color: "#663333";
 }
 #
 # COLOR FOR GIVEN/WHEN/THEN & AND/BUT ----------------------------------------------
 #
 COLOR:given: {
     default_coloring: "identifier";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
+    foreground_color: "#3366CC";
 }
 COLOR:when: {
     default_coloring: "identifier";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
+    foreground_color: "#3366CC";
 }
 COLOR:then: {
     default_coloring: "identifier";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
+    foreground_color: "#3366CC";
 }
 COLOR:and: {
     default_coloring: "identifier";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
+    foreground_color: "#3366CC";
 }
 COLOR:but: {
     default_coloring: "identifier";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
+    foreground_color: "#3366CC";
 }
 COLOR:infinite: {
     default_coloring: "identifier";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getStepsColor;
+    foreground_color: "#3366CC";
 }
 #
 # ------------------------------------------------------------------------------
 #
 COLOR:variable: {
-    default_coloring:"string";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getVariablesColor;
+    default_coloring: "string";
+    foreground_color: "#336600";
 }
 #
 COLOR:number: {
-    default_coloring:"string";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getNumbersColor;
+    default_coloring: "string";
+    foreground_color: "#336600";
 }
 #
 COLOR:string: {
-    default_coloring:"string";
-    foreground_color:info.cukes.feature.options.ColorLibrary.getStringsColor;
+    default_coloring: "string";
+    foreground_color: "#FF9900";
 }
 #
 # COMPLETE ---------------------------------------------------------------------
@@ -637,6 +637,10 @@ INDENT "Feature:.*"
 #INDENT "Scenario:\\n\\n"
 #INDENT "Background:<end_background>"
 
+# COMMENT_LINE -----------------------------------------------------------------
+COMMENT_LINE {
+    prefix: "#";
+}
 # TOOLTIP ----------------------------------------------------------------------
 #TOOLTIP:Feature:"Feature"
 #TOOLTIP:Scenario:"Scenario"
@@ -651,4 +655,6 @@ FOLD:BackgroundBlock
 FOLD:ScenarioBlock
 FOLD:TableBlock
 
+# BUNDLE -----------------------------------------------------------------------
+BUNDLE "info.cukes.feature.Bundle"
 # EOF --------------------------------------------------------------------------

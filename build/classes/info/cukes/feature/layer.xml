@@ -1,101 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<!-- Author : Roland Guem -->
+
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
 <filesystem>
-    <folder name="Loaders">
-        <folder name="text">
-            <folder name="feature">
-                <folder name="Actions">
-                    <file name="org-openide-actions-CopyAction.instance">
-                        <attr name="position" intvalue="400"/>
-                    </file>
-                    <file name="org-openide-actions-CutAction.instance">
-                        <attr name="position" intvalue="300"/>
-                    </file>
-                    <file name="org-openide-actions-DeleteAction.instance">
-                        <attr name="position" intvalue="600"/>
-                    </file>
-                    <file name="org-openide-actions-FileSystemAction.instance">
-                        <attr name="position" intvalue="1100"/>
-                    </file>
-                    <file name="org-openide-actions-OpenAction.instance">
-                        <attr name="position" intvalue="100"/>
-                    </file>
-                    <file name="org-openide-actions-PropertiesAction.instance">
-                        <attr name="position" intvalue="1400"/>
-                    </file>
-                    <file name="org-openide-actions-RenameAction.instance">
-                        <attr name="position" intvalue="700"/>
-                    </file>
-                    <file name="org-openide-actions-SaveAsAction.shadow">
-                        <attr name="originalFile" stringvalue="/Actions/System/org-openide-actions-SaveAsAction.instance"/>
-                        <attr name="position" intvalue="850"/>
-                    </file>
-                    <file name="org-openide-actions-SaveAsTemplateAction.instance">
-                        <attr name="position" intvalue="900"/>
-                    </file>
-                    <file name="org-openide-actions-ToolsAction.instance">
-                        <attr name="position" intvalue="1300"/>
-                    </file>
-                    <file name="sep-1.instance">
-                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
-                        <attr name="position" intvalue="200"/>
-                    </file>
-                    <file name="sep-2.instance">
-                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
-                        <attr name="position" intvalue="500"/>
-                    </file>
-                    <file name="sep-3.instance">
-                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
-                        <attr name="position" intvalue="800"/>
-                    </file>
-                    <file name="sep-4.instance">
-                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
-                        <attr name="position" intvalue="1000"/>
-                    </file>
-                    <file name="sep-5.instance">
-                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
-                        <attr name="position" intvalue="1200"/>
-                    </file>
-                </folder>
-                <folder name="Factories">
-                    <file name="FeatureDataLoader.instance">
-                        <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/info/cukes/feature/resources/cucumber.png"/>
-                        <attr name="dataObjectClass" stringvalue="info.cukes.feature.FeatureDataObject"/>
-                        <attr name="instanceCreate" methodvalue="org.openide.loaders.DataLoaderPool.factory"/>
-                        <attr name="mimeType" stringvalue="text/feature"/>
-                    </file>
-                </folder>
-            </folder>
-        </folder>
-    </folder>
     <folder name="Editors">
         <folder name="text">
-            <folder name="feature">
-                <file name="language.nbs" url="language.nbs">
+            <folder name="x-feature">
+                <folder name="CodeTemplates">
+                    <file name="snippets.xml" url="snippets.xml"/>
+                </folder>
+                <folder name="FontsColors">
+                    <folder name="NetBeans">
+                        <folder name="Defaults">
+                            <file name="FontAndColors.xml" url="FontAndColors.xml">
+                                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                            </file>
+                        </folder>
+                    </folder>
+                </folder>
+                <folder name="FoldManager">
+                    <file name="org-netbeans-modules-languages-features-LanguagesFoldManager$Factory.instance"/>
+                </folder>
+                <folder name="SideBar">
+                    <file name="org-netbeans-modules-languages-features-CodeFoldingSideBarFactory.instance">
+                        <attr name="position" intvalue="1500"/>
+                    </file>
+                </folder>
+                <folder name="UpToDateStatusProvider">
+                    <file name="org-netbeans-modules-languages-features-UpToDateStatusProviderFactoryImpl.instance"/>
+                </folder>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <file name="language.nbs" url="feature.nbs">
                     <attr name="icon" stringvalue="info/cukes/feature/resources/cucumber.png"/>
                 </file>
             </folder>
         </folder>
     </folder>
-    <folder name="Navigator">
-        <folder name="Panels">
-            <folder name="text">
-                <folder name="feature">
-                    <file name="org-netbeans-modules-languages-features-LanguagesNavigator.instance"/>
-                </folder>
-            </folder>
-        </folder>
-    </folder>
     <folder name="OptionsDialog">
-        <folder name="Advanced">
-            <file name="info-cukes-feature-CucumberFeatureOptionsAdvancedOption.instance">
-                <attr name="controller" newvalue="info.cukes.feature.options.CucumberFeatureOptionsOptionsPanelController"/>
-                <attr name="displayName" bundlevalue="info.cukes.feature.Bundle#AdvancedOption_DisplayName_CucumberFeatureOptions"/>
-                <attr name="instanceCreate" methodvalue="org.netbeans.spi.options.AdvancedOption.createSubCategory"/>
-                <attr name="keywords" bundlevalue="info.cukes.feature.Bundle#AdvancedOption_Keywords_CucumberFeatureOptions"/>
-                <attr name="keywordsCategory" stringvalue="Advanced/null"/>
-                <attr name="toolTip" bundlevalue="info.cukes.feature.Bundle#AdvancedOption_Tooltip_CucumberFeatureOptions"/>
-            </file>
+        <folder name="PreviewExamples">
+            <folder name="text">
+                <file name="x-feature" url="templates/sample.feature"/>
+            </folder>
         </folder>
     </folder>
     <folder name="Services">
@@ -111,7 +56,17 @@
         <folder name="MIMEResolver">
             <file name="FeatureResolver.xml" url="FeatureResolver.xml">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="position" intvalue="100000"/>
             </file>
+        </folder>
+    </folder>
+    <folder name="Navigator">
+        <folder name="Panels">
+            <folder name="text">
+                <folder name="x-feature">
+                    <file name="org-netbeans-modules-languages-features-LanguagesNavigator.instance"/>
+                </folder>
+            </folder>
         </folder>
     </folder>
     <folder name="Templates">
@@ -140,15 +95,6 @@
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
                 <attr name="template" boolvalue="true"/>
             </file>
-        </folder>
-    </folder>
-    <folder name="Editors">
-        <folder name="text">
-            <folder name="feature">
-                <folder name="CodeTemplates">
-                    <file name="snippets.xml" url="snippets.xml"/>
-                </folder>
-            </folder>
         </folder>
     </folder>
 </filesystem>

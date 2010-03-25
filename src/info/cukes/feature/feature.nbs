@@ -1,4 +1,4 @@
-#
+# -> http://github.com/aslakhellesoy/gherkin-pygments-lexer/blob/master/gherkin_lexer/__init__.py
 # NBS Template for FEATURE
 #
 # Author: Roland Guem
@@ -6,199 +6,309 @@
 # HINT: Package name is a homage to Cucumber Developers
 #
 # TOKEN DEFINTIONS -------------------------------------------------------------
-#
-TOKEN:language_fr:('# language: '('fr'|'FR') [^ '\n' '\r']*):<FRENCH>
-TOKEN:language_de:('# language: '('de'|'DE') [^ '\n' '\r']*):<GERMAN>
-TOKEN:language_pt:('# language: '('pt'|'PT') [^ '\n' '\r']*):<PORTUGUESE>
-TOKEN:language_pt:('# language: '('es'|'ES') [^ '\n' '\r']*):<SPANISH>
-#
-<FRENCH> {
-    TOKEN:feature:("Fonctionnalit".)
-    TOKEN:business_value:( "Afin de" ):<FR_TEXT_MODE>
-    TOKEN:role:( "En tant qu". ):<FR_TEXT_MODE>
-    TOKEN:some_action:( "Je désire" | "Je veux" | "Je souhaite" ):<FR_TEXT_MODE>
-    TOKEN:background:("Contexte")
-    TOKEN:scenario:("Sc"."nario")
-    TOKEN:scenario_outline:("Plan du Sc"."nario")
-    TOKEN:examples:("Exemples")
-    #
-    TOKEN:given:( "Soit" ):<FR_STEPS_TEXT_MODE>
-    TOKEN:and:( "Et" ):<FR_STEPS_TEXT_MODE>
-    TOKEN:when:( "Lorsque" ):<FR_STEPS_TEXT_MODE>
-    TOKEN:then:( "Alors" ):<FR_STEPS_TEXT_MODE>
-    TOKEN:but:( "Mais" ):<FR_STEPS_TEXT_MODE>
-    TOKEN:infinite:("*"):<FR_STEPS_TEXT_MODE>
-    #
-    TOKEN:colon:(":"):<FR_TEXT_MODE>
-    TOKEN:row_delimiter:("|"):<FR_ROW_MODE>
-    TOKEN:pystring:('\"\"\"'):<FR_PYSTRING_MODE>
-    #
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
-    TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
-    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
-    TOKEN:newline: ('\n')
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-}
-
-<GERMAN> {
-    TOKEN:feature:("Funktionalit"."t")
-    TOKEN:business_value:( "Um" ):<DE_TEXT_MODE>
-    TOKEN:role:( "m"."chte ich als"  | "m"."chte Ich als" | "Als" ):<DE_TEXT_MODE>
-    TOKEN:some_action:( "M"."chte Ich" | "M"."chte ich"  ):<DE_TEXT_MODE>
-    TOKEN:background:("Grundlage")
-    TOKEN:scenario:("Szenario")
-    TOKEN:scenario_outline:("Szenariogrundriss")
-    TOKEN:examples:("Beispiele")
-    #
-    TOKEN:given:("Gegeben sei" | "Angenommen"):<DE_STEPS_TEXT_MODE>
-    TOKEN:when:("Wenn"):<DE_STEPS_TEXT_MODE>
-    TOKEN:then:("Dann"):<DE_STEPS_TEXT_MODE>
-    TOKEN:and:("Und"):<DE_STEPS_TEXT_MODE>
-    TOKEN:but:("Aber"):<DE_STEPS_TEXT_MODE>
-    TOKEN:infinite:("*"):<DE_STEPS_TEXT_MODE>
-    #
-    TOKEN:colon:(":"):<DE_TEXT_MODE>
-    TOKEN:row_delimiter:("|"):<DE_ROW_MODE>
-    TOKEN:pystring:('\"\"\"'):<DE_PYSTRING_MODE>
-    #
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
-    TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
-    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
-    TOKEN:newline: ('\n')
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-}
-
-<PORTUGUESE> {
-    TOKEN:feature:("Funcionalidade")
-    TOKEN:business_value:( "Para" |"A fim de"):<PT_TEXT_MODE>
-    TOKEN:role:( "Como um" | "Como uma" ):<PT_TEXT_MODE>
-    TOKEN:some_action:( "Eu quero" | "Eu desejo" | "Eu quero que" | "Eu desejo que"):<PT_TEXT_MODE>
-    TOKEN:background:("Contexto")
-    TOKEN:scenario:("Cen"."rio")
-    TOKEN:scenario_outline:("Esquema do Cen"."rio")
-    TOKEN:examples:("Exemplos")
-    #
-    TOKEN:given:( "Dado" ):<PT_STEPS_TEXT_MODE>
-    TOKEN:and:( "E" ):<PT_STEPS_TEXT_MODE>
-    TOKEN:when:( "Quando" ):<PT_STEPS_TEXT_MODE>
-    TOKEN:then:( "Ent"."o"):<PT_STEPS_TEXT_MODE>
-    TOKEN:but:( "Mas" ):<PT_STEPS_TEXT_MODE>
-    TOKEN:infinite:("*"):<PT_STEPS_TEXT_MODE>
-    #
-    TOKEN:colon:(":"):<PT_TEXT_MODE>
-    TOKEN:row_delimiter:("|"):<PT_ROW_MODE>
-    TOKEN:pystring:('\"\"\"'):<PT_PYSTRING_MODE>
-    #
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
-    TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
-    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
-    TOKEN:newline: ('\n')
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-}
-
-<SPANISH> {
-    TOKEN:feature:("Caracter"."stica")
-    TOKEN:business_value:( "Para" | "Con el objetivo de" | "A fin de"):<ES_TEXT_MODE>
-    TOKEN:role:( "Como un" | "Como una" ):<ES_TEXT_MODE>
-    TOKEN:some_action:( "Quiero" | "Deseo" | "Quiero que" | "Deseo que"):<ES_TEXT_MODE>
-    TOKEN:background:("Antecedentes" | "Contexto")
-    TOKEN:scenario:("Escenario")
-    TOKEN:scenario_outline:("Esquema del escenario")
-    TOKEN:examples:("Ejemplos")
-    #
-    TOKEN:given:( "Dado" ):<ES_STEPS_TEXT_MODE>
-    TOKEN:and:( "Y" ):<ES_STEPS_TEXT_MODE>
-    TOKEN:when:( "Cuando" ):<ES_STEPS_TEXT_MODE>
-    TOKEN:then:( "Entonces" ):<ES_STEPS_TEXT_MODE>
-    TOKEN:but:( "Pero" ):<ES_STEPS_TEXT_MODE>
-    TOKEN:infinite:("*"):<ES_STEPS_TEXT_MODE>
-    #
-    TOKEN:colon:(":"):<ES_TEXT_MODE>
-    TOKEN:row_delimiter:("|"):<ES_ROW_MODE>
-    TOKEN:pystring:('\"\"\"'):<ES_PYSTRING_MODE>
-    #
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
-    TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
-    TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
-    TOKEN:newline: ('\n')
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-}
-
-# Comments
+# COMMENT
 TOKEN:comment:('#' [^ '\n' '\r']*)
-#
-# Feature
-TOKEN:feature:("Feature")
-#
-TOKEN:business_value:( "In order to" ):<TEXT_MODE>
-TOKEN:role:( "As a" | "As an" ):<TEXT_MODE>
-TOKEN:some_action:( "I want to" ):<TEXT_MODE>
-# Background
-TOKEN:background:("Background")
-# Scenario
-TOKEN:scenario:("Scenario")
-# Scenario Outline
-TOKEN:scenario_outline:("Scenario Outline")
-# Examples
-TOKEN:examples:("Examples"|"Scenarios")
-#
+# COLON
 TOKEN:colon:(":"):<TEXT_MODE>
-#
+# ROW DELIMITER
 TOKEN:row_delimiter:("|"):<ROW_MODE>
 # MULTILINE STRING
 TOKEN:pystring:('\"\"\"'):<PYSTRING_MODE>
-# STEPS
-TOKEN:given:( "Given" ):<STEPS_TEXT_MODE>
-TOKEN:and:( "And" ):<STEPS_TEXT_MODE>
-TOKEN:when:( "When" ):<STEPS_TEXT_MODE>
-TOKEN:then:( "Then" ):<STEPS_TEXT_MODE>
-TOKEN:but:( "But" ):<STEPS_TEXT_MODE>
+# INFINITE
 TOKEN:infinite:("*"):<STEPS_TEXT_MODE>
-#
+# STRING
 TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
+# VARIABLE
+#TOKEN:variable:('<'[^ '>']* '>')
+#TOKEN:examples_keywords:('예'|'例子'|'例'|'サンプル'|'امثلة'|'דוגמאות'|'Сценарији'|'Примери'|'Мисоллар'|'Значения'|'Örnekler'|'Voorbeelden'|'Variantai'|'Tapaukset'|'Scenarios'|'Scenariji'|'Scenarijai'|'Příklady'|'Példák'|'Príklady'|'Przykłady'|'Primjeri'|'Primeri'|'Piemēri'|'Pavyzdžiai'|'Paraugs'|'Juhtumid'|'Exemplos'|'Exemples'|'Exemplele'|'Exempel'|'Examples'|'Esempi'|'Enghreifftiau'|'Eksempler'|'Ejemplos'|'EXAMPLZ'|'Dữ liệu'|'Contoh'|'Cobber'|'Beispiele')
+# CS - Czech
+TOKEN:cs_feature:("Po"."adavek"):<FEATURE_NARRATIVE>
+TOKEN:cs_background:("Pozad".|"Kontext")
+TOKEN:cs_scenario:("Sc"."n"..)
+TOKEN:cs_scenario_outline:("N".."rt Sc"."n".."e"|"Osnova sc"."n".."e")
+TOKEN:cs_examples: ("P".."klady"):<EXAMPLES_MODE>
+TOKEN:cs_given:("Pokud "):<STEPS_TEXT_MODE>
+TOKEN:cs_when:("Kdy"." "):<STEPS_TEXT_MODE>
+TOKEN:cs_then:("Pak "):<STEPS_TEXT_MODE>
+TOKEN:cs_and:("A "|"A tak"." "):<STEPS_TEXT_MODE>
+TOKEN:cs_but:("Ale "):<STEPS_TEXT_MODE>
+# DA - Danish
+TOKEN:da_feature:("Egenskab"):<FEATURE_NARRATIVE>
+TOKEN:da_background:("Baggrund")
+TOKEN:da_scenario:("Scenarie")
+TOKEN:da_scenario_outline:("Abstrakt Scenario")
+TOKEN:da_examples: ("Eksempler"):<EXAMPLES_MODE>
+TOKEN:da_given:("Givet "):<STEPS_TEXT_MODE>
+TOKEN:da_when:("N"."r "):<STEPS_TEXT_MODE>
+TOKEN:da_then:("S"." "):<STEPS_TEXT_MODE>
+TOKEN:da_and:("Og "):<STEPS_TEXT_MODE>
+TOKEN:da_but:("Men "):<STEPS_TEXT_MODE>
+# DE - German
+TOKEN:de_feature:("Funktionalit"."t"):<FEATURE_NARRATIVE>
+TOKEN:de_background:("Grundlage")
+TOKEN:de_scenario:("Szenario")
+TOKEN:de_scenario_outline:("Szenariogrundriss")
+TOKEN:de_examples: ("Beispiele"):<EXAMPLES_MODE>
+TOKEN:de_given:("Angenommen "|"Gegeben sei "):<STEPS_TEXT_MODE>
+TOKEN:de_when:("Wenn "):<STEPS_TEXT_MODE>
+TOKEN:de_then:("Dann "):<STEPS_TEXT_MODE>
+TOKEN:de_and:("Und "):<STEPS_TEXT_MODE>
+TOKEN:de_but:("Aber "):<STEPS_TEXT_MODE>
+# EN - English
+TOKEN:en_feature:("Feature"):<FEATURE_NARRATIVE>
+TOKEN:en_background:("Background")
+TOKEN:en_scenario:("Scenario")
+TOKEN:en_scenario_outline:("Scenario Outline")
+TOKEN:en_examples: ("Examples"|"Scenarios"):<EXAMPLES_MODE>
+TOKEN:en_given:("Given"):<STEPS_TEXT_MODE>
+TOKEN:en_when:("When"):<STEPS_TEXT_MODE>
+TOKEN:en_then:("Then"):<STEPS_TEXT_MODE>
+TOKEN:en_and:("And"):<STEPS_TEXT_MODE>
+TOKEN:en_but:("But"):<STEPS_TEXT_MODE>
+# ES - Spanish
+TOKEN:es_feature:("Caracter"."stica"):<FEATURE_NARRATIVE>
+TOKEN:es_background:("Antecedentes")
+TOKEN:es_scenario:("Escenario")
+TOKEN:es_scenario_outline:("Esquema del escenario")
+TOKEN:es_examples: ("Ejemplos"):<EXAMPLES_MODE>
+TOKEN:es_given:("Dado "):<STEPS_TEXT_MODE>
+TOKEN:es_when:("Cuando "):<STEPS_TEXT_MODE>
+TOKEN:es_then:("Entonces "):<STEPS_TEXT_MODE>
+TOKEN:es_and:("Y "):<STEPS_TEXT_MODE>
+TOKEN:es_but:("Pero "):<STEPS_TEXT_MODE>
+# ET - Estonian
+TOKEN:et_feature:("Omadus"):<FEATURE_NARRATIVE>
+TOKEN:et_background:("Taust")
+TOKEN:et_scenario:("Stsenaarium")
+TOKEN:et_scenario_outline:("Raamstsenaarium")
+TOKEN:et_examples: ("Juhtumid"):<EXAMPLES_MODE>
+TOKEN:et_given:("Eeldades "):<STEPS_TEXT_MODE>
+TOKEN:et_when:("Kui "):<STEPS_TEXT_MODE>
+TOKEN:et_then:("Siis "):<STEPS_TEXT_MODE>
+TOKEN:et_and:("Ja "):<STEPS_TEXT_MODE>
+TOKEN:et_but:("Kuid "):<STEPS_TEXT_MODE>
+# FI - Finnish
+TOKEN:fi_feature:("Ominaisuus"):<FEATURE_NARRATIVE>
+TOKEN:fi_background:("Tausta")
+TOKEN:fi_scenario:("Tapaus")
+TOKEN:fi_scenario_outline:("Tapausaihio")
+TOKEN:fi_examples: ("Tapaukset"):<EXAMPLES_MODE>
+TOKEN:fi_given:("Oletetaan"):<STEPS_TEXT_MODE>
+TOKEN:fi_when:("Kun "):<STEPS_TEXT_MODE>
+TOKEN:fi_then:("Niin "):<STEPS_TEXT_MODE>
+TOKEN:fi_and:("Ja "):<STEPS_TEXT_MODE>
+TOKEN:fi_but:("Mutta "):<STEPS_TEXT_MODE>
+# FR - French
+TOKEN:fr_feature:("Fonctionnalit".):<FEATURE_NARRATIVE>
+TOKEN:fr_background:("Contexte")
+TOKEN:fr_scenario:("Sc"."nario")
+TOKEN:fr_scenario_outline:("Plan du sc"."nario"|"Plan du Sc"."nario")
+TOKEN:fr_examples: ("Exemples"):<EXAMPLES_MODE>
+TOKEN:fr_given:("Soit "|"Etant donn".):<STEPS_TEXT_MODE>
+TOKEN:fr_when:("Quand "|"Lorsqu".):<STEPS_TEXT_MODE>
+TOKEN:fr_then:("Alors "):<STEPS_TEXT_MODE>
+TOKEN:fr_and:("Et "):<STEPS_TEXT_MODE>
+TOKEN:fr_but:("Mais "):<STEPS_TEXT_MODE>
+# HR - Croatian
+TOKEN:hr_feature:("Osobina"|"Mogu"."nost"|"Mogucnost"):<FEATURE_NARRATIVE>
+TOKEN:hr_background:("Pozadina")
+TOKEN:hr_scenario:("Scenarij")
+TOKEN:hr_scenario_outline:("Skica"|"Koncept")
+TOKEN:hr_examples: ("Primjeri"|"Scenariji"):<EXAMPLES_MODE>
+TOKEN:hr_given:("Zadan "|"Zadani "|"Zadano "):<STEPS_TEXT_MODE>
+TOKEN:hr_when:("Kada "|"Kad "):<STEPS_TEXT_MODE>
+TOKEN:hr_then:("Onda "):<STEPS_TEXT_MODE>
+TOKEN:hr_and:("I "):<STEPS_TEXT_MODE>
+TOKEN:hr_but:("Ali "):<STEPS_TEXT_MODE>
+# HU - Hungarian
+TOKEN:hu_feature:("Jellemz".):<FEATURE_NARRATIVE>
+TOKEN:hu_background:("H"."tt"."r")
+TOKEN:hu_scenario:("Forgat"."k"."nyv")
+TOKEN:hu_scenario_outline:("Forgat"."k"."nyv v"."zlat")
+TOKEN:hu_examples: ("P"."ld"."k"):<EXAMPLES_MODE>
+TOKEN:hu_given:("Ha "):<STEPS_TEXT_MODE>
+TOKEN:hu_when:("Majd "):<STEPS_TEXT_MODE>
+TOKEN:hu_then:("Akkor "):<STEPS_TEXT_MODE>
+TOKEN:hu_and:(."s "):<STEPS_TEXT_MODE>
+TOKEN:hu_but:("De "):<STEPS_TEXT_MODE>
+# ID - Indonesian
+TOKEN:id_feature:("Fitur"):<FEATURE_NARRATIVE>
+TOKEN:id_background:("Dasar")
+TOKEN:id_scenario:("Skenario")
+TOKEN:id_scenario_outline:("Skenario konsep")
+TOKEN:id_examples: ("Contoh"):<EXAMPLES_MODE>
+TOKEN:id_given:("Dengan "):<STEPS_TEXT_MODE>
+TOKEN:id_when:("Ketika "):<STEPS_TEXT_MODE>
+TOKEN:id_then:("Maka "):<STEPS_TEXT_MODE>
+TOKEN:id_and:("Dan "):<STEPS_TEXT_MODE>
+TOKEN:id_but:("Tapi "):<STEPS_TEXT_MODE>
+# IT - Italian
+TOKEN:it_feature:("Funzionalit".):<FEATURE_NARRATIVE>
+TOKEN:it_background:("Contesto")
+TOKEN:it_scenario:("Scenario")
+TOKEN:it_scenario_outline:("Schema dello scenario")
+TOKEN:it_examples: ("Esempi"):<EXAMPLES_MODE>
+TOKEN:it_given:("Dato "):<STEPS_TEXT_MODE>
+TOKEN:it_when:("Quando "):<STEPS_TEXT_MODE>
+TOKEN:it_then:("Allora "):<STEPS_TEXT_MODE>
+TOKEN:it_and:("E "):<STEPS_TEXT_MODE>
+TOKEN:it_but:("Ma "):<STEPS_TEXT_MODE>
+# LT - Lithuanian
+TOKEN:lt_feature:("Savyb".):<FEATURE_NARRATIVE>
+TOKEN:lt_background:("Kontekstas")
+TOKEN:lt_scenario:("Scenarijus")
+TOKEN:lt_scenario_outline:("Scenarijaus "."ablonas")
+TOKEN:lt_examples: ("Pavyzd"."iai"|"Scenarijai"|"Variantai"):<EXAMPLES_MODE>
+TOKEN:lt_given:("Duota "):<STEPS_TEXT_MODE>
+TOKEN:lt_when:("Kai "):<STEPS_TEXT_MODE>
+TOKEN:lt_then:("Tada "):<STEPS_TEXT_MODE>
+TOKEN:lt_and:("Ir "):<STEPS_TEXT_MODE>
+TOKEN:lt_but:("Bet "):<STEPS_TEXT_MODE>
+# LV - Latvian
+TOKEN:lv_feature:("Funkcionalit"."te"|"F".."a"):<FEATURE_NARRATIVE>
+TOKEN:lv_background:("Konteksts"|"Situ"."cija")
+TOKEN:lv_scenario:("Scen"."rijs")
+TOKEN:lv_scenario_outline:("Scen"."rijs p"."c parauga")
+TOKEN:lv_examples: ("Piem"."ri"|"Paraugs"):<EXAMPLES_MODE>
+TOKEN:lv_given:("Kad "):<STEPS_TEXT_MODE>
+TOKEN:lv_when:("Ja "):<STEPS_TEXT_MODE>
+TOKEN:lv_then:("Tad "):<STEPS_TEXT_MODE>
+TOKEN:lv_and:("Un "):<STEPS_TEXT_MODE>
+TOKEN:lv_but:("Bet "):<STEPS_TEXT_MODE>
+# NL - Dutch
+TOKEN:nl_feature:("Functionaliteit"):<FEATURE_NARRATIVE>
+TOKEN:nl_background:("Achtergrond")
+TOKEN:nl_scenario:("Scenario")
+TOKEN:nl_scenario_outline:("Abstract Scenario")
+TOKEN:nl_examples: ("Voorbeelden"):<EXAMPLES_MODE>
+TOKEN:nl_given:("Gegeven "|"Stel "):<STEPS_TEXT_MODE>
+TOKEN:nl_when:("Als "):<STEPS_TEXT_MODE>
+TOKEN:nl_then:("Dan "):<STEPS_TEXT_MODE>
+TOKEN:nl_and:("En "):<STEPS_TEXT_MODE>
+TOKEN:nl_but:("Maar "):<STEPS_TEXT_MODE>
+# NO - Norwegian
+TOKEN:no_feature:("Egenskap"):<FEATURE_NARRATIVE>
+TOKEN:no_background:("Bakgrunn")
+TOKEN:no_scenario:("Scenario")
+TOKEN:no_scenario_outline:("Abstrakt Scenario")
+TOKEN:no_examples: ("Eksempler"):<EXAMPLES_MODE>
+TOKEN:no_given:("Gitt "):<STEPS_TEXT_MODE>
+TOKEN:no_when:("Når "):<STEPS_TEXT_MODE>
+TOKEN:no_then:("Så "):<STEPS_TEXT_MODE>
+TOKEN:no_and:("Og "):<STEPS_TEXT_MODE>
+TOKEN:no_but:("Men "):<STEPS_TEXT_MODE>
+# PL - Polish
+TOKEN:pl_feature:("W"."a"."ciwo"..):<FEATURE_NARRATIVE>
+TOKEN:pl_background:("Za"."o"."enia")
+TOKEN:pl_scenario:("Scenariusz")
+TOKEN:pl_scenario_outline:("Szablon scenariusza")
+TOKEN:pl_examples: ("Przyk"."ady"):<EXAMPLES_MODE>
+TOKEN:pl_given:("Zak"."adaj"."c "):<STEPS_TEXT_MODE>
+TOKEN:pl_when:("Je"."eli "):<STEPS_TEXT_MODE>
+TOKEN:pl_then:("Wtedy "):<STEPS_TEXT_MODE>
+TOKEN:pl_and:("Oraz "):<STEPS_TEXT_MODE>
+TOKEN:pl_but:("Ale "):<STEPS_TEXT_MODE>
+# PT - Portuguese
+TOKEN:pt_feature:("Funcionalidade"):<FEATURE_NARRATIVE>
+TOKEN:pt_background:("Contexto")
+TOKEN:pt_scenario:("Cenario"| "Cen"."rio")
+TOKEN:pt_scenario_outline:("Esquema do Cenario"|"Esquema do Cen"."rio")
+TOKEN:pt_examples: ("Exemplos"):<EXAMPLES_MODE>
+TOKEN:pt_given:("Dado "):<STEPS_TEXT_MODE>
+TOKEN:pt_when:("Quando "):<STEPS_TEXT_MODE>
+TOKEN:pt_then:("Entao "|"Ent"."o "):<STEPS_TEXT_MODE>
+TOKEN:pt_and:("E "):<STEPS_TEXT_MODE>
+TOKEN:pt_but:("Mas "):<STEPS_TEXT_MODE>
+# RO - Romanian
+TOKEN:ro_feature:("Functionalitate"):<FEATURE_NARRATIVE>
+TOKEN:ro_background:("Conditii")
+TOKEN:ro_scenario:("Scenariu")
+TOKEN:ro_scenario_outline:("Scenariul de sablon")
+TOKEN:ro_examples: ("Exemplele"):<EXAMPLES_MODE>
+TOKEN:ro_given:("Daca "):<STEPS_TEXT_MODE>
+TOKEN:ro_when:("Cand "):<STEPS_TEXT_MODE>
+TOKEN:ro_then:("Atunci "):<STEPS_TEXT_MODE>
+TOKEN:ro_and:("Si "):<STEPS_TEXT_MODE>
+TOKEN:ro_but:("Dar "):<STEPS_TEXT_MODE>
+# SE - Swedish
+TOKEN:se_feature:("Egenskap"):<FEATURE_NARRATIVE>
+TOKEN:se_background:("Bakgrund")
+TOKEN:se_scenario:("Scenario")
+TOKEN:se_scenario_outline:("Abstrakt Scenario")
+TOKEN:se_examples: ("Exempel"):<EXAMPLES_MODE>
+TOKEN:se_given:("Givet "):<STEPS_TEXT_MODE>
+TOKEN:se_when:("När "):<STEPS_TEXT_MODE>
+TOKEN:se_then:("Så "):<STEPS_TEXT_MODE>
+TOKEN:se_and:("Och "):<STEPS_TEXT_MODE>
+TOKEN:se_but:("Men "):<STEPS_TEXT_MODE>
+# SK - Slovak
+TOKEN:sk_feature:("Po"."iadavka"):<FEATURE_NARRATIVE>
+TOKEN:sk_background:("Pozadie")
+TOKEN:sk_scenario:("Scen"."r")
+TOKEN:sk_scenario_outline:("N".."rt Scen"."ru")
+TOKEN:sk_examples: ("Pr"."klady"):<EXAMPLES_MODE>
+TOKEN:sk_given:("Pokia"." "):<STEPS_TEXT_MODE>
+TOKEN:sk_when:("Ke"." "):<STEPS_TEXT_MODE>
+TOKEN:sk_then:("Tak "):<STEPS_TEXT_MODE>
+TOKEN:sk_and:("A "):<STEPS_TEXT_MODE>
+TOKEN:sk_but:("Ale "):<STEPS_TEXT_MODE>
+# TR - Turkish
+TOKEN:tr_feature:(."zellik"):<FEATURE_NARRATIVE>
+TOKEN:tr_background:("Ge"."mi".)
+TOKEN:tr_scenario:("Senaryo")
+TOKEN:tr_scenario_outline:("Senaryo tasla"..)
+TOKEN:tr_examples: (."rnekler"):<EXAMPLES_MODE>
+TOKEN:tr_given:("Diyelim ki "):<STEPS_TEXT_MODE>
+TOKEN:tr_when:("E"."er ki "):<STEPS_TEXT_MODE>
+TOKEN:tr_then:("O zaman "):<STEPS_TEXT_MODE>
+TOKEN:tr_and:("Ve "):<STEPS_TEXT_MODE>
+TOKEN:tr_but:("Fakat "|"Ama "):<STEPS_TEXT_MODE>
+# VI - Vietnamese
+TOKEN:vi_feature:("T"."nh n"."ng"):<FEATURE_NARRATIVE>
+TOKEN:vi_background:("B"."i c"."nh")
+TOKEN:vi_scenario:("T"."nh hu"."ng|K"."ch b"."n")
+TOKEN:vi_scenario_outline:("Khung t"."nh hu"."ng|Khung k"."ch b"."n")
+TOKEN:vi_examples: ("D"." li"."u"):<EXAMPLES_MODE>
+TOKEN:vi_given:("Bi"."t "|"Cho "):<STEPS_TEXT_MODE>
+TOKEN:vi_when:("Khi "):<STEPS_TEXT_MODE>
+TOKEN:vi_then:("Th"." "):<STEPS_TEXT_MODE>
+TOKEN:vi_and:("V"." "):<STEPS_TEXT_MODE>
+TOKEN:vi_but:("Nh"."ng "):<STEPS_TEXT_MODE>
+
 TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
 TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
 TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
 TOKEN:newline: ('\n')
 
 # TEXT -------------------------------------------------------------------------
-# Text
-<TEXT_MODE> {
+<FEATURE_NARRATIVE> {
+    TOKEN:colon:(':')
+    TOKEN:newline:('\n'):<CHECK_DOUBLE_NL>
+    TOKEN:whitespace:( [" " "\t"]+ )
+    TOKEN:comment:('#' [^ '\n' '\r']*)
+    TOKEN:word:( [^ ':' '\n' '\r' '\t' '#']* )
+}
+# FORCE DOUBLE NL AFTER FEATURE NARRATIVE
+<CHECK_DOUBLE_NL> {
     TOKEN:newline:('\n'):<DEFAULT>
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
+    TOKEN:word:([^'\n']*):<FEATURE_NARRATIVE>
 }
-
-# French Text
-<FR_TEXT_MODE> {
-    TOKEN:newline:('\n'):<FRENCH>
+# Examples
+<EXAMPLES_MODE> {
+    TOKEN:colon:(':'):<EXAMPLES_TEXT_MODE>
+}
+<EXAMPLES_TEXT_MODE> {
+    TOKEN:row_delimiter:('|'):<ROW_MODE>
+    TOKEN:newline:('\n')
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
+    TOKEN:word:([^'|' '#']*)
 }
-
-# German Text
-<DE_TEXT_MODE> {
-    TOKEN:newline:('\n'):<GERMAN>
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
-}
-# Portuguese Text
-<PT_TEXT_MODE> {
-    TOKEN:newline:('\n'):<PORTUGUESE>
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
-}
-# Spanish Text
-<ES_TEXT_MODE> {
-    TOKEN:newline:('\n'):<SPANISH>
+# Text
+<TEXT_MODE> {
+    TOKEN:newline:('\n'):<DEFAULT>
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
     TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
@@ -216,49 +326,6 @@ TOKEN:newline: ('\n')
     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
 }
 
-# Text inside Steps
-<FR_STEPS_TEXT_MODE> {
-    TOKEN:newline:('\n'):<FRENCH>
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:variable:('<'[^ '>']* '>')
-    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
-}
-
-# Text inside Steps
-<DE_STEPS_TEXT_MODE> {
-    TOKEN:newline:('\n'):<GERMAN>
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:variable:('<'[^ '>']* '>')
-    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
-}
-
-# Text inside Steps
-<PT_STEPS_TEXT_MODE> {
-    TOKEN:newline:('\n'):<PORTUGUESE>
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:variable:('<'[^ '>']* '>')
-    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
-}
-
-# Text inside Steps
-<ES_STEPS_TEXT_MODE> {
-    TOKEN:newline:('\n'):<SPANISH>
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:variable:('<'[^ '>']* '>')
-    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
-}
 # PYSTRING ---------------------------------------------------------------------
 # Multiline String
 <PYSTRING_MODE> {
@@ -269,77 +336,10 @@ TOKEN:newline: ('\n')
     TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
 }
 
-<FR_PYSTRING_MODE> {
-    TOKEN:end_pystring:('\"\"\"'):<FRENCH>
-    TOKEN:newline: ('\n')
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:variable:('<'[^ '>']* '>')
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
-}
-
-<DE_PYSTRING_MODE> {
-    TOKEN:end_pystring:('\"\"\"'):<GERMAN>
-    TOKEN:newline: ('\n')
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:variable:('<'[^ '>']* '>')
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
-}
-
-<PT_PYSTRING_MODE> {
-    TOKEN:end_pystring:('\"\"\"'):<PORTUGUESE>
-    TOKEN:newline: ('\n')
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:variable:('<'[^ '>']* '>')
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
-}
-
-<ES_PYSTRING_MODE> {
-    TOKEN:end_pystring:('\"\"\"'):<SPANISH>
-    TOKEN:newline: ('\n')
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:variable:('<'[^ '>']* '>')
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
-}
 # ROW --------------------------------------------------------------------------
 # Row
 <ROW_MODE> {
     TOKEN:end: ('\n'):<DEFAULT>
-    TOKEN:row_delimiter:("|")
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
-}
-<FR_ROW_MODE> {
-    TOKEN:end: ('\n'):<FRENCH>
-    TOKEN:row_delimiter:("|")
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
-}
-<DE_ROW_MODE> {
-    TOKEN:end: ('\n'):<GERMAN>
-    TOKEN:row_delimiter:("|")
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
-}
-<PT_ROW_MODE> {
-    TOKEN:end: ('\n'):<PORTUGUESE>
-    TOKEN:row_delimiter:("|")
-    TOKEN:whitespace:( [" " "\t"]+ )
-    TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
-    TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
-}
-<ES_ROW_MODE> {
-    TOKEN:end: ('\n'):<SPANISH>
     TOKEN:row_delimiter:("|")
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
@@ -356,44 +356,25 @@ S = (Feature)*;
 Feature = FeatureDefinition BackgroundPart ScenarioPart;
 BackgroundPart = (Background)*;
 ScenarioPart = (Scenario)*;
-FeatureDefinition = FeatureIdentifier <colon> [FeatureDescription] (FeatureBlock)*;
-FeatureIdentifier = <feature>;
+FeatureDefinition = FeatureIdentifier <colon> [FeatureDescription];
 FeatureDescription = Text;
-# Feature Block
-FeatureBlock = BusinessValueDefinition | RoleDefinition | SomeActionDefinition;
-# Business Value
-BusinessValueDefinition = <business_value> Text;
-# Role
-RoleDefinition = <role> Text;
-# Some Action
-SomeActionDefinition = <some_action> Text;
 # Background
 Background = BackgroundIdentifier <colon> [Description] [BackgroundBlock];
-BackgroundIdentifier = <background>;
+
 # a Background has only Given Statments
-BackgroundBlock = GivenStatement;
+BackgroundBlock = (Statements)*;
 # Scenario
 Scenario = BasicScenario | TableScenario;
-BasicScenario = BasicScenarioIdentifier <colon> [ScenarioDescription] ScenarioBlock;
-BasicScenarioIdentifier = <scenario>;
-TableScenario = TableScenarioIdentifier <colon> [ScenarioDescription] ScenarioBlock ExamplesBlocks;
-TableScenarioIdentifier = <scenario_outline>;
+BasicScenario = ScenarioIdentifier <colon> [ScenarioDescription] ScenarioBlock;
+TableScenario = ScenarioOutlineIdentifier <colon> [ScenarioDescription] ScenarioBlock ExamplesBlocks;
 ScenarioDescription = Text;
 # Scenario Block
 #ScenarioBlock = [GivenStatement] [WhenStatement] [ThenStatement];
 # freedom of choice
 ScenarioBlock = (Statements)*;
-Statements = GivenStatement | WhenStatement | ThenStatement | InfiniteStatement;
+Statements = StatementIdentfier Statement;
+StatementIdentfier = (<infinite> | GivenIdentifier | WhenIdentifier |ThenIdentifier | AndIdentifier | ButIdentifier );
 # Given
-GivenStatement = <given> Statement (AndStatement|ButStatement|InfiniteStatement)*;
-# When
-WhenStatement = <when> Statement (AndStatement|ButStatement|InfiniteStatement)*;
-# Then
-ThenStatement = <then> Statement (AndStatement|ButStatement|InfiniteStatement)*;
-# And
-AndStatement = <and> Statement;
-ButStatement = <but> Statement;
-InfiniteStatement = <infinite> Statement;
 # Statement is more or less Text followed by Extras if necessary
 Statement = Text [Extras];
 #Extras
@@ -401,7 +382,6 @@ Extras = PyString | TableBlock;
 # Examples and Tables
 ExamplesBlocks = ExamplesBlock (ExamplesBlock)*;
 ExamplesBlock = ExamplesIdentifier <colon> [Description] TableBlock;
-ExamplesIdentifier = <examples>;
 Description = Text;
 TableBlock = TableHeader TableRows;
 TableHeader = Row;
@@ -412,15 +392,253 @@ PyString = <pystring> Text <end_pystring>;
 # Text
 Text = (Word | <string> | <variable>) (Text)*;
 Word = <word> | <number> ;
-#
+################################################################################
+FeatureIdentifier = <en_feature>
+                  |<cs_feature>
+                  |<da_feature>
+                  |<de_feature>
+                  |<et_feature>
+                  |<es_feature>
+                  |<fi_feature>
+                  |<fr_feature>
+                  |<hr_feature>
+                  |<hu_feature>
+                  |<id_feature>
+                  |<it_feature>
+                  |<lt_feature>
+                  |<lv_feature>
+                  |<nl_feature>
+                  |<no_feature>
+                  |<pt_feature>
+                  |<pl_feature>
+                  |<ro_feature>
+                  |<se_feature>
+                  |<sk_feature>
+                  |<tr_feature>
+                  |<vi_feature>
+                  ;
+BackgroundIdentifier = <en_background>
+                  |<cs_background>
+                  |<da_background>
+                  |<de_background>
+                  |<et_background>
+                  |<es_background>
+                  |<fi_background>
+                  |<fr_background>
+                  |<hr_background>
+                  |<hu_background>
+                  |<id_background>
+                  |<it_background>
+                  |<lt_background>
+                  |<lv_background>
+                  |<nl_background>
+                  |<no_background>
+                  |<pt_background>
+                  |<pl_background>
+                  |<ro_background>
+                  |<se_background>
+                  |<sk_background>
+                  |<tr_background>
+                  |<vi_background>
+                  ;
+ScenarioIdentifier = <en_scenario>
+                  |<cs_scenario>
+                  |<da_scenario>
+                  |<de_scenario>
+                  |<et_scenario>
+                  |<es_scenario>
+                  |<fi_scenario>
+                  |<fr_scenario>
+                  |<hr_scenario>
+                  |<hu_scenario>
+                  |<id_scenario>
+                  |<it_scenario>
+                  |<lt_scenario>
+                  |<lv_scenario>
+                  |<nl_scenario>
+                  |<no_scenario>
+                  |<pt_scenario>
+                  |<pl_scenario>
+                  |<ro_scenario>
+                  |<se_scenario>
+                  |<sk_scenario>
+                  |<tr_scenario>
+                  |<vi_scenario>
+                  ;
+ScenarioOutlineIdentifier = <en_scenario_outline>
+                  |<cs_scenario_outline>
+                  |<da_scenario_outline>
+                  |<de_scenario_outline>
+                  |<et_scenario_outline>
+                  |<es_scenario_outline>
+                  |<fi_scenario_outline>
+                  |<fr_scenario_outline>
+                  |<hr_scenario_outline>
+                  |<hu_scenario_outline>
+                  |<id_scenario_outline>
+                  |<it_scenario_outline>
+                  |<lt_scenario_outline>
+                  |<lv_scenario_outline>
+                  |<nl_scenario_outline>
+                  |<no_scenario_outline>
+                  |<pt_scenario_outline>
+                  |<pl_scenario_outline>
+                  |<ro_scenario_outline>
+                  |<se_scenario_outline>
+                  |<sk_scenario_outline>
+                  |<tr_scenario_outline>
+                  |<vi_scenario_outline>
+                  ;
+GivenIdentifier = <en_given>
+                  |<cs_given>
+                  |<da_given>
+                  |<de_given>
+                  |<et_given>
+                  |<es_given>
+                  |<fi_given>
+                  |<fr_given>
+                  |<hr_given>
+                  |<hu_given>
+                  |<id_given>
+                  |<it_given>
+                  |<lt_given>
+                  |<lv_given>
+                  |<nl_given>
+                  |<no_given>
+                  |<pt_given>
+                  |<pl_given>
+                  |<ro_given>
+                  |<se_given>
+                  |<sk_given>
+                  |<tr_given>
+                  |<vi_given>
+                  ;
+AndIdentifier = <en_and>
+                  |<cs_and>
+                  |<da_and>
+                  |<de_and>
+                  |<et_and>
+                  |<es_and>
+                  |<fi_and>
+                  |<fr_and>
+                  |<hr_and>
+                  |<hu_and>
+                  |<id_and>
+                  |<it_and>
+                  |<lt_and>
+                  |<lv_and>
+                  |<nl_and>
+                  |<no_and>
+                  |<pt_and>
+                  |<pl_and>
+                  |<ro_and>
+                  |<se_and>
+                  |<sk_and>
+                  |<tr_and>
+                  |<vi_and>
+                  ;
+WhenIdentifier = <en_when>
+                  |<cs_when>
+                  |<da_when>
+                  |<de_when>
+                  |<et_when>
+                  |<es_when>
+                  |<fi_when>
+                  |<fr_when>
+                  |<hr_when>
+                  |<hu_when>
+                  |<id_when>
+                  |<it_when>
+                  |<lt_when>
+                  |<lv_when>
+                  |<nl_when>
+                  |<no_when>
+                  |<pt_when>
+                  |<pl_when>
+                  |<ro_when>
+                  |<se_when>
+                  |<sk_when>
+                  |<tr_when>
+                  |<vi_when>
+                  ;
+ThenIdentifier = <en_then>
+                  |<cs_then>
+                  |<da_then>
+                  |<de_then>
+                  |<et_then>
+                  |<es_then>
+                  |<fi_then>
+                  |<fr_then>
+                  |<hr_then>
+                  |<hu_then>
+                  |<id_then>
+                  |<it_then>
+                  |<lt_then>
+                  |<lv_then>
+                  |<nl_then>
+                  |<no_then>
+                  |<pt_then>
+                  |<pl_then>
+                  |<ro_then>
+                  |<se_then>
+                  |<sk_then>
+                  |<tr_then>
+                  |<vi_then>
+                  ;
+ButIdentifier = <en_but>
+                  |<cs_but>
+                  |<da_but>
+                  |<de_but>
+                  |<et_but>
+                  |<es_but>
+                  |<fi_but>
+                  |<fr_but>
+                  |<hr_but>
+                  |<hu_but>
+                  |<id_but>
+                  |<it_but>
+                  |<lt_but>
+                  |<lv_but>
+                  |<nl_but>
+                  |<no_but>
+                  |<pt_but>
+                  |<pl_but>
+                  |<ro_but>
+                  |<se_but>
+                  |<sk_but>
+                  |<tr_but>
+                  |<vi_but>
+                  ;
+ExamplesIdentifier = <en_examples>
+                  |<cs_examples>
+                  |<da_examples>
+                  |<de_examples>
+                  |<et_examples>
+                  |<es_examples>
+                  |<fi_examples>
+                  |<fr_examples>
+                  |<hr_examples>
+                  |<hu_examples>
+                  |<id_examples>
+                  |<it_examples>
+                  |<lt_examples>
+                  |<lv_examples>
+                  |<nl_examples>
+                  |<no_examples>
+                  |<pt_examples>
+                  |<pl_examples>
+                  |<ro_examples>
+                  |<se_examples>
+                  |<sk_examples>
+                  |<tr_examples>
+                  |<vi_examples>
+                  ;
+ 
+################################################################################
 SKIP:whitespace
 SKIP:comment
 SKIP:newline
 SKIP:tag
-SKIP:language_fr
-SKIP:language_de
-SKIP:language_pt
-SKIP:language_es
 # ------------------------------------------------------------------------------
 #
 COLOR:comment: {
@@ -432,66 +650,26 @@ COLOR:tag: {
     foreground_color:"#CC3333";
     font_type: "bold";
 }
-COLOR:language_fr: {
-    default_coloring: "identifier";
-    foreground_color:"#8F8F8F";
-}
-COLOR:language_de: {
-    default_coloring: "identifier";
-    foreground_color:"#8F8F8F";
-}
-COLOR:language_pt: {
-    default_coloring: "identifier";
-    foreground_color:"#8F8F8F";
-}
-COLOR:language_es: {
-    default_coloring: "identifier";
-    foreground_color:"#8F8F8F";
-}
 #
 # COLOR FOR FEATURE ------------------------------------------------------------
 #
-COLOR:feature: {
+COLOR:FeatureIdentifier: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
-    font_type: "bold italic";
-}
-COLOR:business_value: {
-    default_coloring: "identifier";
-    foreground_color:"#3366CC";
-    font_type: "bold italic";
-}
-COLOR:role: {
-    default_coloring: "identifier";
-    foreground_color:"#3366CC";
-    font_type: "bold italic";
-}
-COLOR:some_action: {
-    default_coloring: "identifier";
-    foreground_color:"#3366CC";
     font_type: "bold italic";
 }
 COLOR:FeatureDescription: {
     font_type: "bold";
 }
-COLOR:BusinessValueDefinition: {
-    font_type: "bold";
-}
-COLOR:RoleDefinition: {
-    font_type: "bold";
-}
-COLOR:SomeActionDefinition: {
-    font_type: "bold";
-}
 #
 # COLOR FOR SCENARIO -----------------------------------------------------------
 #
-COLOR:scenario: {
+COLOR:ScenarioIdentifier: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
     font_type: "bold italic";
 }
-COLOR:scenario_outline: {
+COLOR:ScenarioOutlineIdentifier: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
     font_type: "bold italic";
@@ -504,7 +682,7 @@ COLOR:TableHeader: {
     foreground_color:"#336600";
     font_type: "bold";
 }
-COLOR:examples: {
+COLOR:ExamplesIdentifier: {
     default_coloring: "identifier";
     foreground_color: "#336600";
     font_type: "bold italic";
@@ -512,7 +690,7 @@ COLOR:examples: {
 #
 # COLOR FOR BACKGROUND ---------------------------------------------------------
 #
-COLOR:background: {
+COLOR:BackgroundIdentifier: {
     default_coloring: "identifier";
     foreground_color: "#336600";
     font_type: "bold italic";
@@ -527,27 +705,23 @@ COLOR:PyString: {
 #
 # COLOR FOR GIVEN/WHEN/THEN & AND/BUT ----------------------------------------------
 #
-COLOR:given: {
+COLOR:GivenIdentifier: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
 }
-COLOR:when: {
+COLOR:WhenIdentifier: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
 }
-COLOR:then: {
+COLOR:ThenIdentifier: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
 }
-COLOR:and: {
+COLOR:AndIdentifier: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
 }
-COLOR:but: {
-    default_coloring: "identifier";
-    foreground_color: "#3366CC";
-}
-COLOR:infinite: {
+COLOR:ButIdentifier: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
 }
@@ -579,21 +753,21 @@ COMPLETE "\':\'"
 
 # COMPLETION -------------------------------------------------------------------
 # code completion
-COMPLETION:given, when, then, and, scenario, feature, whitespace, newline: {
-    text1:"Feature:";
-    text2:"In order to";
-    text3:"As a";
-    text4:"I want to";
-    text5:"Scenario:";
-    text6:"Given";
-    text7:"And";
-    text8:"When";
-    text9:"Then";
-    text10:"But";
-    text11:"Examples:";
-    text12:"Background:";
-    text13:"Scenario Outline:";
-}
+#COMPLETION:given, when, then, and, scenario, feature, whitespace, newline: {
+#    text1:"Feature:";
+#    text2:"In order to";
+#    text3:"As a";
+#    text4:"I want to";
+#    text5:"Scenario:";
+#    text6:"Given";
+#    text7:"And";
+#    text8:"When";
+#    text9:"Then";
+#    text10:"But";
+#    text11:"Examples:";
+#    text12:"Background:";
+#    text13:"Scenario Outline:";
+#}
 
 # BRACE ------------------------------------------------------------------------
 # brace matching

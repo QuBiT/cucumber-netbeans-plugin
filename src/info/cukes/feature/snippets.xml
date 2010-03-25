@@ -3,9 +3,9 @@
 <codetemplates>
     <codetemplate abbreviation="fb" xml:space="preserve">
         <code>Feature:
-            In order to BUSINESS VALUE
-            As a ROLE
-            I want to ACTION
+            In order to ${1 default="business_value"}
+            As a ${2 default="role"}
+            I want to ${3 default="action"}
         </code>
         <description>Code template for keyword "Feature" and the description block.</description>
     </codetemplate>
@@ -15,9 +15,9 @@
     </codetemplate>
     <codetemplate abbreviation="sb" xml:space="preserve">
         <code>Scenario:
-            Given a
-            When b
-            Then c
+            Given ${1 default="precondition"}
+            When ${2 default="condition"}
+            Then ${3 default="postcondition"}
         </code>
         <description>Code template for keyword "Scenario" and the scenario block.</description>
     </codetemplate>
@@ -27,13 +27,13 @@
     </codetemplate>
     <codetemplate abbreviation="sob" xml:space="preserve">
         <code>Scenario Outline:
-            Given a
-            When b
-            Then c
+            Given ${1 default="precondition"}
+            When ${2 default="condition"}
+            Then ${3 default="postcondition"}
 
             Examples:
-            | input | result |
-            |   a   |    c   |
+            | ${4 default="input"}  | ${5 default="result"} |
+            | ${6 default="value1"} | ${7 default="value2"} |
         </code>
         <description>Code template for keyword "Scenario" and the scenario block.</description>
     </codetemplate>
@@ -67,44 +67,44 @@
     </codetemplate>
     <codetemplate abbreviation="eb" xml:space="preserve">
         <code>Examples:
-            | input | result |
-            |   a   |    c   |
+            | ${1 default="input"}  | ${2 default="result"} |
+            | ${3 default="value1"} | ${4 default="value2"} |
         </code>
         <description>Code template for keyword "Examples" and the examples block</description>
     </codetemplate>
     <codetemplate abbreviation="table" xml:space="preserve">
         <code>
-            | input | result |
-            |   a   |    c   |
+            | ${1 default="input"}  | ${2 default="result"} |
+            | ${3 default="value1"} | ${4 default="value2"} |
         </code>
         <description>Code template for keyword "Examples" and the examples block</description>
     </codetemplate>
     <codetemplate abbreviation="on" xml:space="preserve">
-        <code>am on</code>
+        <code>am on ${1 default="page_name"}</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="gt" xml:space="preserve">
-        <code>go to</code>
+        <code>go to ${1 default="page_name"}</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="p" xml:space="preserve">
-        <code>press ""</code>
+        <code>press "${1 default="button"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="f" xml:space="preserve">
-        <code>follow ""</code>
+        <code>follow "${1 default="link"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="fw" xml:space="preserve">
-        <code>follow "" within ""</code>
+        <code>follow "${1 default="link"}" within "${2 default="scope"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="fiw" xml:space="preserve">
-        <code>fill in "" with ""</code>
+        <code>fill in "${1 default="field"}" with "${2 default="value"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="fif" xml:space="preserve">
-        <code>fill in "" for ""</code>
+        <code>fill in "${1 default="value"}" for "${2 default="field"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="ftf" xml:space="preserve">
@@ -112,83 +112,83 @@
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="sf" xml:space="preserve">
-        <code>select "" from ""</code>
+        <code>select "${1 default="value"}" from "${2 default="list"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="sadt" xml:space="preserve">
-        <code>select "" as the date and time</code>
+        <code>select "${1 default="value"}" as the date and time</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="saxdt" xml:space="preserve">
-        <code>select "" as the "" date and time</code>
+        <code>select "${1 default="value"}" as the "${2 default="default"}" date and time</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="sat" xml:space="preserve">
-        <code>select "" as the time</code>
+        <code>select "${1 default="value"}" as the time</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="saxt" xml:space="preserve">
-        <code>select "" as the "" time</code>
+        <code>select "${1 default="value"}" as the "${2 default="default"}" time</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="sad" xml:space="preserve">
-        <code>select "" as the date</code>
+        <code>select "${1 default="value"}" as the date</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="saxd" xml:space="preserve">
-        <code>select "" as the "" date</code>
+        <code>select "${1 default="value"}" as the "${2 default="default"}" date</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="c" xml:space="preserve">
-        <code>check </code>
+        <code>check "${1 default="value"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="uc" xml:space="preserve">
-        <code>uncheck </code>
+        <code>uncheck "${1 default="value"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="co" xml:space="preserve">
-        <code>choose </code>
+        <code>choose "${1 default="value"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="attach" xml:space="preserve">
-        <code>attach the file "" to ""</code>
+        <code>attach the file "${1 default="path"}" to "${2 default="field"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="ss" xml:space="preserve">
-        <code>should see ""</code>
+        <code>should see "${1 default="text"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="ssw" xml:space="preserve">
-        <code>should see "" within ""</code>
+        <code>should see "${1 default="text"}" within "${2 default="scope"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="sns" xml:space="preserve">
-        <code>should not see ""</code>
+        <code>should not see "${1 default="text"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="snsw" xml:space="preserve">
-        <code>should not see "" within ""</code>
+        <code>should not see "${1 default="text"}" within "${2 default="scope"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="fsc" xml:space="preserve">
-        <code>the "" field should contain ""</code>
+        <code>the "${1 default="field"}" field should contain "${2 default="value"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="fsnc" xml:space="preserve">
-        <code>the "" field should not contain ""</code>
+        <code>the "${1 default="field"}" field should not contain "${2 default="value"}"</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="csc" xml:space="preserve">
-        <code>the "" checkbox should be checked</code>
+        <code>the "${1 default="label"}" checkbox should be checked</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="csnc" xml:space="preserve">
-        <code>the "" checkbox should not be checked</code>
+        <code>the "${1 default="label"}" checkbox should not be checked</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="sbon" xml:space="preserve">
-        <code>should be on </code>
+        <code>should be on ${1 default="page_name"}</code>
         <description>Code template for webrat steps</description>
     </codetemplate>
     <codetemplate abbreviation="query" xml:space="preserve">

@@ -74,26 +74,112 @@
             <file name="file.feature" url="templates/file.feature">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
                 <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="1"/>
             </file>
-            <file name="FeatureTemplate.feature" url="templates/FeatureTemplate.feature">
+            <file name="sample.feature" url="templates/sample.feature">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
                 <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="2"/>
             </file>
-            <file name="german.feature" url="templates/german.feature">
+            <file name="cz.feature" url="templates/i18n/cz.feature">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
                 <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="3"/>
             </file>
-            <file name="french.feature" url="templates/french.feature">
+            <file name="da.feature" url="templates/i18n/da.feature">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
                 <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="4"/>
             </file>
-            <file name="portuguese.feature" url="templates/portuguese.feature">
+            <file name="de.feature" url="templates/i18n/de.feature">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
                 <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="5"/>
             </file>
-            <file name="spanish.feature" url="templates/spanish.feature">
+            <file name="en.feature" url="templates/i18n/en.feature">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
                 <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="6"/>
+            </file>
+            <file name="es.feature" url="templates/i18n/es.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="7"/>
+            </file>
+            <file name="et.feature" url="templates/i18n/et.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="8"/>
+            </file>
+            <file name="fi.feature" url="templates/i18n/fi.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="9"/>
+            </file>
+            <file name="fr.feature" url="templates/i18n/fr.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="10"/>
+            </file>
+            <file name="hu.feature" url="templates/i18n/hu.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="11"/>
+            </file>
+            <file name="id.feature" url="templates/i18n/id.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="12"/>
+            </file>
+            <file name="it.feature" url="templates/i18n/it.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="13"/>
+            </file>
+            <file name="lt.feature" url="templates/i18n/lt.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="14"/>
+            </file>
+            <file name="lv.feature" url="templates/i18n/lv.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="15"/>
+            </file>
+            <file name="no.feature" url="templates/i18n/no.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="16"/>
+            </file>
+            <file name="pl.feature" url="templates/i18n/pl.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="17"/>
+            </file>
+            <file name="pt.feature" url="templates/i18n/pt.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="18"/>
+            </file>
+            <file name="ro.feature" url="templates/i18n/ro.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="19"/>
+            </file>
+            <file name="se.feature" url="templates/i18n/se.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="20"/>
+            </file>
+            <file name="sk.feature" url="templates/i18n/sk.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="21"/>
+            </file>
+            <file name="tr.feature" url="templates/i18n/tr.feature">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="template" boolvalue="true"/>
+                <attr name="position" intvalue="22"/>
             </file>
         </folder>
     </folder>

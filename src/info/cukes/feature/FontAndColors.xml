@@ -3,51 +3,25 @@
     "-//NetBeans//DTD Editor Fonts and Colors settings 1.1//EN"
     "http://www.netbeans.org/dtds/EditorFontsColors-1_1.dtd">
 <fontscolors>
-<!--    <fontcolor name="feature" default="identifier" foreColor="#3366CC">
-        <font style="bold+italic"/>
-    </fontcolor>
-    <fontcolor name="business_value" default="identifier" foreColor="#3366CC">
-        <font style="bold+italic"/>
-    </fontcolor>
-    <fontcolor name="role" default="identifier" foreColor="#3366CC">
-        <font style="bold+italic"/>
-    </fontcolor>
-    <fontcolor name="some_action" default="identifier" foreColor="#3366CC">
-        <font style="bold+italic"/>
-    </fontcolor>
-    <fontcolor name="background" default="identifier" foreColor="#336600">
-        <font style="bold+italic"/>
-    </fontcolor>
-    <fontcolor name="scenario" default="identifier" foreColor="#3366CC">
-        <font style="bold+italic"/>
-    </fontcolor>
-    <fontcolor name="scenario outline" default="identifier" foreColor="#3366CC">
-        <font style="bold+italic"/>
-    </fontcolor>
-    <fontcolor name="examples" default="identifier" foreColor="#336600">
-        <font style="bold+italic"/>
-    </fontcolor>
-    <fontcolor name="TableHeader" default="identifier" foreColor="#336600">
-        <font style="bold"/>
-    </fontcolor>
-    <fontcolor name="given" default="identifier" foreColor="#3366CC"/>
-    <fontcolor name="when" default="identifier" foreColor="#3366CC"/>
-    <fontcolor name="then" default="identifier" foreColor="#3366CC"/>
-    <fontcolor name="and" default="identifier" foreColor="#3366CC"/>
-    <fontcolor name="but" default="identifier" foreColor="#3366CC"/>
-    <fontcolor name="number" default="string" foreColor="#336600"/>
-    <fontcolor name="variable" default="string" foreColor="#336600"/>
-    <fontcolor name="string" default="string" foreColor="#FF9900"/>
-    <fontcolor name="comment" default="identifier" foreColor="#8F8F8F"/>
-    <fontcolor name="PyString" default="identifier" foreColor="#663333"/>
-    <fontcolor name="tag" default="identifier" foreColor="#CC3333">
-        <font style="bold"/>
-    </fontcolor>
-    <fontcolor name="language_de" default="identifier" foreColor="#8F8F8F"/>
-    <fontcolor name="language_es" default="identifier" foreColor="#8F8F8F"/>
-    <fontcolor name="language_fr" default="identifier" foreColor="#8F8F8F"/>
-    <fontcolor name="language_pt" default="identifier" foreColor="#8F8F8F"/>
-    -->
+    <fontcolor name="FeatureIdentifier" default="identifier" />
+    <fontcolor name="FeatureDescription" default="identifier"/>
+    <fontcolor name="BackgroundIdentifier" default="identifier"/>
+    <fontcolor name="ScenarioIdentifier" default="identifier"/>
+    <fontcolor name="ScenarioOutlineIdentifier" default="identifier"/>
+    <fontcolor name="ScenarioDescription" default="identifier"/>
+    <fontcolor name="ExamplesIdentifier" default="identifier"/>
+    <fontcolor name="TableHeader" default="identifier"/>
+    <fontcolor name="GivenIdentifier" default="identifier"/>
+    <fontcolor name="WhenIdentifier" default="identifier"/>
+    <fontcolor name="ThenIdentifier" default="identifier"/>
+    <fontcolor name="AndIdentifier" default="identifier"/>
+    <fontcolor name="ButIdentifier" default="identifier"/>
+    <fontcolor name="number" default="string"/>
+    <fontcolor name="variable" default="string"/>
+    <fontcolor name="string" default="string"/>
+    <fontcolor name="comment" default="comment"/>
+    <fontcolor name="PyString" default="identifier"/>
+    <fontcolor name="tag" default="identifier"/>
 </fontscolors>
 <!--
 <fontcolor name="role" default="identifier" bgColor="FFFFFFFF"/>

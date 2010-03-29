@@ -11,8 +11,8 @@ public class Helper {
     private static String description = "Description";
     private static String basicScenario = "BasicScenario";
     private static String tableScenario = "TableScenario";
-    private static String basicScenarioIdentifier = "BasicScenarioIdentifier";
-    private static String tableScenarioIdentifier = "TableScenarioIdentifier";
+    private static String basicScenarioIdentifier = "ScenarioIdentifier";
+    private static String tableScenarioIdentifier = "ScenarioOutlineIdentifier";
     private static String scenarioDescription = "ScenarioDescription";
     private static String examplesIdentifier = "ExamplesIdentifier";
 
@@ -98,7 +98,7 @@ public class Helper {
     public static String getResultString(ASTNode head, ASTNode body, String error_case) {
         if (head != null) {
             if (body != null) {
-                return head.getAsText().trim() + ": " + body.getAsText().trim();
+                return head.getAsText().trim() + ": " + body.getAsText().split("\n")[0].trim();
             } else {
                 return head.getAsText().trim();
             }

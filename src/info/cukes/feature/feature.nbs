@@ -1,8 +1,10 @@
-# NBS Template for FEATURE
+# NBS Language File for Gherkin (Feature)
 #
 # Author: Roland Guem
+# I18N-Support: Aslak Hellesoy
 #
-# HINT: Package name is a homage to Cucumber Developers
+# HINT: THE "feature.nbs" FILE IS AUTOGENRATED BY THE RAKE TASK "i18n_generate"
+# Generated on: Tue Mar 30 14:38:12 +0200 2010
 #
 # TOKEN DEFINTIONS -------------------------------------------------------------
 # COMMENT
@@ -32,7 +34,7 @@ TOKEN:examples:("\uc608" | "\u4f8b\u5b50" | "\u4f8b" | "\u30b5\u30f3\u30d7\u30eb
 
 TOKEN:step:("\ud558\uc9c0\ub9cc" | "\uc870\uac74" | "\uba3c\uc800" | "\ub9cc\uc77c" | "\ub9cc\uc57d" | "\ub2e8" | "\uadf8\ub9ac\uace0" | "\uadf8\ub7ec\uba74" | "\u90a3\u9ebc" | "\u90a3\u4e48" | "\u800c\u4e14" | "\u7576" | "\u5f53" | "\u524d\u63d0" | "\u5047\u8a2d" | "\u5047\u5982" | "\u4f46\u662f" | "\u4f46\u3057" | "\u4e26\u4e14" | "\u3082\u3057" | "\u306a\u3089\u3070" | "\u305f\u3060\u3057" | "\u3057\u304b\u3057" | "\u304b\u3064" | "\u0648 " | "\u0645\u062a\u0649 " | "\u0644\u0643\u0646 " | "\u0639\u0646\u062f\u0645\u0627 " | "\u062b\u0645 " | "\u0628\u0641\u0631\u0636 " | "\u0627\u0630\u0627\u064b " | "\u05db\u05d0\u05e9\u05e8 " | "\u05d5\u05d2\u05dd " | "\u05d1\u05d4\u05d9\u05e0\u05ea\u05df " | "\u05d0\u05d6\u05d9 " | "\u05d0\u05d6 " | "\u05d0\u05d1\u05dc " | "\u0423\u043d\u0434\u0430 " | "\u0422\u043e " | "\u041e\u043d\u0434\u0430 " | "\u041d\u043e " | "\u041b\u0435\u043a\u0438\u043d " | "\u041a\u043e\u0433\u0430\u0442\u043e " | "\u041a\u0430\u0434\u0430 " | "\u041a\u0430\u0434 " | "\u041a \u0442\u043e\u043c\u0443 \u0436\u0435 " | "\u0418 " | "\u0417\u0430\u0434\u0430\u0442\u043e " | "\u0417\u0430\u0434\u0430\u0442\u0438 " | "\u0417\u0430\u0434\u0430\u0442\u0435 " | "\u0415\u0441\u043b\u0438 " | "\u0414\u043e\u043f\u0443\u0441\u0442\u0438\u043c " | "\u0414\u0430\u0434\u0435\u043d\u043e " | "\u0412\u0430 " | "\u0411\u0438\u0440\u043e\u043a " | "\u0410\u043c\u043c\u043e " | "\u0410\u043b\u0438 " | "\u0410\u0433\u0430\u0440 " | "\u0410 " | "\u0218i " | "\u00c9s " | "anrhegedig a " | "Zatati " | "Zak\u0142adaj\u0105c " | "Zadato " | "Zadate " | "Zadano " | "Zadani " | "Zadan " | "Youse know when youse got " | "Youse know like when " | "Yna " | "Ya know how " | "Ya gotta " | "Y " | "Wun " | "Wtedy " | "When y\'all " | "When " | "Wenn " | "WEN " | "V\u00e0 " | "Ve " | "Und " | "Un " | "Th\u00ec " | "Then y\'all " | "Then " | "Tapi " | "Tak " | "Tada " | "Tad " | "S\u00e5 " | "Stel " | "Soit " | "Siis " | "Si " | "Quando " | "Quand " | "Quan " | "Pryd " | "Pokud " | "Pokia\u013e " | "Per\u00f2 " | "Pero " | "Pak " | "Oraz " | "Onda " | "Ond " | "Oletetaan " | "Og " | "Och " | "O zaman " | "N\u00e5r " | "N\u00e4r " | "Niin " | "Nh\u01b0ng " | "N " | "Mutta " | "Men " | "Mas " | "Maka " | "Majd " | "Mais " | "Maar " | "Ma " | "Lorsque " | "Lorsqu\'" | "Kun " | "Kuid " | "Kui " | "Khi " | "Ke\u010f " | "Ketika " | "Kdy\u017e " | "Kai " | "Kada " | "Kad " | "Je\u017celi " | "Ja " | "Ir " | "I CAN HAZ " | "I " | "Ha " | "Givun " | "Givet " | "Given y\'all " | "Given " | "Gitt " | "Gegeven " | "Gegeben sei " | "Fakat " | "E\u011fer ki " | "Etant donn\u00e9 " | "Et " | "Ent\u00e3o " | "Entonces " | "Entao " | "En " | "Eeldades " | "E " | "Duota " | "Dun " | "Donat " | "Donada " | "Diyelim ki " | "Dengan " | "Den youse gotta " | "De " | "Dato " | "Dar " | "Dann " | "Dan " | "Dado " | "Dac\u0103 " | "Daca " | "DEN " | "C\u00e2nd " | "Cuando " | "Cho " | "Cept " | "Cand " | "Cal " | "But y\'all " | "But " | "Buh " | "Bi\u1ebft " | "Bet " | "BUT " | "At\u00e8s " | "Atunci " | "Atesa " | "Angenommen " | "And y\'all " | "And " | "An " | "Ama " | "Als " | "Alors " | "Allora " | "Ali " | "Aleshores " | "Ale " | "Akkor " | "Aber " | "AN " | "A tak\u00e9 " | "A " | "* "):<STEPS_TEXT_MODE>
 
-TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
+TOKEN:text:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
 TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
 TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
 TOKEN:newline: ('\n')
@@ -43,14 +45,14 @@ TOKEN:newline: ('\n')
     TOKEN:newline:('\n'):<CHECK_DOUBLE_NL>
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ ':' '\n' '\r' '\t' '#']* )
+    TOKEN:text:( [^ ':' '\n' '\r' '\t' '#']* )
 }
 # FORCE DOUBLE NL AFTER FEATURE NARRATIVE
 <CHECK_DOUBLE_NL> {
     TOKEN:newline:('\n'):<DEFAULT>
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:([^'\n']*):<FEATURE_NARRATIVE>
+    TOKEN:text:([^'\n']*):<FEATURE_NARRATIVE>
 }
 # Examples
 <EXAMPLES_MODE> {
@@ -61,14 +63,14 @@ TOKEN:newline: ('\n')
     TOKEN:newline:('\n')
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:([^'|' '#']*)
+    TOKEN:text:([^'|' '#']*)
 }
 # Text
 <TEXT_MODE> {
     TOKEN:newline:('\n'):<DEFAULT>
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
+    TOKEN:text:( [^ '\n' '\r' '\t' '#']* )
 }
 
 # STEPSTEXT --------------------------------------------------------------------
@@ -80,7 +82,7 @@ TOKEN:newline: ('\n')
     TOKEN:variable:('<'[^ '>']* '>')
     TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
+    TOKEN:text:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
 }
 
 # PYSTRING ---------------------------------------------------------------------
@@ -90,7 +92,7 @@ TOKEN:newline: ('\n')
     TOKEN:newline: ('\n')
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:variable:('<'[^ '>']* '>')
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
+    TOKEN:text:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
 }
 
 # ROW --------------------------------------------------------------------------
@@ -102,7 +104,7 @@ TOKEN:newline: ('\n')
     TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
     TOKEN:comment:('#' [^ '\n' '\r']*)
     TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
+    TOKEN:text:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
 }
 #
 # GRAMMER RULES :: SYNTAX DEFINITION -------------------------------------------
@@ -113,32 +115,27 @@ S = (Feature)*;
 Feature = FeatureDefinition BackgroundPart ScenarioPart;
 BackgroundPart = (Background)*;
 ScenarioPart = (Scenario)*;
-FeatureDefinition = FeatureIdentifier <colon> [FeatureDescription];
+FeatureDefinition = <feature> <colon> [FeatureDescription];
 FeatureDescription = Text;
 # Background
-Background = BackgroundIdentifier <colon> [Description] [BackgroundBlock];
+Background = <background> <colon> [Description] [BackgroundBlock];
 
 # a Background has only Given Statments
 BackgroundBlock = (Statements)*;
 # Scenario
 Scenario = BasicScenario | TableScenario;
-BasicScenario = ScenarioIdentifier <colon> [ScenarioDescription] ScenarioBlock;
-TableScenario = ScenarioOutlineIdentifier <colon> [ScenarioDescription] ScenarioBlock ExamplesBlocks;
+BasicScenario = <scenario> <colon> [ScenarioDescription] ScenarioBlock;
+TableScenario = <scenario_outline> <colon> [ScenarioDescription] ScenarioBlock ExamplesBlocks;
 ScenarioDescription = Text;
-# Scenario Block
-#ScenarioBlock = [GivenStatement] [WhenStatement] [ThenStatement];
-# freedom of choice
 ScenarioBlock = (Statements)*;
 Statements = StatementIdentfier Statement;
-StatementIdentfier = (<infinite> | StepIdentifier);
-# Given
-# Statement is more or less Text followed by Extras if necessary
+StatementIdentfier = (<infinite> | <step>);
 Statement = Text [Extras];
 #Extras
 Extras = PyString | TableBlock;
 # Examples and Tables
 ExamplesBlocks = ExamplesBlock (ExamplesBlock)*;
-ExamplesBlock = ExamplesIdentifier <colon> [Description] TableBlock;
+ExamplesBlock = <examples> <colon> [Description] TableBlock;
 Description = Text;
 TableBlock = TableHeader TableRows;
 TableHeader = Row;
@@ -147,17 +144,8 @@ Row = <row_delimiter> ([Text] <row_delimiter>)+ <end>;
 #
 PyString = <pystring> Text <end_pystring>;
 # Text
-Text = (Word | <string> | <variable>) (Text)*;
-Word = <word> | <number> ;
-################################################################################
-FeatureIdentifier = <feature>;
-BackgroundIdentifier = <background>;
-ScenarioIdentifier = <scenario>;
-ScenarioOutlineIdentifier = <scenario_outline>;
-StepIdentifier = <step>;
-ExamplesIdentifier = <examples>;
- 
-################################################################################
+Text = (<text> | <number> | <string> | <variable>) (Text)*;
+#
 SKIP:whitespace
 SKIP:comment
 SKIP:newline
@@ -176,7 +164,7 @@ COLOR:tag: {
 #
 # COLOR FOR FEATURE ------------------------------------------------------------
 #
-COLOR:FeatureIdentifier: {
+COLOR:feature: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
     font_type: "bold italic";
@@ -187,12 +175,12 @@ COLOR:FeatureDescription: {
 #
 # COLOR FOR SCENARIO -----------------------------------------------------------
 #
-COLOR:ScenarioIdentifier: {
+COLOR:scenario: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
     font_type: "bold italic";
 }
-COLOR:ScenarioOutlineIdentifier: {
+COLOR:scenario_outline: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
     font_type: "bold italic";
@@ -205,7 +193,7 @@ COLOR:TableHeader: {
     foreground_color:"#336600";
     font_type: "bold";
 }
-COLOR:ExamplesIdentifier: {
+COLOR:examples: {
     default_coloring: "identifier";
     foreground_color: "#336600";
     font_type: "bold italic";
@@ -213,7 +201,7 @@ COLOR:ExamplesIdentifier: {
 #
 # COLOR FOR BACKGROUND ---------------------------------------------------------
 #
-COLOR:BackgroundIdentifier: {
+COLOR:background: {
     default_coloring: "identifier";
     foreground_color: "#336600";
     font_type: "bold italic";
@@ -226,9 +214,9 @@ COLOR:PyString: {
     foreground_color: "#663333";
 }
 #
-# COLOR FOR GIVEN/WHEN/THEN & AND/BUT ----------------------------------------------
+# COLOR FOR GIVEN/WHEN/THEN & AND/BUT ------------------------------------------
 #
-COLOR:StepIdentifier: {
+COLOR:step: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
 }

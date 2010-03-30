@@ -1,8 +1,10 @@
-# NBS Template for FEATURE
+# NBS Language File for Gherkin (Feature)
 #
 # Author: Roland Guem
+# I18N-Support: Aslak Hellesoy
 #
-# HINT: Package name is a homage to Cucumber Developers
+# HINT: THE "feature.nbs" FILE IS AUTOGENRATED BY THE RAKE TASK "i18n_generate"
+# Generated on: <%= Time.now %>
 #
 # TOKEN DEFINTIONS -------------------------------------------------------------
 # COMMENT
@@ -32,7 +34,7 @@ TOKEN:examples:(<%= gherkin_keywords(:examples) %>):<EXAMPLES_MODE>
 
 TOKEN:step:(<%= gherkin_keywords(:step) %>):<STEPS_TEXT_MODE>
 
-TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
+TOKEN:text:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
 TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
 TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
 TOKEN:newline: ('\n')
@@ -43,14 +45,14 @@ TOKEN:newline: ('\n')
     TOKEN:newline:('\n'):<CHECK_DOUBLE_NL>
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ ':' '\n' '\r' '\t' '#']* )
+    TOKEN:text:( [^ ':' '\n' '\r' '\t' '#']* )
 }
 # FORCE DOUBLE NL AFTER FEATURE NARRATIVE
 <CHECK_DOUBLE_NL> {
     TOKEN:newline:('\n'):<DEFAULT>
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:([^'\n']*):<FEATURE_NARRATIVE>
+    TOKEN:text:([^'\n']*):<FEATURE_NARRATIVE>
 }
 # Examples
 <EXAMPLES_MODE> {
@@ -61,14 +63,14 @@ TOKEN:newline: ('\n')
     TOKEN:newline:('\n')
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:([^'|' '#']*)
+    TOKEN:text:([^'|' '#']*)
 }
 # Text
 <TEXT_MODE> {
     TOKEN:newline:('\n'):<DEFAULT>
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' '#']* )
+    TOKEN:text:( [^ '\n' '\r' '\t' '#']* )
 }
 
 # STEPSTEXT --------------------------------------------------------------------
@@ -80,7 +82,7 @@ TOKEN:newline: ('\n')
     TOKEN:variable:('<'[^ '>']* '>')
     TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
+    TOKEN:text:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '#']* )
 }
 
 # PYSTRING ---------------------------------------------------------------------
@@ -90,7 +92,7 @@ TOKEN:newline: ('\n')
     TOKEN:newline: ('\n')
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:variable:('<'[^ '>']* '>')
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
+    TOKEN:text:( [^ '\n' '\r' '\t' ' ' '<' '>']* )
 }
 
 # ROW --------------------------------------------------------------------------
@@ -102,7 +104,7 @@ TOKEN:newline: ('\n')
     TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
     TOKEN:comment:('#' [^ '\n' '\r']*)
     TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
-    TOKEN:word:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
+    TOKEN:text:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
 }
 #
 # GRAMMER RULES :: SYNTAX DEFINITION -------------------------------------------
@@ -113,32 +115,27 @@ S = (Feature)*;
 Feature = FeatureDefinition BackgroundPart ScenarioPart;
 BackgroundPart = (Background)*;
 ScenarioPart = (Scenario)*;
-FeatureDefinition = FeatureIdentifier <colon> [FeatureDescription];
+FeatureDefinition = <feature> <colon> [FeatureDescription];
 FeatureDescription = Text;
 # Background
-Background = BackgroundIdentifier <colon> [Description] [BackgroundBlock];
+Background = <background> <colon> [Description] [BackgroundBlock];
 
 # a Background has only Given Statments
 BackgroundBlock = (Statements)*;
 # Scenario
 Scenario = BasicScenario | TableScenario;
-BasicScenario = ScenarioIdentifier <colon> [ScenarioDescription] ScenarioBlock;
-TableScenario = ScenarioOutlineIdentifier <colon> [ScenarioDescription] ScenarioBlock ExamplesBlocks;
+BasicScenario = <scenario> <colon> [ScenarioDescription] ScenarioBlock;
+TableScenario = <scenario_outline> <colon> [ScenarioDescription] ScenarioBlock ExamplesBlocks;
 ScenarioDescription = Text;
-# Scenario Block
-#ScenarioBlock = [GivenStatement] [WhenStatement] [ThenStatement];
-# freedom of choice
 ScenarioBlock = (Statements)*;
 Statements = StatementIdentfier Statement;
-StatementIdentfier = (<infinite> | StepIdentifier);
-# Given
-# Statement is more or less Text followed by Extras if necessary
+StatementIdentfier = (<infinite> | <step>);
 Statement = Text [Extras];
 #Extras
 Extras = PyString | TableBlock;
 # Examples and Tables
 ExamplesBlocks = ExamplesBlock (ExamplesBlock)*;
-ExamplesBlock = ExamplesIdentifier <colon> [Description] TableBlock;
+ExamplesBlock = <examples> <colon> [Description] TableBlock;
 Description = Text;
 TableBlock = TableHeader TableRows;
 TableHeader = Row;
@@ -147,17 +144,8 @@ Row = <row_delimiter> ([Text] <row_delimiter>)+ <end>;
 #
 PyString = <pystring> Text <end_pystring>;
 # Text
-Text = (Word | <string> | <variable>) (Text)*;
-Word = <word> | <number> ;
-################################################################################
-FeatureIdentifier = <feature>;
-BackgroundIdentifier = <background>;
-ScenarioIdentifier = <scenario>;
-ScenarioOutlineIdentifier = <scenario_outline>;
-StepIdentifier = <step>;
-ExamplesIdentifier = <examples>;
- 
-################################################################################
+Text = (<text> | <number> | <string> | <variable>) (Text)*;
+#
 SKIP:whitespace
 SKIP:comment
 SKIP:newline
@@ -176,7 +164,7 @@ COLOR:tag: {
 #
 # COLOR FOR FEATURE ------------------------------------------------------------
 #
-COLOR:FeatureIdentifier: {
+COLOR:feature: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
     font_type: "bold italic";
@@ -187,12 +175,12 @@ COLOR:FeatureDescription: {
 #
 # COLOR FOR SCENARIO -----------------------------------------------------------
 #
-COLOR:ScenarioIdentifier: {
+COLOR:scenario: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
     font_type: "bold italic";
 }
-COLOR:ScenarioOutlineIdentifier: {
+COLOR:scenario_outline: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
     font_type: "bold italic";
@@ -205,7 +193,7 @@ COLOR:TableHeader: {
     foreground_color:"#336600";
     font_type: "bold";
 }
-COLOR:ExamplesIdentifier: {
+COLOR:examples: {
     default_coloring: "identifier";
     foreground_color: "#336600";
     font_type: "bold italic";
@@ -213,7 +201,7 @@ COLOR:ExamplesIdentifier: {
 #
 # COLOR FOR BACKGROUND ---------------------------------------------------------
 #
-COLOR:BackgroundIdentifier: {
+COLOR:background: {
     default_coloring: "identifier";
     foreground_color: "#336600";
     font_type: "bold italic";
@@ -226,9 +214,9 @@ COLOR:PyString: {
     foreground_color: "#663333";
 }
 #
-# COLOR FOR GIVEN/WHEN/THEN & AND/BUT ----------------------------------------------
+# COLOR FOR GIVEN/WHEN/THEN & AND/BUT ------------------------------------------
 #
-COLOR:StepIdentifier: {
+COLOR:step: {
     default_coloring: "identifier";
     foreground_color: "#3366CC";
 }

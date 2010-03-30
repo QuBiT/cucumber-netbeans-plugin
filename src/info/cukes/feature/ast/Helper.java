@@ -1,20 +1,21 @@
 package info.cukes.feature.ast;
 
 import org.netbeans.api.languages.ASTNode;
+import org.netbeans.api.languages.ASTToken;
 
 public class Helper {
 
     private static String featureDefinition = "FeatureDefinition";
-    private static String featureIdentifier = "FeatureIdentifier";
+    private static String featureIdentifier = "feature";
     private static String featureDescription = "FeatureDescription";
-    private static String backgroundIdentifier = "BackgroundIdentifier";
+    private static String backgroundIdentifier = "background";
     private static String description = "Description";
     private static String basicScenario = "BasicScenario";
     private static String tableScenario = "TableScenario";
-    private static String basicScenarioIdentifier = "ScenarioIdentifier";
-    private static String tableScenarioIdentifier = "ScenarioOutlineIdentifier";
+    private static String basicScenarioIdentifier = "scenario";
+    private static String tableScenarioIdentifier = "scenario_outline";
     private static String scenarioDescription = "ScenarioDescription";
-    private static String examplesIdentifier = "ExamplesIdentifier";
+    private static String examplesIdentifier = "examples";
 
 // FEATURE ---------------------------------------------------------------------
     public static ASTNode getFeatureNode(ASTNode parent) {
@@ -25,9 +26,9 @@ public class Helper {
         }
     }
 
-    public static ASTNode getFeatureIdentifierNode(ASTNode parent) {
+    public static ASTToken getFeatureToken(ASTNode parent) {
         if (parent != null) {
-            return parent.getNode(featureIdentifier);
+            return parent.getTokenType(featureIdentifier);
         } else {
             return null;
         }
@@ -42,9 +43,9 @@ public class Helper {
     }
 // BACKGROUND ------------------------------------------------------------------
 
-    public static ASTNode getBackgroundIdentifierNode(ASTNode parent) {
+    public static ASTToken getBackgroundToken(ASTNode parent) {
         if (parent != null) {
-            return parent.getNode(backgroundIdentifier);
+            return parent.getTokenType(backgroundIdentifier);
         } else {
             return null;
         }
@@ -58,7 +59,6 @@ public class Helper {
         }
     }
 // SCENARIO --------------------------------------------------------------------
-
     public static ASTNode getScenarioNode(ASTNode parent) {
         if (parent != null) {
             ASTNode node1 = parent.getNode(basicScenario);
@@ -67,7 +67,6 @@ public class Helper {
             return null;
         }
     }
-
     public static ASTNode getScenarioDescriptionNode(ASTNode parent) {
         if (parent != null) {
             return parent.getNode(scenarioDescription);
@@ -75,32 +74,29 @@ public class Helper {
             return null;
         }
     }
-
-    public static ASTNode getScenarioIdentifierNode(ASTNode parent) {
+    public static ASTToken getScenarioToken(ASTNode parent) {
         if (parent != null) {
-            ASTNode node1 = parent.getNode(basicScenarioIdentifier);
-            return node1 != null ? node1 : parent.getNode(tableScenarioIdentifier);
+            ASTToken node1 = parent.getTokenType(basicScenarioIdentifier);
+            return node1 != null ? node1 : parent.getTokenType(tableScenarioIdentifier);
         } else {
             return null;
         }
     }
-
 // EXAMPLES --------------------------------------------------------------------
-    public static ASTNode getExamplesIdentifierNode(ASTNode parent) {
+    public static ASTToken getExamplesToken(ASTNode parent) {
         if (parent != null) {
-            return parent.getNode(examplesIdentifier);
+            return parent.getTokenType(examplesIdentifier);
         } else {
             return null;
         }
     }
 // RESULT STRING ---------------------------------------------------------------
-
-    public static String getResultString(ASTNode head, ASTNode body, String error_case) {
+    public static String getResultString(ASTToken head, ASTNode body, String error_case) {
         if (head != null) {
             if (body != null) {
-                return head.getAsText().trim() + ": " + body.getAsText().split("\n")[0].trim();
+                return head.getIdentifier().trim() + ": " + body.getAsText().split("\n")[0].trim();
             } else {
-                return head.getAsText().trim();
+                return head.getIdentifier().trim();
             }
         } else {
             return error_case;

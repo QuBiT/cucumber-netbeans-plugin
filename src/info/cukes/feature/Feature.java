@@ -2,6 +2,7 @@ package info.cukes.feature;
 
 import org.netbeans.api.languages.ASTNode;
 import org.netbeans.api.languages.ASTPath;
+import org.netbeans.api.languages.ASTToken;
 import org.netbeans.api.languages.SyntaxContext;
 import info.cukes.feature.ast.Helper;
 
@@ -16,7 +17,7 @@ public class Feature {
         ASTNode node = getActualNode(context);
         ASTNode feature_node = Helper.getFeatureNode(node);
         ASTNode desc_node = Helper.getFeatureDescriptionNode(feature_node);
-        ASTNode id_node = Helper.getFeatureIdentifierNode(feature_node);
+        ASTToken id_node = Helper.getFeatureToken(feature_node);
         return Helper.getResultString(id_node, desc_node, "Feature");
     }
 
@@ -28,7 +29,7 @@ public class Feature {
         ASTNode node = getActualNode(context);
         ASTNode scenario_node = Helper.getScenarioNode(node);
         ASTNode desc_node = Helper.getScenarioDescriptionNode(scenario_node);
-        ASTNode id_node = Helper.getScenarioIdentifierNode(scenario_node);
+        ASTToken id_node = Helper.getScenarioToken(scenario_node);
         return Helper.getResultString(id_node, desc_node, "Scenario");
     }
 
@@ -38,8 +39,8 @@ public class Feature {
 
     public static String backgroundName(SyntaxContext context) {
         ASTNode node = getActualNode(context);
-        ASTNode id_node = Helper.getBackgroundIdentifierNode(node);
         ASTNode desc_node = Helper.getDescriptionNode(node);
+        ASTToken id_node = Helper.getBackgroundToken(node);
         return Helper.getResultString(id_node, desc_node, "Background");
     }
 
@@ -49,8 +50,8 @@ public class Feature {
 
     public static String examplesName(SyntaxContext context) {
         ASTNode node = getActualNode(context);
-        ASTNode id_node = Helper.getExamplesIdentifierNode(node);
         ASTNode desc_node = Helper.getDescriptionNode(node);
+        ASTToken id_node = Helper.getExamplesToken(node);
         return Helper.getResultString(id_node, desc_node, "Examples");
     }
 

@@ -43,10 +43,6 @@
     <fontcolor name="tag" default="identifier" foreColor="#CC3333">
         <font style="bold"/>
     </fontcolor>
-    <fontcolor name="language_de" default="identifier" foreColor="#8F8F8F"/>
-    <fontcolor name="language_es" default="identifier" foreColor="#8F8F8F"/>
-    <fontcolor name="language_fr" default="identifier" foreColor="#8F8F8F"/>
-    <fontcolor name="language_pt" default="identifier" foreColor="#8F8F8F"/>
     -->
 </fontscolors>
 <!--

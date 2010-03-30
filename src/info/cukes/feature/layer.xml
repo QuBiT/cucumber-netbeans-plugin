@@ -166,7 +166,7 @@
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="19"/>
             </file>
-            <file name="se.feature" url="templates/i18n/se.feature">
+            <file name="sv.feature" url="templates/i18n/sv.feature">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="20"/>

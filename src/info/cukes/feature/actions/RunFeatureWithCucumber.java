@@ -17,11 +17,8 @@ public final class RunFeatureWithCucumber implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ev) {
-        // Create the object with the run() method
         Runnable runnable = new FeatureThread(context);
-        // Create the thread supplying it with the runnable object
         Thread thread = new Thread(runnable);
-        // Start the thread
         thread.start();
     }
 }

@@ -1,7 +1,6 @@
 package info.cukes.feature.formatter.parser;
 
 import info.cukes.feature.formatter.FixJava;
-import info.cukes.feature.formatter.I18nLexer;
 import info.cukes.feature.formatter.Lexer;
 import info.cukes.feature.formatter.Listener;
 import java.io.IOException;
@@ -13,12 +12,14 @@ public class StateMachineReader implements Listener {
     private List<List<String>> transitionTable;
 
     public StateMachineReader(String name) {
+        // TODO -> where should I store those files and how are they generated?
         machinePath = "/formatter/parser/" + name + ".txt";
     }
 
     public List<List<String>> transitionTable() {
 transitionTable = new ArrayList<List<String>>();
-        Lexer lexer = new I18nLexer(this);
+        // TODO -> GENERATE LEXER for all Languages.
+        Lexer lexer = new En(this);
         try {
             lexer.scan(FixJava.readResource(machinePath));
         } catch (IOException e) {

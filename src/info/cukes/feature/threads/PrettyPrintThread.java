@@ -37,7 +37,8 @@ public class PrettyPrintThread implements Runnable {
         OutputWriter outputWriter;
         outputWriter = io.getOut();
 
-        // OutputStream should be new file (same file) not System.out
+        // TODO -> The "MAIN" function
+        // OutputStream should be new file (same file) not System.out, currently output window
         Parser p = new Parser(new PrettyFormatter(outputWriter, true));
         Lexer l = new I18nLexer(p);
 

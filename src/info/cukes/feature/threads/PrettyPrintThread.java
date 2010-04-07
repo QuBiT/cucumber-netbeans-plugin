@@ -61,6 +61,7 @@ public final class PrettyPrintThread implements Runnable {
             Exceptions.printStackTrace(ex);
         }
         OutputStream bout = new BufferedOutputStream(fout);
+        //OutputStreamWriter out = new OutputStreamWriter(bout, "8859_1");
         return bout;
     }
 

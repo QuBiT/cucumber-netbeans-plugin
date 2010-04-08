@@ -1,12 +1,14 @@
-package info.cukes.feature;
+package qubit.cucumber.editor;
 
 import org.netbeans.api.languages.ASTNode;
 import org.netbeans.api.languages.ASTPath;
 import org.netbeans.api.languages.ASTToken;
 import org.netbeans.api.languages.SyntaxContext;
-import info.cukes.feature.ast.Helper;
+import qubit.cucumber.editor.ast.Helper;
 
 public class Feature {
+
+    private static final String resourcesDirectory = "/qubit/cucumber/editor/resources";
 
     private static ASTNode getActualNode(SyntaxContext context) {
         ASTPath path = context.getASTPath();
@@ -22,7 +24,7 @@ public class Feature {
     }
 
     public static String featureIcon(SyntaxContext context) {
-        return "/info/cukes/feature/resources/cucumber.png";
+        return resourcesDirectory+"/cucumber.png";
     }
 
     public static String scenarioName(SyntaxContext context) {
@@ -34,7 +36,7 @@ public class Feature {
     }
 
     public static String scenarioIcon(SyntaxContext context) {
-        return "info/cukes/feature/resources/scenario.png";
+        return resourcesDirectory+"/scenario.png";
     }
 
     public static String backgroundName(SyntaxContext context) {
@@ -45,7 +47,7 @@ public class Feature {
     }
 
     public static String backgroundIcon(SyntaxContext context) {
-        return "info/cukes/feature/resources/background.png";
+        return resourcesDirectory+"/background.png";
     }
 
     public static String examplesName(SyntaxContext context) {
@@ -56,7 +58,7 @@ public class Feature {
     }
 
     public static String examplesIcon(SyntaxContext context) {
-        return "/info/cukes/feature/resources/limwire.png";
+        return resourcesDirectory+"/limwire.png";
     }
 
     public static String tableName(SyntaxContext context) {
@@ -64,6 +66,6 @@ public class Feature {
     }
 
     public static String tableIcon(SyntaxContext context) {
-        return "/info/cukes/feature/resources/table.png";
+        return resourcesDirectory+"/table.png";
     }
 }

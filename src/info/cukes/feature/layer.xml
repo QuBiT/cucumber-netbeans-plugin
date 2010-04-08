@@ -27,30 +27,16 @@
                 <attr name="type" stringvalue="org.openide.loaders.DataObject"/>
             </file>
         </folder>
-        <folder name="Source">
-            <file name="info-cukes-feature-actions-PrettyPrint.instance">
-                <attr name="delegate" methodvalue="org.openide.awt.Actions.inject"/>
-                <attr name="displayName" bundlevalue="info.cukes.feature.actions.Bundle#CTL_PrettyPrint"/>
-                <attr name="iconBase" stringvalue="info/cukes/feature/resources/scenario.png"/>
-                <attr name="injectable" stringvalue="info.cukes.feature.actions.PrettyPrint"/>
-                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.context"/>
-                <attr name="noIconInMenu" boolvalue="false"/>
-                <attr name="selectionType" stringvalue="EXACTLY_ONE"/>
-                <attr name="type" stringvalue="org.openide.loaders.DataObject"/>
-            </file>
-        </folder>
     </folder>
     <folder name="Editors">
         <folder name="text">
             <folder name="x-feature">
+                <file name="qubit-cucumber-editor-format-GherkinFormatTaskFactory.instance"/>
+
                 <folder name="Popup">
                     <file name="info-cukes-feature-actions-PrettyPrint-separatorAfter.instance">
                         <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
                         <attr name="position" intvalue="850"/>
-                    </file>
-                    <file name="info-cukes-feature-actions-PrettyPrint.shadow">
-                        <attr name="originalFile" stringvalue="Actions/Source/info-cukes-feature-actions-PrettyPrint.instance"/>
-                        <attr name="position" intvalue="800"/>
                     </file>
                     <file name="info-cukes-feature-actions-RunFeatureWithCucumber.shadow">
                         <attr name="originalFile" stringvalue="Actions/Build/info-cukes-feature-actions-RunFeatureWithCucumber.instance"/>

@@ -5,6 +5,7 @@ import gherkin.Lexer;
 import gherkin.formatter.PrettyFormatter;
 import gherkin.parser.Parser;
 import java.io.StringWriter;
+import java.lang.CharSequence;
 import javax.swing.text.BadLocationException;
 import org.netbeans.modules.editor.indent.spi.Context;
 import org.netbeans.modules.editor.indent.spi.ExtraLock;
@@ -26,8 +27,10 @@ class GherkinFormatTask implements ReformatTask {
             String source = context.document().getText(0, context.document().getLength());
             StringWriter reformattedWriter = new StringWriter();
             Parser parser = new Parser(new PrettyFormatter(reformattedWriter, true));
+            byte[] charData = source.getBytes("UTF-8");
+            String formattedSource = new String(charData);
             Lexer lexer = new I18nLexer(parser);
-            lexer.scan(source);
+            lexer.scan(formattedSource);
 
             writeSource(reformattedWriter.getBuffer().toString());
         } catch (Exception e) {

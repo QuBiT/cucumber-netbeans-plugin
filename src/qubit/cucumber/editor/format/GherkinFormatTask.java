@@ -2,16 +2,13 @@ package qubit.cucumber.editor.format;
 
 import gherkin.I18nLexer;
 import gherkin.Lexer;
-import gherkin.LexingError;
 import gherkin.formatter.PrettyFormatter;
-import gherkin.parser.ParseError;
 import gherkin.parser.Parser;
 import java.io.StringWriter;
 import javax.swing.text.BadLocationException;
 import org.netbeans.modules.editor.indent.spi.Context;
 import org.netbeans.modules.editor.indent.spi.ExtraLock;
 import org.netbeans.modules.editor.indent.spi.ReformatTask;
-import org.openide.util.Exceptions;
 import org.openide.windows.IOProvider;
 import org.openide.windows.InputOutput;
 import org.openide.windows.OutputWriter;

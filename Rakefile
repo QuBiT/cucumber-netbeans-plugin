@@ -21,8 +21,8 @@ task :i18n_generate do
     end.join
   end
 
-  File.open(File.dirname(__FILE__) + '/src/info/cukes/feature/feature.nbs', "wb") do |io|
-    template  = ERB.new(IO.read(File.dirname(__FILE__) + '/src/info/cukes/feature/feature.nbs.erb'))
+  File.open(File.dirname(__FILE__) + '/src/qubit/cucumber/editor/feature.nbs', "wb") do |io|
+    template  = ERB.new(IO.read(File.dirname(__FILE__) + '/src/qubit/cucumber/editor/feature.nbs.erb'))
     io.write(template.result(binding))
   end
 end

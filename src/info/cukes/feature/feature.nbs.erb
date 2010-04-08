@@ -109,8 +109,8 @@ TOKEN:newline: ('\n')
 #
 # GRAMMER RULES :: SYNTAX DEFINITION -------------------------------------------
 #
-# 0..* Features are in one File (restrict to 1)
-S = (Feature)*;
+# 0..1 Features are in one File (restrict to 1)
+S = [Feature];
 # Feature
 Feature = FeatureDefinition BackgroundPart ScenarioPart;
 BackgroundPart = (Background)*;

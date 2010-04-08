@@ -4,7 +4,7 @@
 # I18N-Support: Aslak Hellesoy
 #
 # HINT: THE "feature.nbs" FILE IS AUTOGENRATED BY THE RAKE TASK "i18n_generate"
-# Generated on: Mon Apr 05 15:18:33 +0200 2010
+# Generated on: Thu Apr 08 14:59:00 +0200 2010
 #
 # TOKEN DEFINTIONS -------------------------------------------------------------
 # COMMENT
@@ -109,8 +109,8 @@ TOKEN:newline: ('\n')
 #
 # GRAMMER RULES :: SYNTAX DEFINITION -------------------------------------------
 #
-# 0..* Features are in one File (restrict to 1)
-S = (Feature)*;
+# 0..1 Features are in one File (restrict to 1)
+S = [Feature];
 # Feature
 Feature = FeatureDefinition BackgroundPart ScenarioPart;
 BackgroundPart = (Background)*;

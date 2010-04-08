@@ -5,7 +5,6 @@ import gherkin.Lexer;
 import gherkin.formatter.PrettyFormatter;
 import gherkin.parser.Parser;
 import java.io.StringWriter;
-import java.lang.CharSequence;
 import javax.swing.text.BadLocationException;
 import org.netbeans.modules.editor.indent.spi.Context;
 import org.netbeans.modules.editor.indent.spi.ExtraLock;

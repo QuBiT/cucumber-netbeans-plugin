@@ -31,12 +31,10 @@
     <folder name="Editors">
         <folder name="text">
             <folder name="x-feature">
-                <file name="qubit-cucumber-editor-format-GherkinFormatTaskFactory.instance"/>
-
                 <folder name="Popup">
-                    <file name="qubit-cucumber-editor-actions-PrettyPrint-separatorAfter.instance">
+                    <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber-separatorAfter.instance">
                         <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
-                        <attr name="position" intvalue="850"/>
+                        <attr name="position" intvalue="750"/>
                     </file>
                     <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber.shadow">
                         <attr name="originalFile" stringvalue="Actions/Build/qubit-cucumber-editor-actions-RunFeatureWithCucumber.instance"/>
@@ -67,6 +65,7 @@
                     <file name="org-netbeans-modules-languages-features-UpToDateStatusProviderFactoryImpl.instance"/>
                 </folder>
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
+                <file name="qubit-cucumber-editor-format-GherkinFormatTaskFactory.instance"/>
                 <file name="language.nbs" url="feature.nbs">
                     <attr name="icon" stringvalue="qubit/cucumber/editor/resources/cucumber.png"/>
                 </file>

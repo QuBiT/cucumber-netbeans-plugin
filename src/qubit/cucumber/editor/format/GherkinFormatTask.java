@@ -11,6 +11,10 @@ import javax.swing.text.BadLocationException;
 import org.netbeans.modules.editor.indent.spi.Context;
 import org.netbeans.modules.editor.indent.spi.ExtraLock;
 import org.netbeans.modules.editor.indent.spi.ReformatTask;
+import org.openide.util.Exceptions;
+import org.openide.windows.IOProvider;
+import org.openide.windows.InputOutput;
+import org.openide.windows.OutputWriter;
 
 class GherkinFormatTask implements ReformatTask {
 
@@ -29,9 +33,7 @@ class GherkinFormatTask implements ReformatTask {
             lexer.scan(source);
 
             writeSource(reformattedWriter.getBuffer().toString());
-        } catch(ParseError e) {
-            showError(e);
-        } catch(LexingError e) {
+        } catch (Exception e) {
             showError(e);
         }
     }
@@ -46,7 +48,12 @@ class GherkinFormatTask implements ReformatTask {
     }
 
     private void showError(Exception e) {
-        e.printStackTrace();
+        InputOutput io;
+        OutputWriter outputWriter;
+        io = IOProvider.getDefault().getIO("Cucumber", false);
+        io.select();
+        outputWriter = io.getOut();
+        e.printStackTrace(outputWriter);
         // This seems to block the IDE
         // JOptionPane.showMessageDialog(null, e, e.getMessage(), JOptionPane.ERROR_MESSAGE);
     }

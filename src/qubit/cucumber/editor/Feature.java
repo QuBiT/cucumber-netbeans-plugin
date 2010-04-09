@@ -24,7 +24,7 @@ public class Feature {
     }
 
     public static String featureIcon(SyntaxContext context) {
-        return resourcesDirectory+"/cucumber.png";
+        return resourcesDirectory+"/icons/16/cucumber16.png";
     }
 
     public static String scenarioName(SyntaxContext context) {
@@ -36,7 +36,7 @@ public class Feature {
     }
 
     public static String scenarioIcon(SyntaxContext context) {
-        return resourcesDirectory+"/scenario.png";
+        return resourcesDirectory+"/icons/16/scenario16.png";
     }
 
     public static String backgroundName(SyntaxContext context) {
@@ -47,7 +47,7 @@ public class Feature {
     }
 
     public static String backgroundIcon(SyntaxContext context) {
-        return resourcesDirectory+"/background.png";
+        return resourcesDirectory+"/icons/16/background16.png";
     }
 
     public static String examplesName(SyntaxContext context) {
@@ -58,7 +58,7 @@ public class Feature {
     }
 
     public static String examplesIcon(SyntaxContext context) {
-        return resourcesDirectory+"/limwire.png";
+        return resourcesDirectory+"/icons/old/limwire.png";
     }
 
     public static String tableName(SyntaxContext context) {
@@ -66,6 +66,6 @@ public class Feature {
     }
 
     public static String tableIcon(SyntaxContext context) {
-        return resourcesDirectory+"/table.png";
+        return resourcesDirectory+"/icons/old/table.png";
     }
 }

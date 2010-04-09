@@ -7,7 +7,7 @@
             <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber.instance">
                 <attr name="delegate" methodvalue="org.openide.awt.Actions.inject"/>
                 <attr name="displayName" bundlevalue="qubit.cucumber.editor.actions.Bundle#CTL_RunFeatureWithCucumber"/>
-                <attr name="iconBase" stringvalue="qubit/cucumber/editor/resources/icons/24/cucumber24.png"/>
+                <attr name="iconBase" stringvalue="qubit/cucumber/editor/resources/icons/cucumber24.png"/>
                 <attr name="injectable" stringvalue="qubit.cucumber.editor.actions.RunFeatureWithCucumber"/>
                 <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.context"/>
                 <attr name="noIconInMenu" boolvalue="false"/>
@@ -19,7 +19,7 @@
             <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber.instance">
                 <attr name="delegate" methodvalue="org.openide.awt.Actions.inject"/>
                 <attr name="displayName" bundlevalue="qubit.cucumber.editor.actions.Bundle#CTL_RunFeatureWithCucumber"/>
-                <attr name="iconBase" stringvalue="qubit/cucumber/editor/resources/icons/24/cucumber24.png"/>
+                <attr name="iconBase" stringvalue="qubit/cucumber/editor/resources/icons/cucumber24.png"/>
                 <attr name="injectable" stringvalue="qubit.cucumber.editor.actions.RunFeatureWithCucumber"/>
                 <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.context"/>
                 <attr name="noIconInMenu" boolvalue="false"/>
@@ -67,7 +67,7 @@
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <file name="qubit-cucumber-editor-format-GherkinFormatTaskFactory.instance"/>
                 <file name="language.nbs" url="feature.nbs">
-                    <attr name="icon" stringvalue="qubit/cucumber/editor/resources/icons/16/cucumber16.png"/>
+                    <attr name="icon" stringvalue="qubit/cucumber/editor/resources/icons/cucumber16.png"/>
                 </file>
             </folder>
         </folder>

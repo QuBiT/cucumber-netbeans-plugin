@@ -2,15 +2,16 @@ package qubit.cucumber.editor.format;
 
 import gherkin.I18nLexer;
 import gherkin.Lexer;
-import gherkin.LexingError;
 import gherkin.formatter.PrettyFormatter;
-import gherkin.parser.ParseError;
 import gherkin.parser.Parser;
 import java.io.StringWriter;
 import javax.swing.text.BadLocationException;
 import org.netbeans.modules.editor.indent.spi.Context;
 import org.netbeans.modules.editor.indent.spi.ExtraLock;
 import org.netbeans.modules.editor.indent.spi.ReformatTask;
+import org.openide.windows.IOProvider;
+import org.openide.windows.InputOutput;
+import org.openide.windows.OutputWriter;
 
 class GherkinFormatTask implements ReformatTask {
 
@@ -25,13 +26,13 @@ class GherkinFormatTask implements ReformatTask {
             String source = context.document().getText(0, context.document().getLength());
             StringWriter reformattedWriter = new StringWriter();
             Parser parser = new Parser(new PrettyFormatter(reformattedWriter, true));
+            byte[] charData = source.getBytes("UTF-8");
+            String formattedSource = new String(charData);
             Lexer lexer = new I18nLexer(parser);
-            lexer.scan(source);
+            lexer.scan(formattedSource);
 
             writeSource(reformattedWriter.getBuffer().toString());
-        } catch(ParseError e) {
-            showError(e);
-        } catch(LexingError e) {
+        } catch (Exception e) {
             showError(e);
         }
     }
@@ -46,7 +47,12 @@ class GherkinFormatTask implements ReformatTask {
     }
 
     private void showError(Exception e) {
-        e.printStackTrace();
+        InputOutput io;
+        OutputWriter outputWriter;
+        io = IOProvider.getDefault().getIO("Cucumber", false);
+        io.select();
+        outputWriter = io.getOut();
+        e.printStackTrace(outputWriter);
         // This seems to block the IDE
         // JOptionPane.showMessageDialog(null, e, e.getMessage(), JOptionPane.ERROR_MESSAGE);
     }

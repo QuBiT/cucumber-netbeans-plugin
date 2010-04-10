@@ -1,6 +1,6 @@
-package info.cukes.feature.actions;
+package qubit.cucumber.editor.actions;
 
-import info.cukes.feature.threads.FeatureThread;
+import qubit.cucumber.editor.threads.FeatureThread;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import org.openide.loaders.DataObject;

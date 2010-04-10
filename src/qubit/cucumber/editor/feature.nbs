@@ -4,7 +4,7 @@
 # I18N-Support: Aslak Hellesoy
 #
 # HINT: THE "feature.nbs" FILE IS AUTOGENRATED BY THE RAKE TASK "i18n_generate"
-# Generated on: Mon Apr 05 15:18:33 +0200 2010
+# Generated on: Thu Apr 08 14:59:00 +0200 2010
 #
 # TOKEN DEFINTIONS -------------------------------------------------------------
 # COMMENT
@@ -109,8 +109,8 @@ TOKEN:newline: ('\n')
 #
 # GRAMMER RULES :: SYNTAX DEFINITION -------------------------------------------
 #
-# 0..* Features are in one File (restrict to 1)
-S = (Feature)*;
+# 0..1 Features are in one File (restrict to 1)
+S = [Feature];
 # Feature
 Feature = FeatureDefinition BackgroundPart ScenarioPart;
 BackgroundPart = (Background)*;
@@ -276,28 +276,28 @@ BRACE "\':\'"
 # navigator
 
 NAVIGATOR:Feature: {
-    display_name: info.cukes.feature.Feature.featureName;
-    icon: info.cukes.feature.Feature.featureIcon;
+    display_name: qubit.cucumber.editor.Feature.featureName;
+    icon: qubit.cucumber.editor.Feature.featureIcon;
 }
 
 NAVIGATOR:Scenario: {
-    display_name: info.cukes.feature.Feature.scenarioName;
-    icon: info.cukes.feature.Feature.scenarioIcon;
+    display_name: qubit.cucumber.editor.Feature.scenarioName;
+    icon: qubit.cucumber.editor.Feature.scenarioIcon;
 }
 
 NAVIGATOR:ExamplesBlock: {
-    display_name: info.cukes.feature.Feature.examplesName;
-    icon: info.cukes.feature.Feature.examplesIcon;
+    display_name: qubit.cucumber.editor.Feature.examplesName;
+    icon: qubit.cucumber.editor.Feature.examplesIcon;
 }
 
 NAVIGATOR:TableBlock: {
-    display_name: info.cukes.feature.Feature.tableName;
-    icon: info.cukes.feature.Feature.tableIcon;
+    display_name: qubit.cucumber.editor.Feature.tableName;
+    icon: qubit.cucumber.editor.Feature.tableIcon;
 }
 
 NAVIGATOR:Background: {
-    display_name: info.cukes.feature.Feature.backgroundName;
-    icon: info.cukes.feature.Feature.backgroundIcon;
+    display_name: qubit.cucumber.editor.Feature.backgroundName;
+    icon: qubit.cucumber.editor.Feature.backgroundIcon;
 }
 
 # INDENT -----------------------------------------------------------------------
@@ -325,5 +325,5 @@ FOLD:ScenarioBlock
 FOLD:TableBlock
 
 # BUNDLE -----------------------------------------------------------------------
-BUNDLE "info.cukes.feature.Bundle"
+BUNDLE "qubit.cucumber.editor.Bundle"
 # EOF --------------------------------------------------------------------------

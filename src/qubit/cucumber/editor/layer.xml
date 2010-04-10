@@ -4,11 +4,11 @@
 <filesystem>
     <folder name="Actions">
         <folder name="Build">
-            <file name="info-cukes-feature-actions-RunFeatureWithCucumber.instance">
+            <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber.instance">
                 <attr name="delegate" methodvalue="org.openide.awt.Actions.inject"/>
-                <attr name="displayName" bundlevalue="info.cukes.feature.actions.Bundle#CTL_RunFeatureWithCucumber"/>
-                <attr name="iconBase" stringvalue="info/cukes/feature/resources/cucumber24.png"/>
-                <attr name="injectable" stringvalue="info.cukes.feature.actions.RunFeatureWithCucumber"/>
+                <attr name="displayName" bundlevalue="qubit.cucumber.editor.actions.Bundle#CTL_RunFeatureWithCucumber"/>
+                <attr name="iconBase" stringvalue="qubit/cucumber/editor/resources/icons/cucumber24.png"/>
+                <attr name="injectable" stringvalue="qubit.cucumber.editor.actions.RunFeatureWithCucumber"/>
                 <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.context"/>
                 <attr name="noIconInMenu" boolvalue="false"/>
                 <attr name="selectionType" stringvalue="EXACTLY_ONE"/>
@@ -16,11 +16,11 @@
             </file>
         </folder>
         <folder name="File">
-            <file name="info-cukes-feature-actions-RunFeatureWithCucumber.instance">
+            <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber.instance">
                 <attr name="delegate" methodvalue="org.openide.awt.Actions.inject"/>
-                <attr name="displayName" bundlevalue="info.cukes.feature.actions.Bundle#CTL_RunFeatureWithCucumber"/>
-                <attr name="iconBase" stringvalue="info/cukes/feature/resources/cucumber24.png"/>
-                <attr name="injectable" stringvalue="info.cukes.feature.actions.RunFeatureWithCucumber"/>
+                <attr name="displayName" bundlevalue="qubit.cucumber.editor.actions.Bundle#CTL_RunFeatureWithCucumber"/>
+                <attr name="iconBase" stringvalue="qubit/cucumber/editor/resources/icons/cucumber24.png"/>
+                <attr name="injectable" stringvalue="qubit.cucumber.editor.actions.RunFeatureWithCucumber"/>
                 <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.context"/>
                 <attr name="noIconInMenu" boolvalue="false"/>
                 <attr name="selectionType" stringvalue="EXACTLY_ONE"/>
@@ -31,15 +31,13 @@
     <folder name="Editors">
         <folder name="text">
             <folder name="x-feature">
-                <file name="qubit-cucumber-editor-format-GherkinFormatTaskFactory.instance"/>
-
                 <folder name="Popup">
-                    <file name="info-cukes-feature-actions-PrettyPrint-separatorAfter.instance">
+                    <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber-separatorAfter.instance">
                         <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
-                        <attr name="position" intvalue="850"/>
+                        <attr name="position" intvalue="750"/>
                     </file>
-                    <file name="info-cukes-feature-actions-RunFeatureWithCucumber.shadow">
-                        <attr name="originalFile" stringvalue="Actions/Build/info-cukes-feature-actions-RunFeatureWithCucumber.instance"/>
+                    <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber.shadow">
+                        <attr name="originalFile" stringvalue="Actions/Build/qubit-cucumber-editor-actions-RunFeatureWithCucumber.instance"/>
                         <attr name="position" intvalue="700"/>
                     </file>
                 </folder>
@@ -50,7 +48,7 @@
                     <folder name="NetBeans">
                         <folder name="Defaults">
                             <file name="FontAndColors.xml" url="FontAndColors.xml">
-                                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                             </file>
                         </folder>
                     </folder>
@@ -66,9 +64,10 @@
                 <folder name="UpToDateStatusProvider">
                     <file name="org-netbeans-modules-languages-features-UpToDateStatusProviderFactoryImpl.instance"/>
                 </folder>
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
+                <file name="qubit-cucumber-editor-format-GherkinFormatTaskFactory.instance"/>
                 <file name="language.nbs" url="feature.nbs">
-                    <attr name="icon" stringvalue="info/cukes/feature/resources/cucumber.png"/>
+                    <attr name="icon" stringvalue="qubit/cucumber/editor/resources/icons/cucumber16.png"/>
                 </file>
             </folder>
         </folder>
@@ -76,16 +75,16 @@
     <folder name="Loaders">
         <folder name="Languages">
             <folder name="Actions">
-                <file name="info-cukes-feature-actions-RunFeatureWithCucumber-separatorAfter.instance">
+                <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber-separatorAfter.instance">
                     <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
                     <attr name="position" intvalue="175"/>
                 </file>
-                <file name="info-cukes-feature-actions-RunFeatureWithCucumber-separatorBefore.instance">
+                <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber-separatorBefore.instance">
                     <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
                     <attr name="position" intvalue="125"/>
                 </file>
-                <file name="info-cukes-feature-actions-RunFeatureWithCucumber.shadow">
-                    <attr name="originalFile" stringvalue="Actions/File/info-cukes-feature-actions-RunFeatureWithCucumber.instance"/>
+                <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber.shadow">
+                    <attr name="originalFile" stringvalue="Actions/File/qubit-cucumber-editor-actions-RunFeatureWithCucumber.instance"/>
                     <attr name="position" intvalue="150"/>
                 </file>
             </folder>
@@ -101,7 +100,7 @@
     <folder name="Services">
         <folder name="AutoupdateType">
             <file name="info_cukes_feature_update_center.instance">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="enabled" boolvalue="true"/>
                 <attr name="instanceCreate" methodvalue="org.netbeans.modules.autoupdate.updateprovider.AutoupdateCatalogFactory.createUpdateProvider"/>
                 <attr name="instanceOf" stringvalue="org.netbeans.spi.autoupdate.UpdateProvider"/>
@@ -110,7 +109,7 @@
         </folder>
         <folder name="MIMEResolver">
             <file name="FeatureResolver.xml" url="FeatureResolver.xml">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="position" intvalue="100000"/>
             </file>
         </folder>
@@ -127,112 +126,112 @@
     <folder name="Templates">
         <folder name="Cucumber">
             <file name="file.feature" url="templates/file.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="1"/>
             </file>
             <file name="sample.feature" url="templates/sample.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="2"/>
             </file>
             <file name="cz.feature" url="templates/i18n/cz.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="3"/>
             </file>
             <file name="da.feature" url="templates/i18n/da.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="4"/>
             </file>
             <file name="de.feature" url="templates/i18n/de.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="5"/>
             </file>
             <file name="en.feature" url="templates/i18n/en.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="6"/>
             </file>
             <file name="es.feature" url="templates/i18n/es.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="7"/>
             </file>
             <file name="et.feature" url="templates/i18n/et.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="8"/>
             </file>
             <file name="fi.feature" url="templates/i18n/fi.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="9"/>
             </file>
             <file name="fr.feature" url="templates/i18n/fr.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="10"/>
             </file>
             <file name="hu.feature" url="templates/i18n/hu.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="11"/>
             </file>
             <file name="id.feature" url="templates/i18n/id.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="12"/>
             </file>
             <file name="it.feature" url="templates/i18n/it.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="13"/>
             </file>
             <file name="lt.feature" url="templates/i18n/lt.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="14"/>
             </file>
             <file name="lv.feature" url="templates/i18n/lv.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="15"/>
             </file>
             <file name="no.feature" url="templates/i18n/no.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="16"/>
             </file>
             <file name="pl.feature" url="templates/i18n/pl.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="17"/>
             </file>
             <file name="pt.feature" url="templates/i18n/pt.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="18"/>
             </file>
             <file name="ro.feature" url="templates/i18n/ro.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="19"/>
             </file>
             <file name="sv.feature" url="templates/i18n/sv.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="20"/>
             </file>
             <file name="sk.feature" url="templates/i18n/sk.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="21"/>
             </file>
             <file name="tr.feature" url="templates/i18n/tr.feature">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="info.cukes.feature.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="22"/>
             </file>
@@ -240,8 +239,8 @@
     </folder>
     <folder name="Toolbars">
         <folder name="Build">
-            <file name="info-cukes-feature-actions-RunFeatureWithCucumber.shadow">
-                <attr name="originalFile" stringvalue="Actions/Build/info-cukes-feature-actions-RunFeatureWithCucumber.instance"/>
+            <file name="qubit-cucumber-editor-actions-RunFeatureWithCucumber.shadow">
+                <attr name="originalFile" stringvalue="Actions/Build/qubit-cucumber-editor-actions-RunFeatureWithCucumber.instance"/>
                 <attr name="position" intvalue="500"/>
             </file>
         </folder>

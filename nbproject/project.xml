@@ -3,7 +3,7 @@
     <type>org.netbeans.modules.apisupport.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/nb-module-project/3">
-            <code-name-base>info.cukes.feature</code-name-base>
+            <code-name-base>qubit.cucumber.editor</code-name-base>
             <standalone/>
             <module-dependencies>
                 <dependency>
@@ -135,8 +135,8 @@
             </module-dependencies>
             <public-packages/>
             <class-path-extension>
-                <runtime-relative-path>ext/gherkin-1.0.4.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/gherkin-1.0.4.jar</binary-origin>
+                <runtime-relative-path>ext/gherkin-1.0.5.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/gherkin-1.0.5.jar</binary-origin>
             </class-path-extension>
         </data>
     </configuration>

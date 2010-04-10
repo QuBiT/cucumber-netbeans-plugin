@@ -1,4 +1,4 @@
-package info.cukes.feature.ast;
+package qubit.cucumber.editor.ast;
 
 import org.netbeans.api.languages.ASTNode;
 import org.netbeans.api.languages.ASTToken;

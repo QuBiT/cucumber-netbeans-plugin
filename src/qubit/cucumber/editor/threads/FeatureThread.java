@@ -1,4 +1,4 @@
-package info.cukes.feature.threads;
+package qubit.cucumber.editor.threads;
 
 import java.io.BufferedReader;
 import java.io.File;

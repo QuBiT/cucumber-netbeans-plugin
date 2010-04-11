@@ -66,6 +66,6 @@ public class Feature {
     }
 
     public static String tableIcon(SyntaxContext context) {
-        return resourcesDirectory+"/icons/old/table.png";
+        return resourcesDirectory+"/icons/table16.png";
     }
 }

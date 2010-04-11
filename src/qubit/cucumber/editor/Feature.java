@@ -58,7 +58,7 @@ public class Feature {
     }
 
     public static String examplesIcon(SyntaxContext context) {
-        return resourcesDirectory+"/icons/old/limwire.png";
+        return resourcesDirectory+"/icons/examples16.png";
     }
 
     public static String tableName(SyntaxContext context) {

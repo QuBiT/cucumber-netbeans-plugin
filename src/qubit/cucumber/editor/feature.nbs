@@ -4,7 +4,7 @@
 # I18N-Support: Aslak Hellesoy
 #
 # HINT: THE "feature.nbs" FILE IS AUTOGENRATED BY THE RAKE TASK "i18n_generate"
-# Generated on: Thu Apr 08 14:59:00 +0200 2010
+# Generated on: Sun Apr 11 11:51:38 +0200 2010
 #
 # TOKEN DEFINTIONS -------------------------------------------------------------
 # COMMENT
@@ -63,7 +63,7 @@ TOKEN:newline: ('\n')
     TOKEN:newline:('\n')
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:text:([^'|' '#']*)
+    TOKEN:text:([^'|' '\n' '#']*)
 }
 # Text
 <TEXT_MODE> {

@@ -63,7 +63,7 @@ TOKEN:newline: ('\n')
     TOKEN:newline:('\n')
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:comment:('#' [^ '\n' '\r']*)
-    TOKEN:text:([^'|' '#']*)
+    TOKEN:text:([^'|' '\n' '#']*)
 }
 # Text
 <TEXT_MODE> {

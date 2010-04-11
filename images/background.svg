@@ -8,19 +8,27 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="256"
-   height="256"
+   width="16"
+   height="16"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.46"
    version="1.0"
    sodipodi:docname="background.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="D:\Workspaces\RUBYSpace\Projects\info.cukes.feature\images\cucumber16.png"
-   inkscape:export-xdpi="6.1016946"
-   inkscape:export-ydpi="6.1016946">
+   inkscape:export-filename="D:\Workspaces\RUBYSpace\Projects\info.cukes.feature\images\background32.png"
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180">
   <defs
-     id="defs4" />
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 128 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="256 : 128 : 1"
+       inkscape:persp3d-origin="128 : 85.333333 : 1"
+       id="perspective10" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -28,9 +36,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.0507812"
-     inkscape:cx="65.229191"
-     inkscape:cy="130.01847"
+     inkscape:zoom="48.8125"
+     inkscape:cx="8"
+     inkscape:cy="8"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -64,26 +72,26 @@
        sodipodi:rx="21.633802"
        sodipodi:ry="36.548016"
        d="M 161.27017,67.359795 A 21.633802,36.548016 0 1 1 118.00257,67.359795 A 21.633802,36.548016 0 1 1 161.27017,67.359795 z"
-       transform="matrix(1.8489584,-7.0145566e-8,0,1.641676,-130.18183,-34.582948)" />
+       transform="matrix(9.244792e-2,0,0,9.850056e-2,-4.9094916,-1.4349776)" />
     <path
-       sodipodi:type="arc"
-       style="opacity:1;fill:#419b41;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.5744313;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:10;stroke-opacity:1"
-       id="path4734"
-       sodipodi:cx="139.63637"
-       sodipodi:cy="67.359795"
-       sodipodi:rx="21.633802"
-       sodipodi:ry="36.548016"
+       transform="matrix(-4.622396e-2,8.006224e-2,-8.5304e-2,-4.925028e-2,23.875042,3.640263)"
        d="M 161.27017,67.359795 A 21.633802,36.548016 0 1 1 118.00257,67.359795 A 21.633802,36.548016 0 1 1 161.27017,67.359795 z"
-       transform="matrix(-0.9244793,-1.6012449,1.4217331,-0.820838,99.011806,461.06381)" />
+       sodipodi:ry="36.548016"
+       sodipodi:rx="21.633802"
+       sodipodi:cy="67.359795"
+       sodipodi:cx="139.63637"
+       id="path2383"
+       style="opacity:1;fill:#419b41;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.5744313;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:10;stroke-opacity:1"
+       sodipodi:type="arc" />
     <path
-       sodipodi:type="arc"
-       style="opacity:1;fill:#419b41;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.5744313;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:10;stroke-opacity:1"
-       id="path4736"
-       sodipodi:cx="139.63637"
-       sodipodi:cy="67.359795"
-       sodipodi:rx="21.633802"
-       sodipodi:ry="36.548016"
+       transform="matrix(-4.622396e-2,-8.006224e-2,8.5304e-2,-4.925028e-2,5.0333214,25.999464)"
        d="M 161.27017,67.359795 A 21.633802,36.548016 0 1 1 118.00257,67.359795 A 21.633802,36.548016 0 1 1 161.27017,67.359795 z"
-       transform="matrix(-0.9244791,1.601245,-1.4217331,-0.820838,414.54708,13.879754)" />
+       sodipodi:ry="36.548016"
+       sodipodi:rx="21.633802"
+       sodipodi:cy="67.359795"
+       sodipodi:cx="139.63637"
+       id="path3155"
+       style="opacity:1;fill:#419b41;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.5744313;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:10;stroke-opacity:1"
+       sodipodi:type="arc" />
   </g>
 </svg>

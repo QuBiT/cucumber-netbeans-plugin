@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.openide.filesystems.FileUtil;
@@ -15,54 +14,44 @@ import org.openide.windows.IOProvider;
 import org.openide.windows.InputOutput;
 import org.openide.windows.OutputWriter;
 
-public class FeatureThread implements Runnable {
+public abstract class ExecuteFeatureThread implements Runnable {
 
-    private DataObject dObj = null;
-    private String fileName = "";
+    private final DataObject dObj;
+    private final String fileName;
 
-    public FeatureThread(DataObject dObj) {
-        // set DataObject and file name
+    public ExecuteFeatureThread(DataObject dObj) {
         this.dObj = dObj;
         File file = FileUtil.toFile(this.dObj.getPrimaryFile());
         fileName = file.getAbsolutePath();
+    }
+
+    public abstract List<String> getCommand();
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public OutputWriter getOutputWriter() {
+        OutputWriter outputWriter;
+        InputOutput io;
+        // get an output window tab
+        io = IOProvider.getDefault().getIO("Cucumber", false);
+        io.select();
+        outputWriter = io.getOut();
+        return outputWriter;
     }
 
     public void run() {
         ProcessBuilder procBuilder;
         Process process;
         Map<String, String> env;
-//        File currDir;
-        List<String> cmd;
+        // File currDir;
         String line;
-        InputOutput io;
-        OutputWriter outputWriter;
 
         // TODO: should save file first if it's been modified
 
-        // allows you to use direcotries for your feature files.
-        String[] split_file_name = fileName.split("\\\\features");
-        String requiredDirectory = null;
-        if (!split_file_name[0].equals(fileName)) {
-            requiredDirectory = split_file_name[0] + "\\features";
-        }
-
-        // get an output window tab
-        io = IOProvider.getDefault().getIO("Cucumber", false);
-        io.select();
-        outputWriter = io.getOut();
-
-        // construct the cucumber process command
-        cmd = new ArrayList<String>();
-        cmd.add("cmd");
-        cmd.add("/C");
-        cmd.add("cucumber");
-        if (requiredDirectory != null) {
-            cmd.add("-r");
-            cmd.add(requiredDirectory);
-        }
-        cmd.add(fileName);
-        cmd.add("-s");
-
+        OutputWriter outputWriter = this.getOutputWriter();
+        List<String> cmd = this.getCommand();
         procBuilder = new ProcessBuilder(cmd);
         procBuilder.redirectErrorStream(true);
         // also s/b able to merge it into OutputWriter
@@ -94,4 +83,3 @@ public class FeatureThread implements Runnable {
         }
     }
 }
-

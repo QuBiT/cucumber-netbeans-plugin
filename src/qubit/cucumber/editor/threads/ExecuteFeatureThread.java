@@ -6,23 +6,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
-import java.util.Map;
+import javax.swing.Action;
 import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.util.Exceptions;
-import org.openide.windows.IOProvider;
-import org.openide.windows.InputOutput;
 import org.openide.windows.OutputWriter;
+import qubit.cucumber.editor.windows.CucumberOutputWindow;
+import qubit.cucumber.editor.windows.actions.RerunAction;
+import qubit.cucumber.editor.windows.actions.StopAction;
 
 public abstract class ExecuteFeatureThread implements Runnable {
 
     private final DataObject dObj;
     private final String fileName;
+    private final RerunAction rerun;
+    private final StopAction stop;
 
     public ExecuteFeatureThread(DataObject dObj) {
         this.dObj = dObj;
         File file = FileUtil.toFile(this.dObj.getPrimaryFile());
         fileName = file.getAbsolutePath();
+        rerun = new RerunAction(dObj);
+        stop = new StopAction();
     }
 
     public abstract List<String> getCommand();
@@ -31,47 +36,27 @@ public abstract class ExecuteFeatureThread implements Runnable {
         return fileName;
     }
 
-    public OutputWriter getOutputWriter() {
-        OutputWriter outputWriter;
-        InputOutput io;
-        // get an output window tab
-        io = IOProvider.getDefault().getIO("Cucumber", false);
-        io.select();
-        outputWriter = io.getOut();
-        return outputWriter;
+    public Action[] getActions() {
+        Action[] actions = { rerun , stop };
+        return actions;
     }
 
     public void run() {
         ProcessBuilder procBuilder;
         Process process;
-        Map<String, String> env;
-        // File currDir;
         String line;
-
-        // TODO: should save file first if it's been modified
-
-        OutputWriter outputWriter = this.getOutputWriter();
+        OutputWriter outputWriter = CucumberOutputWindow.getOutputWriter(dObj.getPrimaryFile().getNameExt(), getActions());
         List<String> cmd = this.getCommand();
         procBuilder = new ProcessBuilder(cmd);
         procBuilder.redirectErrorStream(true);
-        // also s/b able to merge it into OutputWriter
-//        env = procBuilder.environment();
-//        env.put("VAR1", "myValue");
-//        env.remove("OTHERVAR");
-//        env.put("VAR2", env.get("VAR1") + "suffix");
-//        currDir = procBuilder.directory();
-//        if (currDir != null) {
-//            System.out.printf("Current directory is %s.", currDir.toString());
-//        }
-//        procBuilder.directory(new File("myDir"));
         try {
             process = procBuilder.start();
+            stop.setProcess(process);
             InputStream is = process.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader br = new BufferedReader(isr);
-            // TODO: might want to clear the output window first...
+            outputWriter.printf("Output of running %s is:\n", cmd.toString());
             outputWriter.printf("--- START ---\n\n");
-            outputWriter.printf("Output of running %s is:\n\n", cmd.toString());
             while ((line = br.readLine()) != null) {
                 outputWriter.println(line);
             }

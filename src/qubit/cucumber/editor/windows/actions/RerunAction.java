@@ -19,10 +19,4 @@ public class RerunAction extends AbstractAction {
     public void actionPerformed(ActionEvent e) {
         new RunFeatureWithCucumber(context).actionPerformed(e);
     }
-
-    // TODO enable/remove, when action defined.
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }

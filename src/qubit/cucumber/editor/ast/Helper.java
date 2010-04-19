@@ -10,8 +10,8 @@ public class Helper {
     private static String featureDescription = "FeatureDescription";
     private static String backgroundIdentifier = "background";
     private static String description = "Description";
-    private static String basicScenario = "BasicScenario";
-    private static String tableScenario = "TableScenario";
+    private static String basicScenario = "Scenario";
+    private static String tableScenario = "ScenarioOutline";
     private static String basicScenarioIdentifier = "scenario";
     private static String tableScenarioIdentifier = "scenario_outline";
     private static String scenarioDescription = "ScenarioDescription";

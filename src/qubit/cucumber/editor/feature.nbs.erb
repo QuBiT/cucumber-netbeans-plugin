@@ -109,48 +109,35 @@ TOKEN:newline: ('\n')
 }
 #
 # GRAMMER RULES :: SYNTAX DEFINITION -------------------------------------------
-#
-# 0..1 Features are in one File (restrict to 1)
 S = [Feature];
-# Feature
-Feature = FeatureDefinition BackgroundPart ScenarioPart;
-BackgroundPart = (Background)*;
-ScenarioPart = (Scenario)*;
+Feature = Tags FeatureDefinition [Background] FeatureElements;
 FeatureDefinition = <feature> <colon> [FeatureDescription];
 FeatureDescription = Text;
-# Background
-Background = <background> <colon> [Description] [BackgroundBlock];
-
-# a Background has only Given Statments
-BackgroundBlock = (Statements)*;
-# Scenario
-Scenario = BasicScenario | TableScenario;
-BasicScenario = <scenario> <colon> [ScenarioDescription] ScenarioBlock;
-TableScenario = <scenario_outline> <colon> [ScenarioDescription] ScenarioBlock ExamplesBlocks;
+Tags = (Tag)*;
+Tag = <tag>;
+Background = <background> <colon> [Description] Steps;
+FeatureElements = (Scenario | ScenarioOutline)*;
+Scenario = Tags <scenario> <colon> [ScenarioDescription] Steps;
+ScenarioOutline = Tags <scenario_outline> <colon> [ScenarioDescription] Steps ExamplesSection;
 ScenarioDescription = Text;
-ScenarioBlock = (Statements)*;
-Statements = StatementIdentfier Statement;
+Steps = (Step)*;
+Step = StatementIdentfier Text [MultilineArg];
 StatementIdentfier = (<infinite> | <step>);
-Statement = Text [Extras];
-#Extras
-Extras = PyString | TableBlock;
-# Examples and Tables
-ExamplesBlocks = ExamplesBlock (ExamplesBlock)*;
-ExamplesBlock = <examples> <colon> [Description] TableBlock;
+MultilineArg = PyString | Table;
+ExamplesSection = Examples+;
+Examples = <examples> <colon> [Description] Table;
 Description = Text;
-TableBlock = TableHeader TableRows;
+Table = TableHeader TableRows;
 TableHeader = Row;
 TableRows = (Row)*;
-Row = <row_delimiter> ([Text] <row_delimiter>)+ <end>;
-#
+Row = <row_delimiter> Cell+ <end>;
+Cell = [Text] <row_delimiter>;
 PyString = <pystring> Text <end_pystring>;
-# Text
 Text = (<text> | <number> | <string> | <variable>) (Text)*;
 #
 SKIP:whitespace
 SKIP:comment
 SKIP:newline
-SKIP:tag
 # ------------------------------------------------------------------------------
 #
 COLOR:comment: {
@@ -281,17 +268,17 @@ NAVIGATOR:Feature: {
     icon: qubit.cucumber.editor.Feature.featureIcon;
 }
 
-NAVIGATOR:Scenario: {
+NAVIGATOR:FeatureElements: {
     display_name: qubit.cucumber.editor.Feature.scenarioName;
     icon: qubit.cucumber.editor.Feature.scenarioIcon;
 }
 
-NAVIGATOR:ExamplesBlock: {
+NAVIGATOR:Examples: {
     display_name: qubit.cucumber.editor.Feature.examplesName;
     icon: qubit.cucumber.editor.Feature.examplesIcon;
 }
 
-NAVIGATOR:TableBlock: {
+NAVIGATOR:Table: {
     display_name: qubit.cucumber.editor.Feature.tableName;
     icon: qubit.cucumber.editor.Feature.tableIcon;
 }
@@ -320,10 +307,8 @@ COMMENT_LINE {
 
 # FOLD -------------------------------------------------------------------------
 
-FOLD:FeatureBlock
-FOLD:BackgroundBlock
-FOLD:ScenarioBlock
-FOLD:TableBlock
+FOLD:Steps
+FOLD:Table
 
 # BUNDLE -----------------------------------------------------------------------
 BUNDLE "qubit.cucumber.editor.Bundle"

@@ -135,8 +135,8 @@
             </module-dependencies>
             <public-packages/>
             <class-path-extension>
-                <runtime-relative-path>ext/gherkin-1.0.16.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/gherkin-1.0.16.jar</binary-origin>
+                <runtime-relative-path>ext/gherkin-1.0.17.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/gherkin-1.0.17.jar</binary-origin>
             </class-path-extension>
         </data>
     </configuration>

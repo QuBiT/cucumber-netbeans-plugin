@@ -8,8 +8,7 @@
 # Gherkin Version: <%= Gem.source_index.find_name('gherkin').first.version.to_s %>
 #
 # TOKEN DEFINTIONS -------------------------------------------------------------
-# COMMENT
-TOKEN:comment:('#' [^ '\n' '\r']*)
+#
 # COLON
 TOKEN:colon:(":"):<TEXT_MODE>
 # ROW DELIMITER
@@ -35,10 +34,13 @@ TOKEN:examples:(<%= gherkin_keywords(:examples) %>):<EXAMPLES_MODE>
 
 TOKEN:step:(<%= gherkin_keywords(:step) %>):<STEPS_TEXT_MODE>
 
+TOKEN:language:("#" [' ' '\t']+ "language" [' ' '\t']* ":" [' ' '\t']+ (<%= gherkin_language_keys() %>))
+TOKEN:comment:('#' [^ '\n']*)
 TOKEN:text:( [^ '\n' '\r' '\t' ' ' '\"' '<' '>' '|' '#' ':' '@']* )
 TOKEN:tag:('@' [^ ' ' '\t' '\n' '\r']*)
 TOKEN:whitespace:( [" " "\t"]+ ) # "\n" "\r"
 TOKEN:newline: ('\n')
+#
 
 # TEXT -------------------------------------------------------------------------
 <FEATURE_NARRATIVE> {
@@ -107,9 +109,10 @@ TOKEN:newline: ('\n')
     TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
     TOKEN:text:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
 }
-#
+
 # GRAMMER RULES :: SYNTAX DEFINITION -------------------------------------------
-S = [Feature];
+S = [LanguageIdentifier] [Feature];
+LanguageIdentifier = <language>;
 Feature = Tags FeatureDefinition [Background] FeatureElements;
 FeatureDefinition = <feature> <colon> [FeatureDescription];
 FeatureDescription = Text;
@@ -141,8 +144,12 @@ SKIP:newline
 # ------------------------------------------------------------------------------
 #
 COLOR:comment: {
-    default_coloring: "identifier";
-    foreground_color:"#8F8F8F";
+    default_coloring: "comment";
+    #foreground_color:"#8F8F8F";
+}
+COLOR:language: {
+    default_coloring: "comment";
+    font_type: "bold";
 }
 COLOR:tag: {
     default_coloring: "identifier";
@@ -262,6 +269,11 @@ BRACE "\':\'"
 
 # NAVIGATOR --------------------------------------------------------------------
 # navigator
+
+NAVIGATOR:LanguageIdentifier: {
+    display_name: qubit.cucumber.editor.Feature.languageName;
+    icon: qubit.cucumber.editor.Feature.languageIcon;
+}
 
 NAVIGATOR:Feature: {
     display_name: qubit.cucumber.editor.Feature.featureName;

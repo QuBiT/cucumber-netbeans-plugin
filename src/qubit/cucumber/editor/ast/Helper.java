@@ -5,6 +5,7 @@ import org.netbeans.api.languages.ASTToken;
 
 public class Helper {
 
+    private static String languageIdentifier = "language";
     private static String featureDefinition = "FeatureDefinition";
     private static String featureIdentifier = "feature";
     private static String featureDescription = "FeatureDescription";
@@ -18,6 +19,14 @@ public class Helper {
     private static String examplesIdentifier = "examples";
 
 // FEATURE ---------------------------------------------------------------------
+    public static ASTToken getLanguageToken(ASTNode parent) {
+        if (parent != null) {
+            return parent.getTokenType(languageIdentifier);
+        } else {
+            return null;
+        }
+    }
+
     public static ASTNode getFeatureNode(ASTNode parent) {
         if (parent != null) {
             return parent.getNode(featureDefinition);

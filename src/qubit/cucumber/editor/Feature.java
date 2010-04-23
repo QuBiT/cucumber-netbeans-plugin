@@ -23,8 +23,22 @@ public class Feature {
         return Helper.getResultString(id_node, desc_node, "Feature");
     }
 
+    public static String languageName(SyntaxContext context) {
+        ASTNode node = getActualNode(context);
+        ASTToken language_token = Helper.getLanguageToken(node);
+        if (language_token != null) {
+            return language_token.getIdentifier().split(":")[1].trim();
+        } else {
+            return "EN";
+        }
+    }
+
+    public static String languageIcon(SyntaxContext context) {
+        return resourcesDirectory + "/icons/language16.png";
+    }
+
     public static String featureIcon(SyntaxContext context) {
-        return resourcesDirectory+"/icons/cucumber16.png";
+        return resourcesDirectory + "/icons/cucumber16.png";
     }
 
     public static String scenarioName(SyntaxContext context) {
@@ -36,7 +50,7 @@ public class Feature {
     }
 
     public static String scenarioIcon(SyntaxContext context) {
-        return resourcesDirectory+"/icons/scenario16.png";
+        return resourcesDirectory + "/icons/scenario16.png";
     }
 
     public static String backgroundName(SyntaxContext context) {
@@ -47,7 +61,7 @@ public class Feature {
     }
 
     public static String backgroundIcon(SyntaxContext context) {
-        return resourcesDirectory+"/icons/background16.png";
+        return resourcesDirectory + "/icons/background16.png";
     }
 
     public static String examplesName(SyntaxContext context) {
@@ -58,7 +72,7 @@ public class Feature {
     }
 
     public static String examplesIcon(SyntaxContext context) {
-        return resourcesDirectory+"/icons/examples16.png";
+        return resourcesDirectory + "/icons/examples16.png";
     }
 
     public static String tableName(SyntaxContext context) {
@@ -66,6 +80,6 @@ public class Feature {
     }
 
     public static String tableIcon(SyntaxContext context) {
-        return resourcesDirectory+"/icons/table16.png";
+        return resourcesDirectory + "/icons/table16.png";
     }
 }

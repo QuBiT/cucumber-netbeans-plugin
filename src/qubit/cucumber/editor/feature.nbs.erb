@@ -145,10 +145,11 @@ SKIP:newline
 #
 COLOR:comment: {
     default_coloring: "comment";
-    #foreground_color:"#8F8F8F";
+    foreground_color:"#8F8F8F";
 }
 COLOR:language: {
-    default_coloring: "comment";
+    default_coloring: "identifier";
+    foreground_color:"#8F8F8F";
     font_type: "bold";
 }
 COLOR:tag: {
@@ -280,9 +281,14 @@ NAVIGATOR:Feature: {
     icon: qubit.cucumber.editor.Feature.featureIcon;
 }
 
-NAVIGATOR:FeatureElements: {
+NAVIGATOR:Scenario: {
     display_name: qubit.cucumber.editor.Feature.scenarioName;
     icon: qubit.cucumber.editor.Feature.scenarioIcon;
+}
+
+NAVIGATOR:ScenarioOutline: {
+    display_name: qubit.cucumber.editor.Feature.scenarioOutlineName;
+    icon: qubit.cucumber.editor.Feature.scenarioOutlineIcon;
 }
 
 NAVIGATOR:Examples: {

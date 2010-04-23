@@ -4,8 +4,8 @@
 # I18N-Support: Aslak Hellesoy
 #
 # HINT: THE "feature.nbs" FILE IS AUTOGENRATED BY THE RAKE TASK "i18n_generate"
-# Generated on: Fri Apr 23 16:32:25 +0200 2010
-# Gherkin Version: 1.0.17
+# Generated on: Fri Apr 23 18:06:03 +0200 2010
+# Gherkin Version: 1.0.18
 #
 # TOKEN DEFINTIONS -------------------------------------------------------------
 #
@@ -145,10 +145,11 @@ SKIP:newline
 #
 COLOR:comment: {
     default_coloring: "comment";
-    #foreground_color:"#8F8F8F";
+    foreground_color:"#8F8F8F";
 }
 COLOR:language: {
-    default_coloring: "comment";
+    default_coloring: "identifier";
+    foreground_color:"#8F8F8F";
     font_type: "bold";
 }
 COLOR:tag: {
@@ -280,9 +281,14 @@ NAVIGATOR:Feature: {
     icon: qubit.cucumber.editor.Feature.featureIcon;
 }
 
-NAVIGATOR:FeatureElements: {
+NAVIGATOR:Scenario: {
     display_name: qubit.cucumber.editor.Feature.scenarioName;
     icon: qubit.cucumber.editor.Feature.scenarioIcon;
+}
+
+NAVIGATOR:ScenarioOutline: {
+    display_name: qubit.cucumber.editor.Feature.scenarioOutlineName;
+    icon: qubit.cucumber.editor.Feature.scenarioOutlineIcon;
 }
 
 NAVIGATOR:Examples: {

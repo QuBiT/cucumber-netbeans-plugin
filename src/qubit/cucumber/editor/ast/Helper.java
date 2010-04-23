@@ -11,8 +11,6 @@ public class Helper {
     private static String featureDescription = "FeatureDescription";
     private static String backgroundIdentifier = "background";
     private static String description = "Description";
-    private static String basicScenario = "Scenario";
-    private static String tableScenario = "ScenarioOutline";
     private static String basicScenarioIdentifier = "scenario";
     private static String tableScenarioIdentifier = "scenario_outline";
     private static String scenarioDescription = "ScenarioDescription";
@@ -68,14 +66,7 @@ public class Helper {
         }
     }
 // SCENARIO --------------------------------------------------------------------
-    public static ASTNode getScenarioNode(ASTNode parent) {
-        if (parent != null) {
-            ASTNode node1 = parent.getNode(basicScenario);
-            return node1 != null ? node1 : parent.getNode(tableScenario);
-        } else {
-            return null;
-        }
-    }
+
     public static ASTNode getScenarioDescriptionNode(ASTNode parent) {
         if (parent != null) {
             return parent.getNode(scenarioDescription);
@@ -83,14 +74,23 @@ public class Helper {
             return null;
         }
     }
+
     public static ASTToken getScenarioToken(ASTNode parent) {
         if (parent != null) {
-            ASTToken node1 = parent.getTokenType(basicScenarioIdentifier);
-            return node1 != null ? node1 : parent.getTokenType(tableScenarioIdentifier);
+            return parent.getTokenType(basicScenarioIdentifier);
         } else {
             return null;
         }
     }
+
+    public static ASTToken getScenarioOutlineToken(ASTNode parent) {
+        if (parent != null) {
+            return parent.getTokenType(tableScenarioIdentifier);
+        } else {
+            return null;
+        }
+    }
+
 // EXAMPLES --------------------------------------------------------------------
     public static ASTToken getExamplesToken(ASTNode parent) {
         if (parent != null) {
@@ -100,6 +100,7 @@ public class Helper {
         }
     }
 // RESULT STRING ---------------------------------------------------------------
+
     public static String getResultString(ASTToken head, ASTNode body, String error_case) {
         if (head != null) {
             if (body != null) {

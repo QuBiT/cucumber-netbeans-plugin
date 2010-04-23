@@ -42,14 +42,24 @@ public class Feature {
     }
 
     public static String scenarioName(SyntaxContext context) {
-        ASTNode node = getActualNode(context);
-        ASTNode scenario_node = Helper.getScenarioNode(node);
+        ASTNode scenario_node = getActualNode(context);
         ASTNode desc_node = Helper.getScenarioDescriptionNode(scenario_node);
-        ASTToken id_node = Helper.getScenarioToken(scenario_node);
-        return Helper.getResultString(id_node, desc_node, "Scenario");
+        ASTToken id_token = Helper.getScenarioToken(scenario_node);
+        return Helper.getResultString(id_token, desc_node, "Scenario");
+    }
+
+    public static String scenarioOutlineName(SyntaxContext context) {
+        ASTNode scenario_node = getActualNode(context);
+        ASTNode desc_node = Helper.getScenarioDescriptionNode(scenario_node);
+        ASTToken id_token = Helper.getScenarioOutlineToken(scenario_node);
+        return Helper.getResultString(id_token, desc_node, "Scenario Outline");
     }
 
     public static String scenarioIcon(SyntaxContext context) {
+        return resourcesDirectory + "/icons/scenario16.png";
+    }
+
+    public static String scenarioOutlineIcon(SyntaxContext context) {
         return resourcesDirectory + "/icons/scenario16.png";
     }
 

@@ -26,11 +26,8 @@ class GherkinFormatTask implements ReformatTask {
             String source = context.document().getText(0, context.document().getLength());
             StringWriter reformattedWriter = new StringWriter();
             Parser parser = new Parser(new PrettyFormatter(reformattedWriter, true));
-            byte[] charData = source.getBytes("UTF-8");
-            String formattedSource = new String(charData);
             Lexer lexer = new I18nLexer(parser);
-            lexer.scan(formattedSource);
-
+            lexer.scan(source);
             writeSource(reformattedWriter.getBuffer().toString());
         } catch (Exception e) {
             showError(e);

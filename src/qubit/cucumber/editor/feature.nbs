@@ -4,8 +4,8 @@
 # I18N-Support: Aslak Hellesoy
 #
 # HINT: THE "feature.nbs" FILE IS AUTOGENRATED BY THE RAKE TASK "i18n_generate"
-# Generated on: Sat Apr 24 17:26:08 +0200 2010
-# Gherkin Version: 1.0.20
+# Generated on: Mon May 03 17:17:00 +0200 2010
+# Gherkin Version: 1.0.24
 #
 # TOKEN DEFINTIONS -------------------------------------------------------------
 #
@@ -128,7 +128,7 @@ Step = StatementIdentfier Text [MultilineArg];
 StatementIdentfier = (<infinite> | <step>);
 MultilineArg = PyString | Table;
 ExamplesSection = Examples+;
-Examples = <examples> <colon> [Description] Table;
+Examples = Tags <examples> <colon> [Description] Table;
 Description = Text;
 Table = TableHeader TableRows;
 TableHeader = Row;
@@ -141,6 +141,7 @@ Text = (<text> | <number> | <string> | <variable>) (Text)*;
 SKIP:whitespace
 SKIP:comment
 SKIP:newline
+SKIP:tag
 # ------------------------------------------------------------------------------
 #
 COLOR:comment: {

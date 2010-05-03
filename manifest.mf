@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 OpenIDE-Module: qubit.cucumber.editor
-OpenIDE-Module-Implementation-Version: 2
+OpenIDE-Module-Implementation-Version: 3
 OpenIDE-Module-Layer: qubit/cucumber/editor/layer.xml
 OpenIDE-Module-Localizing-Bundle: qubit/cucumber/editor/Bundle.properties
 

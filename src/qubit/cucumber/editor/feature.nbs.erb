@@ -128,7 +128,7 @@ Step = StatementIdentfier Text [MultilineArg];
 StatementIdentfier = (<infinite> | <step>);
 MultilineArg = PyString | Table;
 ExamplesSection = Examples+;
-Examples = <examples> <colon> [Description] Table;
+Examples = Tags <examples> <colon> [Description] Table;
 Description = Text;
 Table = TableHeader TableRows;
 TableHeader = Row;
@@ -141,6 +141,7 @@ Text = (<text> | <number> | <string> | <variable>) (Text)*;
 SKIP:whitespace
 SKIP:comment
 SKIP:newline
+SKIP:tag
 # ------------------------------------------------------------------------------
 #
 COLOR:comment: {

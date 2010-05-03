@@ -21,16 +21,30 @@ class GherkinFormatTask implements ReformatTask {
         this.context = context;
     }
 
+    private boolean doReformat() {
+        boolean format = true;
+        StackTraceElement[] calling_stack = new Exception().getStackTrace();
+        for (StackTraceElement stackTraceElement : calling_stack) {
+            if (stackTraceElement.getClassName().equals("org.netbeans.lib.editor.codetemplates.CodeTemplateInsertHandler")) {
+                format = false;
+                break;
+            }
+        }
+        return format;
+    }
+
     public void reformat() throws BadLocationException {
-        try {
-            String source = context.document().getText(0, context.document().getLength());
-            StringWriter reformattedWriter = new StringWriter();
-            Parser parser = new Parser(new PrettyFormatter(reformattedWriter, true));
-            Lexer lexer = new I18nLexer(parser);
-            lexer.scan(source);
-            writeSource(reformattedWriter.getBuffer().toString());
-        } catch (Exception e) {
-            showError(e);
+        if (doReformat()) {
+            try {
+                String source = context.document().getText(0, context.document().getLength());
+                StringWriter reformattedWriter = new StringWriter();
+                Parser parser = new Parser(new PrettyFormatter(reformattedWriter, true));
+                Lexer lexer = new I18nLexer(parser);
+                lexer.scan(source);
+                writeSource(reformattedWriter.getBuffer().toString());
+            } catch (Exception e) {
+                showError(e);
+            }
         }
     }
 

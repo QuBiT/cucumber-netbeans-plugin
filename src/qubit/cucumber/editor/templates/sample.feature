@@ -1,4 +1,5 @@
 # some comment
+# language: en
 @foo34 @bar
 Feature: Sample Feature
   This is part of the narrative,

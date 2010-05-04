@@ -29,7 +29,6 @@ public class WindowsFeatureThread extends ExecuteFeatureThread {
             cmd.add(requiredDirectory);
         }
         cmd.add(fileName);
-        cmd.add("-s");
         return cmd;
     }
 }

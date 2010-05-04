@@ -27,7 +27,6 @@ public class LinuxFeatureThread extends ExecuteFeatureThread {
             cmd.add(requiredDirectory);
         }
         cmd.add(fileName);
-        cmd.add("-s");
         return cmd;
     }
 }

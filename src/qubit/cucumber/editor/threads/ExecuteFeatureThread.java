@@ -10,7 +10,9 @@ import javax.swing.Action;
 import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.util.Exceptions;
+import org.openide.util.NbPreferences;
 import org.openide.windows.OutputWriter;
+import qubit.cucumber.editor.panels.CucumberFeaturesPanel;
 import qubit.cucumber.editor.windows.CucumberOutputWindow;
 import qubit.cucumber.editor.windows.actions.RerunAction;
 import qubit.cucumber.editor.windows.actions.StopAction;
@@ -47,6 +49,10 @@ public abstract class ExecuteFeatureThread implements Runnable {
         String line;
         OutputWriter outputWriter = CucumberOutputWindow.getOutputWriter(dObj.getPrimaryFile().getNameExt(), getActions());
         List<String> cmd = this.getCommand();
+        // CUSTOM OPTIONS
+        for (String option : getOptions()) {
+            cmd.add(option);
+        }
         procBuilder = new ProcessBuilder(cmd);
         procBuilder.redirectErrorStream(true);
         try {
@@ -66,5 +72,16 @@ public abstract class ExecuteFeatureThread implements Runnable {
         } finally {
             outputWriter.close();
         }
+    }
+
+    private String[] getOptions() {
+        boolean custom = NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("customRadioButton", false);
+        String options;
+        if(custom){
+            options = NbPreferences.forModule(CucumberFeaturesPanel.class).get("customOptionsTextField", "");
+        } else {
+            options = "-s";
+        }
+        return options.split(" ");
     }
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module codename="qubit.cucumber.editor">
+    <module_version install_time="1273475174435" last="true" origin="installer" specification_version="1.7.5">
+        <file crc="1655447550" name="config/Modules/qubit-cucumber-editor.xml"/>
+        <file crc="2355637104" name="modules/ext/gherkin-1.0.26.jar"/>
+        <file crc="3269900220" name="modules/qubit-cucumber-editor.jar"/>
+    </module_version>
+</module>

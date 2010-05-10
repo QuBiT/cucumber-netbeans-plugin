@@ -1,4 +1,4 @@
-= Cucumber Features : Netbeans Module
+= Cucumber Features : QuBiT's Cucumber Editor Module for Netbeans
 
 == Documentation
 
@@ -15,7 +15,7 @@ to all people who are using this plugin/module and tell other people about it.
 
 you can also:
 
-* follow me on "Twitter":http://twitter.com/roland_guem
+* follow me on Twitter: http://twitter.com/roland_guem
 
 == License
 

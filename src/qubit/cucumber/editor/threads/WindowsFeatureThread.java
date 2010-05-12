@@ -11,7 +11,16 @@ public class WindowsFeatureThread extends ExecuteFeatureThread {
     }
 
     @Override
-    public List<String> getCommand() {
+    public List<String> getSystemSpecificHeader() {
+        List<String> specificHeader = new ArrayList<String>();
+        specificHeader.add("cmd");
+        specificHeader.add("/C");
+        return specificHeader;
+    }
+
+    @Override
+    public List<String> getSystemSpecificIncludePath() {
+        List<String> cmd = new ArrayList<String>();
         String fileName = getFileName();
         // allows you to use direcotries for your feature files.
         String[] split_file_name = fileName.split("\\\\features");
@@ -19,16 +28,11 @@ public class WindowsFeatureThread extends ExecuteFeatureThread {
         if (!split_file_name[0].equals(fileName)) {
             requiredDirectory = split_file_name[0] + "\\features";
         }
-        // construct the cucumber process command
-        List<String> cmd = new ArrayList<String>();
-        cmd.add("cmd");
-        cmd.add("/C");
-        cmd.add("cucumber");
+
         if (requiredDirectory != null) {
             cmd.add("-r");
             cmd.add(requiredDirectory);
         }
-        cmd.add(fileName);
         return cmd;
     }
 }

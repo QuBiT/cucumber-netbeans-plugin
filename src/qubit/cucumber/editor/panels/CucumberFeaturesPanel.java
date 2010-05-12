@@ -24,28 +24,32 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        executionOptionsButtonGroup = new javax.swing.ButtonGroup();
+        rubyVersionButtonGroup = new javax.swing.ButtonGroup();
         executionOptionsPanel = new javax.swing.JPanel();
-        defaultRadioButton = new javax.swing.JRadioButton();
+        defaultExecutionRadioButton = new javax.swing.JRadioButton();
         customOptionsTextField = new javax.swing.JTextField();
         defaultOptionsTextField = new javax.swing.JTextField();
-        customRadioButton = new javax.swing.JRadioButton();
+        customExecutionRadioButton = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        rubyRadioButton = new javax.swing.JRadioButton();
+        jRubyRadioButton = new javax.swing.JRadioButton();
 
         executionOptionsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.executionOptionsPanel.border.title"))); // NOI18N
 
-        buttonGroup1.add(defaultRadioButton);
-        defaultRadioButton.setSelected(true);
-        org.openide.awt.Mnemonics.setLocalizedText(defaultRadioButton, org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.defaultRadioButton.text")); // NOI18N
+        executionOptionsButtonGroup.add(defaultExecutionRadioButton);
+        defaultExecutionRadioButton.setSelected(true);
+        org.openide.awt.Mnemonics.setLocalizedText(defaultExecutionRadioButton, org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.defaultExecutionRadioButton.text")); // NOI18N
 
         customOptionsTextField.setText(org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.customOptionsTextField.text")); // NOI18N
 
         defaultOptionsTextField.setEditable(false);
         defaultOptionsTextField.setText(org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.defaultOptionsTextField.text")); // NOI18N
 
-        buttonGroup1.add(customRadioButton);
-        org.openide.awt.Mnemonics.setLocalizedText(customRadioButton, org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.customRadioButton.text")); // NOI18N
+        executionOptionsButtonGroup.add(customExecutionRadioButton);
+        org.openide.awt.Mnemonics.setLocalizedText(customExecutionRadioButton, org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.customExecutionRadioButton.text")); // NOI18N
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel1, org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.jLabel1.text")); // NOI18N
 
@@ -58,8 +62,8 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
             .addGroup(executionOptionsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(executionOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(defaultRadioButton)
-                    .addComponent(customRadioButton))
+                    .addComponent(defaultExecutionRadioButton)
+                    .addComponent(customExecutionRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(executionOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -73,16 +77,46 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
             .addGroup(executionOptionsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(executionOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(defaultRadioButton)
+                    .addComponent(defaultExecutionRadioButton)
                     .addComponent(defaultOptionsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(executionOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customOptionsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(customRadioButton))
+                    .addComponent(customExecutionRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.jPanel1.border.title"))); // NOI18N
+
+        rubyVersionButtonGroup.add(rubyRadioButton);
+        rubyRadioButton.setSelected(true);
+        org.openide.awt.Mnemonics.setLocalizedText(rubyRadioButton, org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.rubyRadioButton.text")); // NOI18N
+
+        rubyVersionButtonGroup.add(jRubyRadioButton);
+        org.openide.awt.Mnemonics.setLocalizedText(jRubyRadioButton, org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.jRubyRadioButton.text")); // NOI18N
+        jRubyRadioButton.setToolTipText(org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.jRubyRadioButton.toolTipText")); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rubyRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(jRubyRadioButton)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rubyRadioButton)
+                    .addComponent(jRubyRadioButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -92,15 +126,19 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(executionOptionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(executionOptionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(executionOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -114,7 +152,8 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
         // someTextField.setText(SomeSystemOption.getDefault().getSomeStringProperty());
         defaultOptionsTextField.setText("-s");
         customOptionsTextField.setText(NbPreferences.forModule(CucumberFeaturesPanel.class).get("customOptionsTextField", ""));
-        customRadioButton.setSelected(NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("customRadioButton", false));
+        customExecutionRadioButton.setSelected(NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("customRadioButton", false));
+        jRubyRadioButton.setSelected(NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("jRubyRadioButton", false));
         //defaultOptionsTextField.setText(NbPreferences.forModule(CucumberFeaturesPanel.class).get("defaultOptions", ""));
     }
 
@@ -126,7 +165,8 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
         // NbPreferences.forModule(CucumberFeaturesPanel.class).putBoolean("someFlag", someCheckBox.isSelected());
         // or:
         // SomeSystemOption.getDefault().setSomeStringProperty(someTextField.getText());
-        NbPreferences.forModule(CucumberFeaturesPanel.class).putBoolean("customRadioButton", customRadioButton.isSelected());
+        NbPreferences.forModule(CucumberFeaturesPanel.class).putBoolean("customRadioButton", customExecutionRadioButton.isSelected());
+        NbPreferences.forModule(CucumberFeaturesPanel.class).putBoolean("jRubyRadioButton", jRubyRadioButton.isSelected());
         NbPreferences.forModule(CucumberFeaturesPanel.class).put("customOptionsTextField", customOptionsTextField.getText());
     }
 
@@ -135,13 +175,17 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
         return true;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton customExecutionRadioButton;
     private javax.swing.JTextField customOptionsTextField;
-    private javax.swing.JRadioButton customRadioButton;
+    private javax.swing.JRadioButton defaultExecutionRadioButton;
     private javax.swing.JTextField defaultOptionsTextField;
-    private javax.swing.JRadioButton defaultRadioButton;
+    private javax.swing.ButtonGroup executionOptionsButtonGroup;
     private javax.swing.JPanel executionOptionsPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRubyRadioButton;
+    private javax.swing.JRadioButton rubyRadioButton;
+    private javax.swing.ButtonGroup rubyVersionButtonGroup;
     // End of variables declaration//GEN-END:variables
 }

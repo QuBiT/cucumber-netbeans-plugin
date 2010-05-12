@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.swing.Action;
 import org.openide.filesystems.FileUtil;
@@ -23,6 +25,7 @@ public abstract class ExecuteFeatureThread implements Runnable {
     private final String fileName;
     private final RerunAction rerun;
     private final StopAction stop;
+    private List<String> commandList;
 
     public ExecuteFeatureThread(DataObject dObj) {
         this.dObj = dObj;
@@ -30,16 +33,19 @@ public abstract class ExecuteFeatureThread implements Runnable {
         fileName = file.getAbsolutePath();
         rerun = new RerunAction(dObj);
         stop = new StopAction();
+        commandList = new ArrayList();
     }
 
-    public abstract List<String> getCommand();
+    public abstract List<String> getSystemSpecificHeader();
+
+    public abstract List<String> getSystemSpecificIncludePath();
 
     public String getFileName() {
         return fileName;
     }
 
     public Action[] getActions() {
-        Action[] actions = { rerun , stop };
+        Action[] actions = {rerun, stop};
         return actions;
     }
 
@@ -48,12 +54,15 @@ public abstract class ExecuteFeatureThread implements Runnable {
         Process process;
         String line;
         OutputWriter outputWriter = CucumberOutputWindow.getOutputWriter(dObj.getPrimaryFile().getNameExt(), getActions());
-        List<String> cmd = this.getCommand();
-        // CUSTOM OPTIONS
-        for (String option : getOptions()) {
-            cmd.add(option);
-        }
-        procBuilder = new ProcessBuilder(cmd);
+
+        commandList.addAll(this.getSystemSpecificHeader());
+        commandList.addAll(this.getRubySpecificHeader());
+        commandList.add("cucumber");
+        commandList.addAll(this.getSystemSpecificIncludePath());
+        commandList.add(fileName);
+        commandList.addAll(this.getOptions());
+
+        procBuilder = new ProcessBuilder(commandList);
         procBuilder.redirectErrorStream(true);
         try {
             process = procBuilder.start();
@@ -61,7 +70,7 @@ public abstract class ExecuteFeatureThread implements Runnable {
             InputStream is = process.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader br = new BufferedReader(isr);
-            outputWriter.printf("Output of running %s is:\n", cmd.toString());
+            outputWriter.printf("Output of running %s is:\n", commandList.toString());
             outputWriter.printf("--- START ---\n\n");
             while ((line = br.readLine()) != null) {
                 outputWriter.println(line);
@@ -74,10 +83,39 @@ public abstract class ExecuteFeatureThread implements Runnable {
         }
     }
 
-    private String[] getOptions() {
-        boolean custom = NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("customRadioButton", false);
+    private List<String> getRubySpecificHeader() {
+        List<String> cmd = new ArrayList<String>();
+        if (shouldUseJRuby()) {
+            for (String head : getJRubyCommandHeader()) {
+                cmd.add(head);
+            }
+        }
+        return cmd;
+    }
+
+    private boolean shouldUseJRuby() {
+        return NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("jRubyRadioButton", false);
+    }
+
+    private String[] getJRubyCommandHeader() {
+        return "jruby -S".split(" ");
+    }
+
+    private boolean shouldUseCustomExecutionOptions() {
+        return NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("customRadioButton", false);
+    }
+
+    private List<String> getOptions() {
+        List<String> options = new ArrayList<String>();
+        for (String opt : buildOptions()) {
+            options.add(opt);
+        }
+        return options;
+    }
+
+    private String[] buildOptions() {
         String options;
-        if(custom){
+        if (shouldUseCustomExecutionOptions()) {
             options = NbPreferences.forModule(CucumberFeaturesPanel.class).get("customOptionsTextField", "");
         } else {
             options = "-s";

@@ -33,6 +33,7 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
         customExecutionRadioButton = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        recursiveCheckBox = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         rubyRadioButton = new javax.swing.JRadioButton();
         jRubyRadioButton = new javax.swing.JRadioButton();
@@ -55,6 +56,9 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel2, org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.jLabel2.text")); // NOI18N
 
+        recursiveCheckBox.setSelected(true);
+        org.openide.awt.Mnemonics.setLocalizedText(recursiveCheckBox, org.openide.util.NbBundle.getMessage(CucumberFeaturesPanel.class, "CucumberFeaturesPanel.recursiveCheckBox.text")); // NOI18N
+
         javax.swing.GroupLayout executionOptionsPanelLayout = new javax.swing.GroupLayout(executionOptionsPanel);
         executionOptionsPanel.setLayout(executionOptionsPanelLayout);
         executionOptionsPanelLayout.setHorizontalGroup(
@@ -63,13 +67,14 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(executionOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(defaultExecutionRadioButton)
-                    .addComponent(customExecutionRadioButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(customExecutionRadioButton)
+                    .addComponent(recursiveCheckBox))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(executionOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
-                    .addComponent(customOptionsTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                    .addComponent(defaultOptionsTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE))
+                    .addComponent(customOptionsTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+                    .addComponent(defaultOptionsTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE))
                 .addContainerGap())
         );
         executionOptionsPanelLayout.setVerticalGroup(
@@ -84,7 +89,9 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
                     .addComponent(customOptionsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(customExecutionRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addGroup(executionOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(recursiveCheckBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -127,8 +134,8 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(executionOptionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(executionOptionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -138,7 +145,7 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(executionOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -150,6 +157,7 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
         // someCheckBox.setSelected(NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("someFlag", false));
         // or:
         // someTextField.setText(SomeSystemOption.getDefault().getSomeStringProperty());
+        recursiveCheckBox.setSelected(NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("recursiveOption", true));
         defaultOptionsTextField.setText("-s");
         customOptionsTextField.setText(NbPreferences.forModule(CucumberFeaturesPanel.class).get("customOptionsTextField", ""));
         customExecutionRadioButton.setSelected(NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("customRadioButton", false));
@@ -165,6 +173,7 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
         // NbPreferences.forModule(CucumberFeaturesPanel.class).putBoolean("someFlag", someCheckBox.isSelected());
         // or:
         // SomeSystemOption.getDefault().setSomeStringProperty(someTextField.getText());
+        NbPreferences.forModule(CucumberFeaturesPanel.class).putBoolean("recursiveOption", recursiveCheckBox.isSelected());
         NbPreferences.forModule(CucumberFeaturesPanel.class).putBoolean("customRadioButton", customExecutionRadioButton.isSelected());
         NbPreferences.forModule(CucumberFeaturesPanel.class).putBoolean("jRubyRadioButton", jRubyRadioButton.isSelected());
         NbPreferences.forModule(CucumberFeaturesPanel.class).put("customOptionsTextField", customOptionsTextField.getText());
@@ -185,6 +194,7 @@ public final class CucumberFeaturesPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRubyRadioButton;
+    private javax.swing.JCheckBox recursiveCheckBox;
     private javax.swing.JRadioButton rubyRadioButton;
     private javax.swing.ButtonGroup rubyVersionButtonGroup;
     // End of variables declaration//GEN-END:variables

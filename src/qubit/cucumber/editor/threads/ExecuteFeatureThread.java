@@ -58,7 +58,7 @@ public abstract class ExecuteFeatureThread implements Runnable {
         commandList.addAll(this.getSystemSpecificHeader());
         commandList.addAll(this.getRubySpecificHeader());
         commandList.add("cucumber");
-        commandList.addAll(this.getSystemSpecificIncludePath());
+        commandList.addAll(this.getRecursiveOption());
         commandList.add(fileName);
         commandList.addAll(this.getOptions());
 
@@ -101,8 +101,19 @@ public abstract class ExecuteFeatureThread implements Runnable {
         return "jruby -S".split(" ");
     }
 
-    private boolean shouldUseCustomExecutionOptions() {
+    private boolean useCustomExecutionOptions() {
         return NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("customRadioButton", false);
+    }
+
+    private boolean useRecursiveOption() {
+        return NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("recursiveOption", true);
+    }
+
+    private List<String> getRecursiveOption() {
+        if(useRecursiveOption()){
+            return getSystemSpecificIncludePath();
+        } else
+            return new ArrayList<String>();
     }
 
     private List<String> getOptions() {
@@ -115,7 +126,7 @@ public abstract class ExecuteFeatureThread implements Runnable {
 
     private String[] buildOptions() {
         String options;
-        if (shouldUseCustomExecutionOptions()) {
+        if (useCustomExecutionOptions()) {
             options = NbPreferences.forModule(CucumberFeaturesPanel.class).get("customOptionsTextField", "");
         } else {
             options = "-s";

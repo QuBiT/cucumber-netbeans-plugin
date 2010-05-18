@@ -39,7 +39,7 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="executionOptionsPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="80" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,8 +70,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="customOptionsTextField" pref="417" max="32767" attributes="0"/>
-                      <Component id="defaultOptionsTextField" alignment="0" pref="417" max="32767" attributes="0"/>
+                      <Component id="customOptionsTextField" pref="277" max="32767" attributes="0"/>
+                      <Component id="defaultOptionsTextField" alignment="0" pref="277" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

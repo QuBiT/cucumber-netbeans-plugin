@@ -33,7 +33,7 @@ public abstract class ExecuteFeatureThread implements Runnable {
         fileName = file.getAbsolutePath();
         rerun = new RerunAction(dObj);
         stop = new StopAction();
-        commandList = new ArrayList();
+        commandList = new ArrayList<String>();
     }
 
     public abstract List<String> getSystemSpecificHeader();

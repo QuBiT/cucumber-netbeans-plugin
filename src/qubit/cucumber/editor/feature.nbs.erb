@@ -102,12 +102,16 @@ TOKEN:newline: ('\n')
 # Row
 <ROW_MODE> {
     TOKEN:end: ('\n'):<DEFAULT>
+    TOKEN:escape:('\\'):<ESCAPED_INSIDE_ROW>
     TOKEN:row_delimiter:("|")
     TOKEN:whitespace:( [" " "\t"]+ )
     TOKEN:string:((" \'"[^ "\'"]* "\'")|("\""[^ "\""]* "\""))
     TOKEN:comment:('#' [^ '\n' '\r']*)
     TOKEN:number:( ["0"-"9"]+ (("."|",")["0"-"9"]*)? )
     TOKEN:text:( [^ '\n' '\r' '\t' ' ' '\"' '|' '#']* )
+}
+<ESCAPED_INSIDE_ROW> {
+  TOKEN:escaped:(.):<ROW_MODE>
 }
 
 # GRAMMER RULES :: SYNTAX DEFINITION -------------------------------------------
@@ -136,7 +140,8 @@ TableRows = (Row)*;
 Row = <row_delimiter> Cell+ <end>;
 Cell = [Text] <row_delimiter>;
 PyString = <pystring> Text <end_pystring>;
-Text = (<text> | <number> | <string> | <variable>) (Text)*;
+Text = (<text> | <number> | <string> | <variable> | Escaped ) (Text)*;
+Escaped = (<escape> <escaped>);
 #
 SKIP:whitespace
 SKIP:comment

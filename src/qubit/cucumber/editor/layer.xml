@@ -135,7 +135,7 @@
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="2"/>
             </file>
-            <file name="cz.feature" url="templates/i18n/cz.feature">
+            <file name="cs.feature" url="templates/i18n/cs.feature">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="qubit.cucumber.editor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
                 <attr name="position" intvalue="3"/>

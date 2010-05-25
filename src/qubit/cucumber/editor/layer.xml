@@ -126,12 +126,12 @@
   <folder name='Templates'>
     <folder name='Cucumber'>
       <file name='file.feature' url='templates/file.feature'>
-        <attr name='SystemFileSystem.localizingBundle' stringvalue='qubit.cucumber.editor.Bundle'/>
+        <attr name='SystemFileSystem.localizingBundle' stringvalue='qubit.cucumber.editor.templates.Bundle'/>
         <attr boolvalue='true' name='template'/>
         <attr name='position' intvalue='1'/>
       </file>
       <file name='sample.feature' url='templates/sample.feature'>
-        <attr name='SystemFileSystem.localizingBundle' stringvalue='qubit.cucumber.editor.Bundle'/>
+        <attr name='SystemFileSystem.localizingBundle' stringvalue='qubit.cucumber.editor.templates.Bundle'/>
         <attr boolvalue='true' name='template'/>
         <attr name='position' intvalue='2'/>
       </file>

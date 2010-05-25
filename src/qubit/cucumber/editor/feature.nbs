@@ -3,8 +3,8 @@
 # Author: Roland Guem
 # I18N-Support: Aslak Hellesoy
 #
-# HINT: THE "feature.nbs" FILE IS AUTOGENRATED BY THE RAKE TASK "i18n_generate"
-# Generated on: Thu May 20 17:50:01 +0200 2010
+# HINT: THE "feature.nbs" FILE IS AUTOGENRATED BY THE RAKE TASK "i18n:generate_nbs_language_file"
+# Generated on: Tue May 25 15:51:30 +0200 2010
 # Gherkin Version: 1.0.30
 #
 # TOKEN DEFINTIONS -------------------------------------------------------------

@@ -4,12 +4,12 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/nb-module-project/3">
             <code-name-base>qubit.cucumber.editor</code-name-base>
-            <standalone/>
+            <standalone />
             <module-dependencies>
                 <dependency>
                     <code-name-base>org.jdesktop.layout</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <release-version>1</release-version>
                         <specification-version>1.6.1</specification-version>
@@ -17,16 +17,16 @@
                 </dependency>
                 <dependency>
                     <code-name-base>org.netbeans.modules.autoupdate.services</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <specification-version>1.5.2</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
                     <code-name-base>org.netbeans.modules.editor.indent</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <release-version>2</release-version>
                         <specification-version>1.15.1.9</specification-version>
@@ -34,8 +34,8 @@
                 </dependency>
                 <dependency>
                     <code-name-base>org.netbeans.modules.i18n</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <release-version>1</release-version>
                         <specification-version>1.24.1</specification-version>
@@ -43,8 +43,8 @@
                 </dependency>
                 <dependency>
                     <code-name-base>org.netbeans.modules.languages</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <release-version>0-1</release-version>
                         <specification-version>1.90.1.1</specification-version>
@@ -52,8 +52,8 @@
                 </dependency>
                 <dependency>
                     <code-name-base>org.netbeans.modules.options.api</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <release-version>1</release-version>
                         <specification-version>1.10.2</specification-version>
@@ -61,8 +61,8 @@
                 </dependency>
                 <dependency>
                     <code-name-base>org.netbeans.modules.projectapi</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <release-version>1</release-version>
                         <specification-version>1.28.1</specification-version>
@@ -70,70 +70,70 @@
                 </dependency>
                 <dependency>
                     <code-name-base>org.openide.awt</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <specification-version>7.3.1.1</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
                     <code-name-base>org.openide.filesystems</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <specification-version>7.13.1.1.1</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
                     <code-name-base>org.openide.io</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <specification-version>1.20.1</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
                     <code-name-base>org.openide.loaders</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <specification-version>7.2.3</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
                     <code-name-base>org.openide.nodes</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <specification-version>7.7.3.1</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
                     <code-name-base>org.openide.text</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <specification-version>6.21.2</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
                     <code-name-base>org.openide.util</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <specification-version>7.18.1.1</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
                     <code-name-base>org.openide.windows</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
+                    <build-prerequisite />
+                    <compile-dependency />
                     <run-dependency>
                         <specification-version>6.24.1</specification-version>
                     </run-dependency>
                 </dependency>
             </module-dependencies>
-            <public-packages/>
+            <public-packages />
             <class-path-extension>
                 <runtime-relative-path>ext/gherkin-1.0.30.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/gherkin-1.0.30.jar</binary-origin>

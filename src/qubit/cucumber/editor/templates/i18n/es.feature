@@ -1,8 +1,10 @@
 # language: es
+# Source: http://github.com/aslakhellesoy/cucumber/blob/master/examples/i18n/es/features/adicion.feature
+# Updated: Tue May 25 15:51:46 +0200 2010
 Característica: adición
-Para evitar hacer errores tontos
-Como un matemático idiota
-Quiero saber la suma de los números
+  Para evitar hacer errores tontos
+  Como un matemático idiota
+  Quiero saber la suma de los números
 
   Esquema del escenario: Sumar dos números
     Dado que he introducido <entrada_1> en la calculadora
@@ -12,6 +14,6 @@ Quiero saber la suma de los números
 
   Ejemplos:
     | entrada_1 | entrada_2 | botón | resultado |
-    | 20 | 30 | add | 50 |
-    | 2 | 5 | add | 7 |
-    | 0 | 40 | add | 40 |
+    | 20        | 30        | add   | 50        |
+    | 2         | 5         | add   | 7         |
+    | 0         | 40        | add   | 40        |

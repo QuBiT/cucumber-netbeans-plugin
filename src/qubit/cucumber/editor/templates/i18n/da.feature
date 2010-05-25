@@ -1,8 +1,10 @@
 # language: da
+# Source: http://github.com/aslakhellesoy/cucumber/blob/master/examples/i18n/da/features/sammenlaegning.feature
+# Updated: Tue May 25 15:51:38 +0200 2010
 Egenskab: Sammenlægning
-For at slippe for at lave dumme fejl
-Som bogholder
-Vil jeg kunne lægge sammen
+  For at slippe for at lave dumme fejl
+  Som bogholder
+  Vil jeg kunne lægge sammen
 
   Scenarie: to tal
     Givet at jeg har indtastet 5

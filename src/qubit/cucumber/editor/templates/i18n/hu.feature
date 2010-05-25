@@ -1,8 +1,10 @@
 # language: hu
+# Source: http://github.com/aslakhellesoy/cucumber/blob/master/examples/i18n/hu/features/addition.feature
+# Updated: Tue May 25 15:51:58 +0200 2010
 Jellemző: Összeadás
-Azért, hogy elkerüljem a buta hibákat
-amit diszkalkúliásként elkövethetek,
-két szám összegét szeretném kiszámoltatni.
+  Azért, hogy elkerüljem a buta hibákat
+  amit diszkalkúliásként elkövethetek,
+  két szám összegét szeretném kiszámoltatni.
 
   Forgatókönyv vázlat: Két szám összeadása
     Ha beütök a számológépbe egy <be_1>-est
@@ -12,17 +14,6 @@ két szám összegét szeretném kiszámoltatni.
 
   Példák:
     | be_1 | be_2 | gomb | ki |
-    | 20 | 30 | add | 50 |
-    | 2 | 5 | add | 7 |
-    | 0 | 40 | add | 40 |
-
- # language: hu
-Jellemző: Osztás
-Azért, hogy elkerüljem a buta hibákat
-a számológépeknek tudniuk kell osztani.
-
-  Forgatókönyv: Egyszerű számok
-    Ha beütök a számológépbe egy 3-ast
-    És beütök a számológépbe egy 2-est
-    Majd megnyomom a divide gombot
-    Akkor eredményül 1.5-öt kell kapnom
+    | 20   | 30   | add  | 50 |
+    | 2    | 5    | add  | 7  |
+    | 0    | 40   | add  | 40 |

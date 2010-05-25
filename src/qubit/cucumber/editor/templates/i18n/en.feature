@@ -1,28 +1,19 @@
 # language: en
+# Source: http://github.com/aslakhellesoy/cucumber/blob/master/examples/i18n/en/features/addition.feature
+# Updated: Tue May 25 15:51:43 +0200 2010
 Feature: Addition
-In order to avoid silly mistakes
-As a math idiot
-I want to be told the sum of two numbers
+  In order to avoid silly mistakes
+  As a math idiot 
+  I want to be told the sum of two numbers
 
   Scenario Outline: Add two numbers
-Given I have entered <input_1> into the calculator
+    Given I have entered <input_1> into the calculator
     And I have entered <input_2> into the calculator
     When I press <button>
     Then the result should be <output> on the screen
 
   Examples:
     | input_1 | input_2 | button | output |
-    | 20 | 30 | add | 50 |
-    | 2 | 5 | add | 7 |
-    | 0 | 40 | add | 40 |
-
- # language: en
-Feature: Division
-In order to avoid silly mistakes
-Cashiers must be able to calculate a fraction
-
-  Scenario: Regular numbers
-    * I have entered 3 into the calculator
-    * I have entered 2 into the calculator
-    * I press divide
-    * the result should be 1.5 on the screen
+    | 20      | 30      | add    | 50     |
+    | 2       | 5       | add    | 7      |
+    | 0       | 40      | add    | 40     |

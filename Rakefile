@@ -1,24 +1,19 @@
-desc "Generate feature.nbs with support for all of Gherkin's translations"
-task :i18n_generate do
-  require 'erb'
-  require 'gherkin/i18n'
+import 'lib/tasks/i18n/feature_nbs.rake'
+import 'lib/tasks/i18n/templates.rake'
+import 'lib/tasks/i18n/bundle_properties.rake'
+import 'lib/tasks/i18n/layer_xml.rake'
+import 'lib/tasks/i18n/gherkin.rake'
 
-  def gherkin_keywords(*keys)
-    Gherkin::I18n.keyword_regexp(*keys).split(/\|/).map do |kw| 
-      kw = kw.gsub("\\*", "*") # Remove escaping of the *
-      kw = kw.gsub("'", "\\\\'") # Escape single quotes
-      '"' + Gherkin::I18n.unicode_escape(kw) + '"'
-    end.join(' | ')
-  end
+namespace :i18n do
 
-  def gherkin_language_keys()
-    Gherkin::I18n.send(:languages).keys.sort.map do |lid|
-      '"' + lid + '"'
-    end.join(' | ')
-  end
+  desc "Generate NBS-Language-File"
+  task :generate => [:generate_feature_nbs_file]
 
-  File.open(File.dirname(__FILE__) + '/src/qubit/cucumber/editor/feature.nbs', "wb") do |io|
-    template  = ERB.new(IO.read(File.dirname(__FILE__) + '/src/qubit/cucumber/editor/feature.nbs.erb'))
-    io.write(template.result(binding))
-  end
+  desc "Update Gherkin"
+  task :update_gherkin => [:update_gherkin_gem, :update_gherkin_jar]
+
+  desc "Update Templates"
+  task :update_templates => [:recreate_templates_from_github, :update_bundle_properties, :update_layer_xml_file]
+
 end
+

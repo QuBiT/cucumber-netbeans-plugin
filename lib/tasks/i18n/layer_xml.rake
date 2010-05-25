@@ -4,6 +4,9 @@ namespace :i18n do
     require 'rubygems'
     require 'hpricot'
     require 'open-uri'
+    require 'rexml/document'
+    include REXML
+
 
     def existing_template_filenames
       Dir.entries("src/qubit/cucumber/editor/templates/i18n").collect{|name| name.sub('.feature','') if name.include?(".feature")}.compact
@@ -34,7 +37,7 @@ namespace :i18n do
         document.sub!(template_file.to_s, '') if template_file.attributes['url'].include?("/i18n/")
       end
 
-      open("src/qubit/cucumber/editor/layer.xml", "wb") do |file|
+      open(url, "wb") do |file|
         file.write(document)
       end
     end
@@ -58,13 +61,26 @@ namespace :i18n do
         counter-=1
       end
 
-      open("src/qubit/cucumber/editor/layer.xml", "wb") do |file|
+      open(url, "wb") do |file|
         file.write(document)
       end
     end
 
+    def reformat_layer_file
+      url = "src/qubit/cucumber/editor/layer.xml"
+      doc = open(url) { |f| Hpricot.XML(f) }
+      rexml_doc = Document.new(doc.to_s)
+      buffer = ""
+      rexml_doc.write(buffer,2)
+      open(url, "wb") do |file|
+        file.write(buffer)
+      end
+    end
+
+
     remove_old_entries
     add_new_entries
+    reformat_layer_file
 
   end
 

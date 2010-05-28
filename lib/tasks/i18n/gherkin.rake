@@ -1,64 +1,52 @@
-namespace :i18n do
+namespace :gherkin do
+
+  require 'lib/gherkin'
+
+  desc 'List Available Versions'
+  task :available_versions do
+    puts Gherkin.available_versions
+  end
+
+  desc 'Show Latest Available Version'
+  task :latest_version do
+    puts Gherkin.latest_version
+  end
+
+  desc 'Show Current Jar Version'
+  task :jar_version do
+    puts Gherkin.jar_version
+  end
+
+  desc 'Show Current Gem Version'
+  task :gem_version do
+    puts Gherkin.gem_version
+  end
+
+  desc 'Check for Updates'
+  task :update_check do
+    Gherkin.update_check
+  end
+
+  desc 'Update Current Jar: Download File and Change Project Settings'
+  task :update_jar do
+    require 'lib/gherkin'
+    latest_available_version = Gherkin.latest_version
+    gem_version = Gherkin.gem_version
+    jar_version = Gherkin.jar_version
+
+    if Gherkin.update_available?
+      Gherkin.download_jar(latest_available_version)
+      ProjectXml.update_jar_version(jar_version, latest_available_version)
+      Gherkin.delete_jar(jar_version)
+    else
+      puts "--> No Updates are available."
+    end
+  end
 
   desc 'Update Gherkin Gem'
-  task :update_gherkin_gem do
+  task :update_gem do
     system "gem update gherkin"
     system "gem cleanup gherkin"
   end
 
-  desc 'Add new Lib to Project and Remove old Lib'
-  task :update_gherkin_jar do
-    require 'rubygems'
-    require 'gherkin/i18n'
-    require 'hpricot'
-    require 'open-uri'
-    require 'net/http'
-
-
-    def available_versions
-      url = "http://cukes.info/maven/gherkin/gherkin"
-      doc = open(url) { |f| Hpricot(f) }
-      versions = []
-      (doc/"a").each do |row|
-        versions << row.inner_text.gsub(/\//,'') if row.inner_text.include?("/")
-      end
-      versions
-    end
-
-    def download_jar(version)
-      Net::HTTP.start("cukes.info") { |http|
-        resp = http.get("/maven/gherkin/gherkin/#{version}/gherkin-#{version}.jar")
-        open("release/modules/ext/gherkin-#{version}.jar", "wb") { |file|
-          file.write(resp.body)
-        }
-      }
-      puts "New Gherkin Jar File Downloaded: #{version}"
-    end
-    
-    def update_project(old_version, new_version)
-      filename = "nbproject/project.xml"
-      doc = open(filename) { |f| Hpricot.XML(f) }
-      document = doc.to_s
-      document.gsub!("gherkin-#{old_version}.jar", "gherkin-#{new_version}.jar")
-      open(filename, "wb") do |file|
-        file.write(document)
-      end
-      puts "#{filename} updated!"
-    end
-
-    latest_available_version = available_versions.last
-
-    gem_version = Gem.source_index.find_name('gherkin').first.version.to_s
-    jar_version = Dir.entries("release/modules/ext").collect{|name| name.sub('.jar','').sub('gherkin-','') if name.include?(".jar")}.compact
-
-    if gem_version == latest_available_version and jar_version.last == latest_available_version
-      puts "Module UpToDate!"
-    end
-
-    unless jar_version.last == latest_available_version
-      download_jar(latest_available_version)
-      update_project(jar_version, latest_available_version)
-    end
-
-  end
 end

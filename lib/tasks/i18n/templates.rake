@@ -1,6 +1,6 @@
-namespace :i18n do
+namespace :templates do
   desc "Download Latest Examples and create Templates"
-  task :recreate_templates_from_github do
+  task :recreate_from_github do
     require 'rubygems'
     require 'hpricot'
     require 'open-uri'

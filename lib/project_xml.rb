@@ -8,7 +8,7 @@ module ProjectXml
     doc = open(PROJECT_XML_FILE) { |f| Hpricot.XML(f) }
     document = doc.to_s
     document.gsub!(old_file_name, new_file_name)
-    open(filename, "wb") do |file|
+    open(PROJECT_XML_FILE, "wb") do |file|
       file.write(document)
     end
     puts "#{PROJECT_XML_FILE} updated!"

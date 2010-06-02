@@ -3,6 +3,7 @@ import 'lib/tasks/i18n/templates.rake'
 import 'lib/tasks/i18n/bundle_properties.rake'
 import 'lib/tasks/i18n/layer_xml.rake'
 import 'lib/tasks/i18n/gherkin.rake'
+import 'lib/tasks/version.rake'
 
 namespace :i18n do
   # For more details see lib/tasks/i18n/feature_nbs.rake
@@ -48,3 +49,4 @@ array << ['build','release', 'install', 'git:release', 'github:release', 'gemspe
 array.flatten.each do |task_name|
   Rake.application.remove_task task_name
 end
+

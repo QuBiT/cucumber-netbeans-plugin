@@ -18,8 +18,8 @@ namespace :i18n do
       end.join(' | ')
     end
 
-    File.open(File.dirname(__FILE__) + '/src/qubit/cucumber/editor/feature.nbs', "wb") do |io|
-      template  = ERB.new(IO.read(File.dirname(__FILE__) + '/src/qubit/cucumber/editor/feature.nbs.erb'))
+    File.open('src/qubit/cucumber/editor/feature.nbs', "wb") do |io|
+      template  = ERB.new(IO.read('src/qubit/cucumber/editor/feature.nbs.erb'))
       io.write(template.result(binding))
     end
   end

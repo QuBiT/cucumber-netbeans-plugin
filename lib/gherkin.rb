@@ -66,7 +66,7 @@ module Gherkin
 
   def self.delete_jar(version)
     filename = "gherkin-#{version}.jar"
-    FileUtils.rm filename
+    FileUtils.rm "release/modules/ext/#{filename}"
   end
 
 end

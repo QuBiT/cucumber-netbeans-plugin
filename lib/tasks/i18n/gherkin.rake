@@ -1,6 +1,7 @@
 namespace :gherkin do
 
   require 'lib/gherkin'
+  require 'lib/project_xml'
 
   desc 'List Available Versions'
   task :available_versions do

@@ -31,5 +31,10 @@ public class LinuxFeatureThread extends ExecuteFeatureThread {
         }
         return cmd;
     }
+
+    @Override
+    public String getSystemSpecificChainingSymbol() {
+        return ";";
+    }
 }
 

@@ -15,6 +15,11 @@ public class WindowsFeatureThread extends ExecuteFeatureThread {
         List<String> specificHeader = new ArrayList<String>();
         specificHeader.add("cmd");
         specificHeader.add("/C");
+        if (useDirectoryOption()) {
+            // be sure to be on the same windows drive (c:, d: ...)
+            specificHeader.add(getFileName().substring(0, 2));
+            specificHeader.add(getSystemSpecificChainingSymbol());
+        }
         return specificHeader;
     }
 
@@ -34,6 +39,11 @@ public class WindowsFeatureThread extends ExecuteFeatureThread {
             cmd.add(requiredDirectory);
         }
         return cmd;
+    }
+
+    @Override
+    public String getSystemSpecificChainingSymbol() {
+        return "&";
     }
 }
 

@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.swing.Action;
 import org.openide.filesystems.FileUtil;
@@ -40,6 +39,8 @@ public abstract class ExecuteFeatureThread implements Runnable {
 
     public abstract List<String> getSystemSpecificIncludePath();
 
+    public abstract String getSystemSpecificChainingSymbol();
+
     public String getFileName() {
         return fileName;
     }
@@ -56,6 +57,7 @@ public abstract class ExecuteFeatureThread implements Runnable {
         OutputWriter outputWriter = CucumberOutputWindow.getOutputWriter(dObj.getPrimaryFile().getNameExt(), getActions());
 
         commandList.addAll(this.getSystemSpecificHeader());
+        commandList.addAll(this.getDirectoryOption());
         commandList.addAll(this.getRubySpecificHeader());
         commandList.add("cucumber");
         commandList.addAll(this.getRecursiveOption());
@@ -109,11 +111,33 @@ public abstract class ExecuteFeatureThread implements Runnable {
         return NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("recursiveOption", true);
     }
 
-    private List<String> getRecursiveOption() {
-        if(useRecursiveOption()){
-            return getSystemSpecificIncludePath();
-        } else
+    public boolean useDirectoryOption() {
+        return NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("changeDirectoryOption", false);
+    }
+
+    private List<String> getDirectoryOption() {
+        if (useDirectoryOption()) {
+            return getProjectDirectoryPath();
+        } else {
             return new ArrayList<String>();
+        }
+    }
+
+    private List<String> getProjectDirectoryPath() {
+        String dirString = NbPreferences.forModule(CucumberFeaturesPanel.class).get("directoryOptionsTextField", "");
+        List<String> options = new ArrayList<String>();
+        options.add("cd");
+        options.add(dirString);
+        options.add(getSystemSpecificChainingSymbol());
+        return options;
+    }
+
+    private List<String> getRecursiveOption() {
+        if (useRecursiveOption()) {
+            return getSystemSpecificIncludePath();
+        } else {
+            return new ArrayList<String>();
+        }
     }
 
     private List<String> getOptions() {

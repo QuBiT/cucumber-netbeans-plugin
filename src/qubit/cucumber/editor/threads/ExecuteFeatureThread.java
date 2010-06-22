@@ -57,7 +57,6 @@ public abstract class ExecuteFeatureThread implements Runnable {
         OutputWriter outputWriter = CucumberOutputWindow.getOutputWriter(dObj.getPrimaryFile().getNameExt(), getActions());
 
         commandList.addAll(this.getSystemSpecificHeader());
-        commandList.addAll(this.getDirectoryOption());
         commandList.addAll(this.getRubySpecificHeader());
         commandList.add("cucumber");
         commandList.addAll(this.getRecursiveOption());
@@ -66,6 +65,7 @@ public abstract class ExecuteFeatureThread implements Runnable {
 
         procBuilder = new ProcessBuilder(commandList);
         procBuilder.redirectErrorStream(true);
+        procBuilder.directory(getDirectory());
         try {
             process = procBuilder.start();
             stop.setProcess(process);
@@ -115,21 +115,8 @@ public abstract class ExecuteFeatureThread implements Runnable {
         return NbPreferences.forModule(CucumberFeaturesPanel.class).getBoolean("changeDirectoryOption", false);
     }
 
-    private List<String> getDirectoryOption() {
-        if (useDirectoryOption()) {
-            return getProjectDirectoryPath();
-        } else {
-            return new ArrayList<String>();
-        }
-    }
-
-    private List<String> getProjectDirectoryPath() {
-        String dirString = NbPreferences.forModule(CucumberFeaturesPanel.class).get("directoryOptionsTextField", "");
-        List<String> options = new ArrayList<String>();
-        options.add("cd");
-        options.add(dirString);
-        options.add(getSystemSpecificChainingSymbol());
-        return options;
+    private File getDirectory() {
+        return new File(NbPreferences.forModule(CucumberFeaturesPanel.class).get("directoryOptionsTextField", "."));
     }
 
     private List<String> getRecursiveOption() {

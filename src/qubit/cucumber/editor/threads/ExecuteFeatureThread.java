@@ -65,7 +65,9 @@ public abstract class ExecuteFeatureThread implements Runnable {
 
         procBuilder = new ProcessBuilder(commandList);
         procBuilder.redirectErrorStream(true);
-        procBuilder.directory(getDirectory());
+        if (useDirectoryOption()) {
+            procBuilder.directory(getDirectory());
+        }
         try {
             process = procBuilder.start();
             stop.setProcess(process);

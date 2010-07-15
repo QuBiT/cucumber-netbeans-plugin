@@ -1,9 +1,6 @@
 package qubit.cucumber.editor.format;
 
-import gherkin.I18nLexer;
-import gherkin.Lexer;
 import gherkin.formatter.PrettyFormatter;
-import gherkin.parser.FormatterListener;
 import gherkin.parser.Parser;
 import java.io.StringWriter;
 import javax.swing.text.BadLocationException;
@@ -40,10 +37,8 @@ class GherkinFormatTask implements ReformatTask {
                 String source = context.document().getText(0, context.document().getLength());
                 StringWriter reformattedWriter = new StringWriter();
                 PrettyFormatter formatter = new PrettyFormatter(reformattedWriter, true);
-                FormatterListener listener = new FormatterListener(formatter);
-                Parser parser = new Parser(listener, true);
-                Lexer lexer = new I18nLexer(parser);
-                lexer.scan(source, "/", 0);
+                Parser parser = new Parser(formatter, true);
+                parser.parse(source, "UNKNOWN", 0); //parser.parse(input, file.getPath(), 0);
                 writeSource(reformattedWriter.getBuffer().toString());
             } catch (Exception e) {
                 showError(e);
